@@ -1,0 +1,140 @@
+/* - - - </> [DIV] </> - - - */
+.home-info
+{
+    width: 80%;
+    display: flex;
+    flex-direction: column;
+}
+
+/* - - - </> [TEXT] </> - - - */
+.home-title
+{
+    margin: 0;
+    font-size: 4vw;
+    font-weight: 800;
+    line-height: 100%;
+}
+
+/* - - - </> [TEXT] </> - - - */
+.home-text
+{
+    margin: 0;
+    font-size: 14px;
+    margin-top: 30px;
+}
+
+/* - - - </> [DIV] </> - - - */
+.home-actions
+{
+    width: 100%;
+    height: 50px;
+    display: flex;
+    margin-top: 30px;
+    align-items: center;
+    justify-content: space-between;
+}
+
+/* - - - </> [DIV] </> - - - */
+.home-button-wrapper
+{
+    width: 50%;
+    position:relative;
+}
+
+/* - - - </> [BUTTON] </> - - - */
+.home-button-v1,
+.home-button-v2
+{
+    width: 100%;
+    height: 50px;
+    display: flex;
+    font-size: 14px;
+    font-weight: 600;
+    align-items: center;
+    text-decoration: none;
+    justify-content: center;
+    font-family: 'Poppins', sans-serif;
+}
+
+/* - - - </> [BUTTON] </> - - - */
+.home-button-v1
+{
+    color: var(--color_001);
+    background: var(--color_003);
+}
+
+/* - - - </> [BUTTON] </> - - - */
+.home-button-v2
+{
+    color: var(--color_001);
+    background: var(--color_004);
+}
+
+/* - - - </> [ICON] </> - - - */
+.home-button-icon-v1,
+.home-button-icon-v2
+{
+    top: 50%;
+    right: 20px;
+    font-size: 20px;
+    position: absolute;
+    box-sizing: border-box;
+    color: var(--color_001);
+    transform: translateY(-50%);
+}
+
+/* - - - </> [HOVER] </> - - - */
+.home-button-wrapper:hover
+.home-button-v1
+{
+    cursor: pointer;
+    transition: .5s;
+    background: var(--color_002);
+}
+
+/* - - - </> [HOVER] </> - - - */
+.home-button-wrapper:hover
+.home-button-v2
+{
+    cursor: pointer;
+    transition: .5s;
+    background: var(--color_002);
+}
+
+/* Extra small devices (phones, 600px and down) */
+@media only screen and (max-width: 600px)
+{
+
+}
+
+/* Medium devices (landscape tablets, 768px and down) */
+@media only screen and (max-width: 768px)
+{
+    /* - - - </> [TEXT] </> - - - */
+    .home-title
+    {
+        font-size: 8vw;
+    }
+}
+
+/* Large devices (laptops/desktops, 992px and down) */
+@media only screen and (max-width: 992px)
+{
+    /* - - - </> [DIV] </> - - - */
+    .home-actions
+    {
+        flex-direction: column;
+    }
+
+    /* - - - </> [DIV] </> - - - */
+    .home-button-wrapper
+    {
+        width: 100%;
+    }
+}
+
+/* Extra large devices (large laptops and desktops, 1200px and down) */
+@media only screen and (max-width: 1200px)
+{
+    
+}

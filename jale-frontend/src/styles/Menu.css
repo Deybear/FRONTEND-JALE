@@ -1,0 +1,121 @@
+/* - - - </> [NAV] </> - - - */
+.menu
+{
+    margin: 0;
+    width: 10%;
+    height: 100%;
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+    border-right: 3px solid var(--color_003);
+}
+
+/* - - - </> [DIV] </> - - - */
+.menu-image
+{
+    margin: 0;
+    padding: 0;
+    width: 100%;
+    height: 20%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+/* - - - </> [IMG] </> - - - */
+.menu-logo
+{
+    width: 50%;
+}
+
+/* - - - </> [UL] </> - - - */
+.menu-list
+{
+    margin: 0;
+    padding: 0;
+    width: 100%;
+    height: 60%;
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+    justify-content: space-evenly;
+}
+
+/* - - - </> [LI] </> - - - */
+.menu-item
+{
+    display: flex;
+    align-items: center;
+    list-style-type: none;
+    flex-direction: column;
+    justify-content: center;
+}
+
+/* - - - </> [LINK] </> - - - */
+.menu-link
+{
+    font-size: 12px;
+    font-weight: 600;
+    line-height: 100%;
+    letter-spacing: 2px;
+    text-decoration: none;
+    color: var(--color_002);
+    writing-mode: sideways-lr;
+}
+
+/* - - - </> [LINK] </> - - - */
+.menu-link:hover
+{
+    cursor: pointer;
+    color: var(--color_003);
+}
+
+/* - - - </> [ICON] </> - - - */
+.menu-icon
+{
+    font-size: 20px;
+    margin-top: 10px;
+    color: var(--color_003);
+    transform: rotate(-90deg);
+}
+
+/* - - - </> [DIV] </> - - - */
+.menu-action
+{
+    margin: 0;
+    padding: 0;
+    width: 100%;
+    height: 20%;
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+    justify-content: space-evenly;
+}
+
+/* Extra small devices (phones, 600px and down) */
+@media only screen and (max-width: 600px)
+{
+
+}
+
+/* Medium devices (landscape tablets, 768px and down) */
+@media only screen and (max-width: 768px)
+{
+    /* - - - </> [NAV] </> - - - */
+    .menu
+    {
+        display: none;
+    }
+}
+
+/* Large devices (laptops/desktops, 992px and down) */
+@media only screen and (max-width: 992px)
+{
+
+}
+
+/* Extra large devices (large laptops and desktops, 1200px and down) */
+@media only screen and (max-width: 1200px)
+{
+    
+}

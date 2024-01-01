@@ -1,0 +1,239 @@
+/* - - - </> [DIV] </> - - - */
+.item-info
+{
+    width: 80%;
+    display: flex;
+    flex-direction: column;
+}
+
+/* - - - </> [DIV] </> - - - */
+.item-status
+{
+    width: 100%;
+    margin-bottom: 30px;
+}
+
+/* - - - </> [DIV] </> - - - */
+.item-schedule
+{
+    width: 200px;
+    height: 50px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: var(--color_003);
+}
+
+/* - - - </> [ICON] </> - - - */
+.item-schedule-icon
+{
+    font-size: 20px;
+    margin-right: 20px;
+    color: var(--color_001);
+}
+
+/* - - - </> [TEXT] </> - - - */
+.item-schedule-text
+{
+    margin: 0;
+    font-weight: 700;
+    line-height: 100%;
+    color: var(--color_001);
+}
+
+/* - - - </> [TEXT] </> - - - */
+.item-title
+{
+    margin: 0;
+    font-size: 4vw;
+    font-weight: 800;
+    line-height: 100%;
+}
+
+/* - - - </> [ICON] </> - - - */
+.item-title-icon
+{
+    color: var(--color_003);
+}
+
+/* - - - </> [DIV] </> - - - */
+.item-desc
+{
+    width: 100%;
+    margin-top: 30px;
+}
+
+/* - - - </> [DIV] </> - - - */
+.item-about
+{
+    width: 100%;
+    display: flex;
+    margin-top: 30px;
+    flex-wrap: wrap;
+}
+
+/* - - - </> [DIV] </> - - - */
+.item-desc-title
+{
+    display: flex;
+    align-items: center;
+    margin-bottom: 10px;
+}
+
+/* - - - </> [DIV] </> - - - */
+.item-feature
+{
+    display: flex;
+    margin-right: 20px;
+    align-items: center;
+    margin-bottom: 10px;
+}
+
+/* - - - </> [ICON] </> - - - */
+.item-desc-icon,
+.item-feature-icon
+{
+    font-size: 20px;
+    margin-right: 20px;
+    color: var(--color_003);
+}
+
+/* - - - </> [TEXT] </> - - - */
+.item-desc-text
+{
+    margin: 0;
+    font-size: 16px;
+    font-weight: 600;
+    line-height: 100%;
+}
+
+/* - - - </> [TEXT] </> - - - */
+.item-feature-text
+{
+    margin: 0;
+    font-size: 14px;
+    line-height: 100%;
+}
+
+/* - - - </> [TEXT] </> - - - */
+.item-text
+{
+    margin: 0;
+    font-size: 14px;
+}
+
+/* - - - </> [DIV] </> - - - */
+.item-actions
+{
+    width: 100%;
+    display: flex;
+    margin-top: 30px;
+    align-items: center;
+    justify-content: space-between;
+}
+
+/* - - - </> [DIV] </> - - - */
+.item-button-wrapper
+{
+    width: 50%;
+    position:relative;
+}
+
+/* - - - </> [BUTTON] </> - - - */
+.item-button-v1,
+.item-button-v2
+{
+    width: 100%;
+    height: 50px;
+    border: none;
+    display: flex;
+    font-size: 14px;
+    font-weight: 600;
+    align-items: center;
+    text-decoration: none;
+    justify-content: center;
+    font-family: 'Poppins', sans-serif;
+}
+
+/* - - - </> [BUTTON] </> - - - */
+.item-button-v1
+{
+    color: var(--color_001);
+    background: var(--color_003);
+}
+
+/* - - - </> [BUTTON] </> - - - */
+.item-button-v2
+{
+    color: var(--color_001);
+    background: var(--color_004);
+}
+
+/* - - - </> [ICON] </> - - - */
+.item-button-icon-v1,
+.item-button-icon-v2
+{
+    top: 50%;
+    left: 20px;
+    font-size: 20px;
+    position: absolute;
+    box-sizing: border-box;
+    color: var(--color_001);
+    transform: translateY(-50%);
+}
+
+/* - - - </> [HOVER] </> - - - */
+.item-button-wrapper:hover
+.item-button-v1
+{
+    cursor: pointer;
+    transition: .5s;
+    background: var(--color_002);
+}
+
+/* - - - </> [HOVER] </> - - - */
+.item-button-wrapper:hover
+.item-button-v2
+{
+    cursor: pointer;
+    transition: .5s;
+    background: var(--color_002);
+}
+
+/* Extra small devices (phones, 600px and down) */
+@media only screen and (max-width: 600px)
+{
+
+}
+
+/* Medium devices (landscape tablets, 768px and down) */
+@media only screen and (max-width: 768px)
+{
+    /* - - - </> [TEXT] </> - - - */
+    .item-title
+    {
+        font-size: 8vw;
+    }
+}
+
+/* Large devices (laptops/desktops, 992px and down) */
+@media only screen and (max-width: 992px)
+{
+    /* - - - </> [DIV] </> - - - */
+    .item-actions
+    {
+        flex-direction: column;
+    }
+
+    /* - - - </> [DIV] </> - - - */
+    .item-button-wrapper
+    {
+        width: 100%;
+    }
+}
+
+/* Extra large devices (large laptops and desktops, 1200px and down) */
+@media only screen and (max-width: 1200px)
+{
+    
+}

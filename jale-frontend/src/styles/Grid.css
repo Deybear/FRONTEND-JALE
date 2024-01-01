@@ -1,0 +1,97 @@
+/* - - - </> [SECTION] </> - - - */
+.main-section
+{
+    width: 90%;
+    height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+/* - - - </> [DIV] </> - - - */
+.lf-lg-col
+{
+    width: 50%;
+    height: 100%;
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+}
+
+/* - - - </> [DIV] </> - - - */
+.rg-lg-col
+{
+    width: 50%;
+    height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+/* - - - </> [DIV] </> - - - */
+.rg-lg-col.lite
+{
+    width: 50%;
+    height: 100%;
+    display: block;
+}
+
+/* Extra small devices (phones, 600px and down) */
+@media only screen and (max-width: 600px)
+{
+
+}
+
+/* Medium devices (landscape tablets, 768px and down) */
+@media only screen and (max-width: 768px)
+{
+
+}
+
+/* Large devices (laptops/desktops, 992px and down) */
+@media only screen and (max-width: 992px)
+{
+    /* - - - </> [SECTION] </> - - - */
+    .main-section
+    {
+        width: 100%;
+        display: block;
+        overflow: auto;
+    }
+
+    /* - - - </> [DIV] </> - - - */
+    .lf-lg-col
+    {
+        width: 100%;
+    }
+
+    /* - - - </> [DIV] </> - - - */
+    .lf-lg-col.hide
+    {
+        display: none;
+    }
+
+    /* - - - </> [DIV] </> - - - */
+    .rg-lg-col
+    {
+        width: 100%;
+    }
+
+    /* - - - </> [DIV] </> - - - */
+    .rg-lg-col.lite
+    {
+        width: 100%;
+    }
+
+    /* - - - </> [DIV] </> - - - */
+    .rg-lg-col.hide
+    {
+        display: none;
+    }
+}
+
+/* Extra large devices (large laptops and desktops, 1200px and down) */
+@media only screen and (max-width: 1200px)
+{
+    
+}
