@@ -3,7 +3,6 @@ import '../styles/Grid.css';
 import '../styles/Home.css';
 import { Icon } from '@iconify/react';
 import { Link } from 'react-router-dom';
-import Gallery from '../components/Gallery';
 import Navigation from '../components/Navigation';
 
 function Home()
@@ -66,7 +65,8 @@ function Home()
             {/* - - - </> [DIV] </> - - - */}
             <div className='rg-lg-col hide'>
 
-                <Gallery/>
+                {/* - - - </> [IMAGE] </> - - - */}
+                <img src="https://shorturl.at/gOSUW" alt="image_001" className='about-image'/>
 
             </div>
 

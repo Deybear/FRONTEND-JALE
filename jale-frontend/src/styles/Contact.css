@@ -10,7 +10,7 @@
 .contact-title
 {
     margin: 0;
-    font-size: 4vw;
+    font-size: 3.5vw;
     font-weight: 800;
     line-height: 100%;
 }
@@ -20,8 +20,8 @@
 {
     width: 100%;
     display: flex;
-    margin-top: 30px;
-    margin-bottom: 30px;
+    margin-top: 20px;
+    margin-bottom: 20px;
 }
 
 /* - - - </> [DIV] </> - - - */
@@ -35,7 +35,7 @@
 /* - - - </> [ICON] </> - - - */
 .contact-icon
 {
-    font-size: 20px;
+    font-size: 18px;
     margin-right: 20px;
     color: var(--color_003);
 }
@@ -44,7 +44,7 @@
 .contact-text
 {
     margin: 0;
-    font-size: 14px;
+    font-size: 12px;
     line-height: 100%;
 }
 

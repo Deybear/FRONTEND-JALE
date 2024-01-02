@@ -61,11 +61,8 @@ function Menu()
             {/* - - - </> [UL] </> - - - */}
             <ul className='menu-action'>
 
-                {/* - - - </> [LI] </> - - - */}
-                <li className='menu-item'><Link to="/" className='menu-link'>SPA</Link></li>
-
-                {/* - - - </> [LI] </> - - - */}
-                <li className='menu-item'><Link to="/" className='menu-link'>ENG</Link></li>
+                {/* - - - </> [IMG] </> - - - */}
+                <img src={logo} alt="menu-logo" className='menu-logo'/>
 
             </ul>
 

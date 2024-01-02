@@ -10,7 +10,7 @@
 .about-title
 {
     margin: 0;
-    font-size: 4vw;
+    font-size: 3.5vw;
     font-weight: 800;
     line-height: 100%;
 }
@@ -19,7 +19,7 @@
 .about-question
 {
     width: 100%;
-    margin-top: 30px;
+    margin-top: 20px;
 }
 
 /* - - - </> [HR] </> - - - */
@@ -27,7 +27,7 @@
 {
     margin: 0;
     width: 10%;
-    margin-top: 30px;
+    margin-top: 20px;
     border: 2px solid var(--color_003);
 }
 
@@ -42,7 +42,7 @@
 /* - - - </> [ICON] </> - - - */
 .about-icon
 {
-    font-size: 20px;
+    font-size: 18px;
     margin-right: 20px;
     color: var(--color_003);
 }
@@ -51,7 +51,7 @@
 .about-subtitle
 {
     margin: 0;
-    font-size: 16px;
+    font-size: 14px;
     font-weight: 600;
     line-height: 100%;
 }
@@ -60,7 +60,7 @@
 .about-text
 {
     margin: 0;
-    font-size: 14px;
+    font-size: 12px;
 }
 
 /* - - - </> [DIV] </> - - - */
@@ -85,9 +85,9 @@
 .about-button-v2
 {
     width: 100%;
-    height: 50px;
+    height: 45px;
     display: flex;
-    font-size: 14px;
+    font-size: 12px;
     font-weight: 600;
     align-items: center;
     text-decoration: none;
@@ -115,7 +115,7 @@
 {
     top: 50%;
     right: 20px;
-    font-size: 20px;
+    font-size: 18px;
     position: absolute;
     box-sizing: border-box;
     color: var(--color_001);

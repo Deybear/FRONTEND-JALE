@@ -63,6 +63,7 @@
     .lf-lg-col
     {
         width: 100%;
+        height: auto;
     }
 
     /* - - - </> [DIV] </> - - - */
@@ -75,6 +76,7 @@
     .rg-lg-col
     {
         width: 100%;
+        height: auto;
     }
 
     /* - - - </> [DIV] </> - - - */

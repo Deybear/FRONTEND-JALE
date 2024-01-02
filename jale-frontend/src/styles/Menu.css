@@ -54,13 +54,14 @@
 /* - - - </> [LINK] </> - - - */
 .menu-link
 {
-    font-size: 12px;
+    font-size: 10px;
     font-weight: 600;
     line-height: 100%;
+    writing-mode: tb-rl;
     letter-spacing: 2px;
     text-decoration: none;
     color: var(--color_002);
-    writing-mode: sideways-lr;
+    transform: rotate(180deg);
 }
 
 /* - - - </> [LINK] </> - - - */
@@ -73,7 +74,7 @@
 /* - - - </> [ICON] </> - - - */
 .menu-icon
 {
-    font-size: 20px;
+    font-size: 18px;
     margin-top: 10px;
     color: var(--color_003);
     transform: rotate(-90deg);
