@@ -1,14 +1,33 @@
-import React from 'react';
+import React, { useState } from 'react';
 import '../styles/Form.css';
 import { Icon } from '@iconify/react';
 import { Link } from 'react-router-dom';
 
 function ContactForm()
 {
+    //* - - - </> [DATA] </> - - - *//
+    const [data, setData] = useState({
+        user_name: "",
+        user_email: "",
+        user_message: ""
+    });
+
+    //* - - - </> [METHOD] </> - - - *//
+    const handleChange = (e) => {
+        setData({...data, [e.target.name]: e.target.value});
+    }
+
+    //* - - - </> [METHOD] </> - - - *//
+    const handleSubmit = (e) => {
+
+        e.preventDefault();
+        console.log(data);
+    }
+
     return (
 
         //* - - - </> [FORM] </> - - - *//
-        <form action="" className='formulary-v3'>
+        <form onSubmit={handleSubmit} className='formulary-v3'>
 
             {/* - - - </> [DIV] </> - - - */}
             <div className='formulary-wrapper'>
@@ -17,7 +36,30 @@ function ContactForm()
                 <Icon icon="ic:baseline-person" className='formulary-input-icon'/>
 
                 {/* - - - </> [INPUT] </> - - - */}
-                <input type="text" placeholder="Your name here*" className='formulary-input'/>
+                <input
+
+                //* - - - </> [TYPE] </> - - - *//
+                type="text"
+                
+                //* - - - </> [NAME] </> - - - *//
+                name='user_name'
+                
+                //* - - - </> [TEXT] </> - - - *//
+                placeholder="Your name here*"
+                
+                //* - - - </> [CODE] </> - - - *//
+                pattern='^[A-Za-z0-9]{3,15}$'
+                
+                //* - - - </> [CLASS] </> - - - *//
+                className='formulary-input'
+                
+                //* - - - </> [EVENT] </> - - - *//
+                onChange={handleChange}
+                
+                //* - - - </> [EMPTY] </> - - - *//
+                required
+                
+                />
 
             </div>
 
@@ -28,7 +70,27 @@ function ContactForm()
                 <Icon icon="ic:sharp-email" className='formulary-input-icon'/>
 
                 {/* - - - </> [INPUT] </> - - - */}
-                <input type="text" placeholder="Your email here*" className='formulary-input'/>
+                <input
+                
+                //* - - - </> [TYPE] </> - - - *//
+                type="email"
+                
+                //* - - - </> [NAME] </> - - - *//
+                name='user_email'
+                
+                //* - - - </> [TEXT] </> - - - *//
+                placeholder="Your email here*"
+                
+                //* - - - </> [CLASS] </> - - - *//
+                className='formulary-input'
+                
+                //* - - - </> [EVENT] </> - - - *//
+                onChange={handleChange}
+                
+                //* - - - </> [EMPTY] </> - - - *//
+                required
+                
+                />
 
             </div>
 
@@ -39,7 +101,30 @@ function ContactForm()
                 <Icon icon="ic:sharp-text-snippet" className='formulary-textarea-icon'/>
 
                 {/* - - - </> [INPUT] </> - - - */}
-                <textarea name="" id="" cols="20" rows="5" placeholder="Your message here*" className='formulary-input'/>
+                <textarea
+                
+                //* - - - </> [NAME] </> - - - *//
+                name="user_message"
+                
+                //* - - - </> [SIZE] </> - - - *//
+                cols="20"
+                
+                //* - - - </> [SIZE] </> - - - *//
+                rows="5"
+                
+                //* - - - </> [TEXT] </> - - - *//
+                placeholder="Your message here*"
+                
+                //* - - - </> [CLASS] </> - - - *//
+                className='formulary-input'
+                
+                //* - - - </> [EVENT] </> - - - *//
+                onChange={handleChange}
+                
+                //* - - - </> [EMPTY] </> - - - *//
+                required
+                
+                />
 
             </div>
 
