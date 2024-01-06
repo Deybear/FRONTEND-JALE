@@ -14,7 +14,7 @@ function SignIn()
             <div className='lf-lg-col hide'>
 
                 {/* - - - </> [IMAGE] </> - - - */}
-                <img src="https://t.ly/ZIs5s" alt="image_001" className='signin-image'/>
+                <img src="https://shorturl.at/MXZ19" alt="image_001" className='signin-image'/>
 
             </div>
 

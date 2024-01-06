@@ -1,0 +1,29 @@
+/* - - - </> [DIV] </> - - - */
+.rating-score
+{
+    width: 40%;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+/* - - - </> [DIV] </> - - - */
+.rating-label
+{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+/* - - - </> [INPUT] </> - - - */
+.rating-input
+{
+    display: none;
+}
+
+/* - - - </> [ICON] </> - - - */
+.rating-star
+{
+    font-size: 30px;
+    cursor: pointer;
+}

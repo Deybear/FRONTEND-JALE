@@ -58,6 +58,25 @@
 }
 
 /* - - - </> [DIV] </> - - - */
+.item-score
+{
+    width: 100%;
+    display: flex;
+    margin-top: 20px;
+    align-items: center;
+    justify-content: space-between;
+}
+
+/* - - - </> [TEXT] </> - - - */
+.item-price
+{
+    margin: 0;
+    font-size: 30px;
+    font-weight: 600;
+    line-height: 100%;
+}
+
+/* - - - </> [DIV] </> - - - */
 .item-desc
 {
     width: 100%;

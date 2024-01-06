@@ -5,6 +5,7 @@ import { Icon } from '@iconify/react';
 import { Link } from 'react-router-dom';
 import Gallery from '../components/Gallery';
 import Navigation from '../components/Navigation';
+import StarRating from '../components/StarRating';
 
 function Item()
 {
@@ -39,6 +40,17 @@ function Item()
 
                     {/* - - - </> [TEXT] </> - - - */}
                     <p className='item-title'>Aquarium <Icon icon="ph:seal-check-fill" className='item-title-icon'/></p>
+
+                    {/* - - - </> [DIV] </> - - - */}
+                    <div className='item-score'>
+
+                        {/* - - - </> [DIV] </> - - - */}
+                        <StarRating/>
+
+                        {/* - - - </> [TEXT] </> - - - */}
+                        <p className='item-price'>$5.50</p>
+
+                    </div>
 
                     {/* - - - </> [DIV] </> - - - */}
                     <div className='item-desc'>
