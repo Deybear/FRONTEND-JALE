@@ -1,14 +1,37 @@
-import React from 'react';
+import React, { useState } from 'react';
 import '../styles/Form.css';
 import { Icon } from '@iconify/react';
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
+import Sessions from '../api/Sessions';
 
 function SignInForm()
 {
+    //* - - - </> [DATA] </> - - - *//
+    const [data, setData] = useState({
+        user_email: "",
+        password: ""
+    });
+
+    const navigate = useNavigate();
+    const service = new Sessions;
+
+    //* - - - </> [METHOD] </> - - - *//
+    const handleChange = (e) => {
+        setData({...data, [e.target.name]: e.target.value});
+    }
+
+    //* - - - </> [METHOD] </> - - - *//
+    const handleSubmit = (e) => {
+
+        e.preventDefault();
+        service.login(data);
+        navigate("/");
+    }
+
     return (
 
         //* - - - </> [FORM] </> - - - *//
-        <form action="" className='formulary-v1'>
+        <form onSubmit={handleSubmit} className='formulary-v1'>
 
             {/* - - - </> [DIV] </> - - - */}
             <div className='formulary-wrapper'>
@@ -17,7 +40,27 @@ function SignInForm()
                 <Icon icon="ic:sharp-email" className='formulary-input-icon'/>
 
                 {/* - - - </> [INPUT] </> - - - */}
-                <input type="text" placeholder="Your email here*" className='formulary-input'/>
+                <input
+
+                //* - - - </> [TYPE] </> - - - *//
+                type="email"
+                
+                //* - - - </> [NAME] </> - - - *//
+                name='user_email'
+                
+                //* - - - </> [TEXT] </> - - - *//
+                placeholder="Your email here*"
+
+                //* - - - </> [CLASS] </> - - - *//
+                className='formulary-input'
+                
+                //* - - - </> [EVENT] </> - - - *//
+                onChange={handleChange}
+                
+                //* - - - </> [EMPTY] </> - - - *//
+                required
+                
+                />
 
             </div>
 
@@ -28,7 +71,27 @@ function SignInForm()
                 <Icon icon="ic:sharp-lock" className='formulary-input-icon'/>
 
                 {/* - - - </> [INPUT] </> - - - */}
-                <input type="password" placeholder="Your password here*" className='formulary-input'/>
+                <input
+
+                //* - - - </> [TYPE] </> - - - *//
+                type="password"
+
+                //* - - - </> [NAME] </> - - - *//
+                name='password'
+                
+                //* - - - </> [TEXT] </> - - - *//
+                placeholder="Your password here*"
+
+                //* - - - </> [CLASS] </> - - - *//
+                className='formulary-input'
+                
+                //* - - - </> [EVENT] </> - - - *//
+                onChange={handleChange}
+                
+                //* - - - </> [EMPTY] </> - - - *//
+                required
+                
+                />
 
             </div>
 

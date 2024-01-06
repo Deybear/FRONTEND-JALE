@@ -19,7 +19,7 @@ function SignUp()
             </div>
 
             {/* - - - </> [DIV] </> - - - */}
-            <div className='rg-lg-col'>
+            <div className='rg-lg-col form'>
 
                 {/* - - - </> [DIV] </> - - - */}
                 <div className='signup-formulary'>

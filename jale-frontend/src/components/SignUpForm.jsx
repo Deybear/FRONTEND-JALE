@@ -1,19 +1,22 @@
 import React, { useState } from 'react';
 import '../styles/Form.css';
 import { Icon } from '@iconify/react';
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
+import Sessions from '../api/Sessions';
 
 function SignUpForm()
 {
     //* - - - </> [DATA] </> - - - *//
     const [data, setData] = useState({
-
         user_name: "",
         user_lastname: "",
         user_email: "",
-        user_password: "",
+        password: "",
         user_birthdate: ""
     });
+
+    const navigate = useNavigate();
+    const service = new Sessions;
 
     //* - - - </> [METHOD] </> - - - *//
     const handleChange = (e) => {
@@ -24,7 +27,8 @@ function SignUpForm()
     const handleSubmit = (e) => {
 
         e.preventDefault();
-        console.log(data);
+        service.signUp(data);
+        navigate("/signin");
     }
 
     return (
@@ -73,7 +77,30 @@ function SignUpForm()
                 <Icon icon="ic:baseline-person" className='formulary-input-icon'/>
 
                 {/* - - - </> [INPUT] </> - - - */}
-                <input type="text" name='user_lastname' placeholder="Your lastname here*" className='formulary-input' onChange={handleChange}/>
+                <input
+
+                //* - - - </> [TYPE] </> - - - *//
+                type="text"
+
+                //* - - - </> [NAME] </> - - - *//
+                name='user_lastname'
+
+                //* - - - </> [TEXT] </> - - - *//
+                placeholder="Your lastname here*"
+
+                //* - - - </> [CODE] </> - - - *//
+                pattern='^[A-Za-z0-9]{3,15}$'
+                
+                //* - - - </> [CLASS] </> - - - *//
+                className='formulary-input'
+
+                //* - - - </> [EVENT] </> - - - *//
+                onChange={handleChange}
+                
+                //* - - - </> [EMPTY] </> - - - *//
+                required
+                
+                />
 
             </div>
 
@@ -84,7 +111,27 @@ function SignUpForm()
                 <Icon icon="ic:sharp-email" className='formulary-input-icon'/>
 
                 {/* - - - </> [INPUT] </> - - - */}
-                <input type="email" name='user_email' placeholder="Your email here*" className='formulary-input' onChange={handleChange}/>
+                <input
+
+                //* - - - </> [TYPE] </> - - - *//
+                type="email"
+
+                //* - - - </> [NAME] </> - - - *//
+                name='user_email'
+                
+                //* - - - </> [TEXT] </> - - - *//
+                placeholder="Your email here*"
+                
+                //* - - - </> [CLASS] </> - - - *//
+                className='formulary-input'
+                
+                //* - - - </> [EVENT] </> - - - *//
+                onChange={handleChange}
+                
+                //* - - - </> [EMPTY] </> - - - *//
+                required
+                
+                />
 
             </div>
 
@@ -95,7 +142,30 @@ function SignUpForm()
                 <Icon icon="ic:sharp-lock" className='formulary-input-icon'/>
 
                 {/* - - - </> [INPUT] </> - - - */}
-                <input type="password" name='user_password' placeholder="Your password here*" className='formulary-input' onChange={handleChange}/>
+                <input
+
+                //* - - - </> [TYPE] </> - - - *//
+                type="password"
+
+                //* - - - </> [NAME] </> - - - *//
+                name='password'
+
+                //* - - - </> [TEXT] </> - - - *//
+                placeholder="Your password here*"
+                
+                //* - - - </> [CODE] </> - - - *//
+                pattern='^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)[a-zA-Z\d]{6,15}$'
+
+                //* - - - </> [CLASS] </> - - - *//
+                className='formulary-input'
+
+                //* - - - </> [EVENT] </> - - - *//
+                onChange={handleChange}
+                
+                //* - - - </> [EMPTY] </> - - - *//
+                required
+                
+                />
 
             </div>
 
@@ -106,7 +176,24 @@ function SignUpForm()
                 <Icon icon="ic:baseline-person" className='formulary-input-icon'/>
 
                 {/* - - - </> [INPUT] </> - - - */}
-                <input type="date" name='user_birthdate' className='formulary-input' onChange={handleChange}/>
+                <input
+                
+                //* - - - </> [TYPE] </> - - - *//
+                type="date"
+                
+                //* - - - </> [NAME] </> - - - *//
+                name='user_birthdate'
+                
+                //* - - - </> [CLASS] </> - - - *//
+                className='formulary-input'
+                
+                //* - - - </> [EVENT] </> - - - *//
+                onChange={handleChange}
+
+                //* - - - </> [EMPTY] </> - - - *//
+                required
+
+                />
 
             </div>
 
