@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import '../styles/Form.css';
 import { Icon } from '@iconify/react';
 import { Link, useNavigate } from 'react-router-dom';
-import Sessions from '../api/Sessions';
+import Sessions from '../services/Sessions';
 
 function SignInForm()
 {
@@ -24,7 +24,7 @@ function SignInForm()
     const handleSubmit = (e) => {
 
         e.preventDefault();
-        service.login(data);
+        service.signIn(data);
         navigate("/");
     }
 

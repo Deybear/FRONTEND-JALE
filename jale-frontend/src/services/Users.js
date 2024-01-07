@@ -24,9 +24,10 @@ export default class Users
     {
         try
         {
-            // - - - </> [URL] </> - - - //
-            const response = await axios.post('http://localhost:3000/users', data);
-            return response;
+            //* - - - </> [URL] </> - - - *//
+            const response = await axios.post('http://localhost:3000/api/signup', data);
+            console.log(response);
+            return response.data;
         }
         catch(error)
         {

@@ -3,30 +3,13 @@ import axios from "axios";
 export default class Sessions
 {
     //* - - - </> [POST] </> - - - *//
-    async signUp(data)
-    {
-        try
-        {
-            //* - - - </> [URL] </> - - - *//
-            const response = await axios.post('http://localhost:3000/api/signup', data);
-            console.log(response);
-            return response;
-        }
-        catch(error)
-        {
-            //* - - - </> [ERROR] </> - - - *//
-            console.log(error);
-            throw error;
-        }
-    }
-    
-    //* - - - </> [POST] </> - - - *//
-    async login(data)
+    async signIn(data)
     {
         try
         {
             //* - - - </> [URL] </> - - - *//
             const response = await axios.post('http://localhost:3000/auth/login', data);
+            localStorage.setItem("user", JSON.stringify(response.data));
             console.log(response);
             return response.data;
         }
@@ -39,12 +22,14 @@ export default class Sessions
     }
 
     //* - - - </> [DELETE] </> - - - *//
-    async logout(id)
+    async signOut(id)
     {
         try
         {
             //* - - - </> [URL] </> - - - *//
             await axios.delete(`http://localhost:3000/auth/logout/${id}`);
+            localStorage.removeItem("user");
+
             return {status: 200, message: 'Content removed successfully!'};
         }
         catch(error)

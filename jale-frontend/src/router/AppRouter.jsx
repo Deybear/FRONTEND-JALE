@@ -9,6 +9,7 @@ import SignIn from '../pages/SignIn';
 import SignUp from '../pages/SignUp';
 import Menu from '../components/Menu';
 import Contact from '../pages/Contact';
+import NotFound from '../pages/NotFound';
 
 function AppRouter()
 {
@@ -42,6 +43,9 @@ function AppRouter()
 
                 {/* - - - </> [LINK] </> - - - */}
                 <Route path="/signup" element={ <SignUp/> }></Route>
+
+                {/* - - - </> [LINK] </> - - - */}
+                <Route path='*' exact={true} element={ <NotFound/> } />
 
             </Routes>
 

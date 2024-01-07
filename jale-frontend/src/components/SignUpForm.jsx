@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import '../styles/Form.css';
 import { Icon } from '@iconify/react';
 import { Link, useNavigate } from 'react-router-dom';
-import Sessions from '../api/Sessions';
+import Users from '../services/Users';
 
 function SignUpForm()
 {
@@ -16,7 +16,7 @@ function SignUpForm()
     });
 
     const navigate = useNavigate();
-    const service = new Sessions;
+    const service = new Users;
 
     //* - - - </> [METHOD] </> - - - *//
     const handleChange = (e) => {
@@ -27,7 +27,7 @@ function SignUpForm()
     const handleSubmit = (e) => {
 
         e.preventDefault();
-        service.signUp(data);
+        service.createUser(data);
         navigate("/signin");
     }
 
