@@ -7,27 +7,30 @@ import Sessions from '../services/Sessions';
 function SignInForm()
 {
     //* - - - </> [DATA] </> - - - *//
+    const service = new Sessions;
+
+    //* - - - </> [LINK] </> - - - *//
+    const navigate = useNavigate();
+
+    //* - - - </> [DATA] </> - - - *//
     const [data, setData] = useState({
         user_email: "",
         password: ""
     });
 
-    const navigate = useNavigate();
-    const service = new Sessions;
-
-    //* - - - </> [METHOD] </> - - - *//
+    //* - - - </> [DATA] </> - - - *//
     const handleChange = (e) => {
         setData({...data, [e.target.name]: e.target.value});
     }
 
-    //* - - - </> [METHOD] </> - - - *//
+    //* - - - </> [DATA] </> - - - *//
     const handleSubmit = (e) => {
 
         e.preventDefault();
         service.signIn(data);
         navigate("/");
     }
-
+    
     return (
 
         //* - - - </> [FORM] </> - - - *//

@@ -9,8 +9,14 @@ export default class Sessions
         {
             //* - - - </> [URL] </> - - - *//
             const response = await axios.post('http://localhost:3000/auth/login', data);
+
+            //* - - - </> [TOKEN] </> - - - *//
             localStorage.setItem("user", JSON.stringify(response.data));
-            console.log(response);
+
+            //* - - - </> [TOKEN] </> - - - *//
+            console.log("token:", response.data.token);
+
+            //* - - - </> [DATA] </> - - - *//
             return response.data;
         }
         catch(error)
@@ -22,14 +28,26 @@ export default class Sessions
     }
 
     //* - - - </> [DELETE] </> - - - *//
-    async signOut(id)
+    async signOut()
     {
+        //* - - - </> [USER] </> - - - *//
+        const currentUser = JSON.parse(localStorage.getItem("user"));
+
+        //* - - - </> [TOKEN] </> - - - *//
+        const token = currentUser.token;
+
+        //* - - - </> [TOKEN] </> - - - *//
+        const auth = {headers: {Authorization: `Bearer ${token}`}}
+
         try
         {
             //* - - - </> [URL] </> - - - *//
-            await axios.delete(`http://localhost:3000/auth/logout/${id}`);
+            await axios.delete(`http://localhost:3000/auth/logout`, auth);
+
+            //* - - - </> [TOKEN] </> - - - *//
             localStorage.removeItem("user");
 
+            //* - - - </> [DATA] </> - - - *//
             return {status: 200, message: 'Content removed successfully!'};
         }
         catch(error)

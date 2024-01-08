@@ -7,6 +7,12 @@ import Users from '../services/Users';
 function SignUpForm()
 {
     //* - - - </> [DATA] </> - - - *//
+    const service = new Users;
+
+    //* - - - </> [LINK] </> - - - *//
+    const navigate = useNavigate();
+    
+    //* - - - </> [DATA] </> - - - *//
     const [data, setData] = useState({
         user_name: "",
         user_lastname: "",
@@ -15,15 +21,12 @@ function SignUpForm()
         user_birthdate: ""
     });
 
-    const navigate = useNavigate();
-    const service = new Users;
-
-    //* - - - </> [METHOD] </> - - - *//
+    //* - - - </> [DATA] </> - - - *//
     const handleChange = (e) => {
         setData({...data, [e.target.name]: e.target.value});
     }
 
-    //* - - - </> [METHOD] </> - - - *//
+    //* - - - </> [DATA] </> - - - *//
     const handleSubmit = (e) => {
 
         e.preventDefault();

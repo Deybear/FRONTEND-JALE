@@ -2,11 +2,29 @@ import React from 'react';
 import '../styles/Grid.css';
 import '../styles/Home.css';
 import { Icon } from '@iconify/react';
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 import Navigation from '../components/Navigation';
+import Sessions from '../services/Sessions';
 
 function Home()
 {
+    //* - - - </> [DATA] </> - - - *//
+    const service = new Sessions;
+
+    //* - - - </> [LINK] </> - - - *//
+    const navigate = useNavigate();
+
+    //* - - - </> [USER] </> - - - *//
+    const currentUser = JSON.parse(localStorage.getItem("user"));
+
+    //* - - - </> [DATA] </> - - - *//
+    const destroySession = (e) => {
+        
+        e.preventDefault();
+        service.signOut();
+        navigate("/signin");
+    }
+
     return (
 
         <section className='main-section'>
@@ -59,6 +77,8 @@ function Home()
                     </div>
 
                 </div>
+                
+                {currentUser ? <p onClick={destroySession}>Logout here</p> : null}
 
             </div>
 
