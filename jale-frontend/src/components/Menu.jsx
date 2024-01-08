@@ -2,7 +2,7 @@ import React from 'react';
 import { Icon } from '@iconify/react';
 import { Link } from 'react-router-dom';
 
-import logo from '../images/logo.svg';
+import logo from '../images/main-logo.svg';
 import '../styles/Menu.css';
 
 function Menu()
@@ -62,7 +62,7 @@ function Menu()
             <ul className='menu-action'>
 
                 {/* - - - </> [IMG] </> - - - */}
-                <img src={logo} alt="menu-logo" className='menu-logo'/>
+                {/* <img src={logo} alt="menu-logo" className='menu-logo'/> */}
 
             </ul>
 

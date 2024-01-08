@@ -25,7 +25,16 @@
 /* - - - </> [IMG] </> - - - */
 .menu-logo
 {
-    width: 50%;
+    width: 40%;
+    filter: grayscale();
+}
+
+/* - - - </> [IMG] </> - - - */
+.menu-logo:hover
+{
+    filter: none;
+    cursor: pointer;
+    transition: .5s;
 }
 
 /* - - - </> [UL] </> - - - */

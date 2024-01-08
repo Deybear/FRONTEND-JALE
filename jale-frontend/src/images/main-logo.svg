@@ -1,0 +1,71 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg id="Capa_2" data-name="Capa 2" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 240 240">
+  <defs>
+    <style>
+      .cls-1 {
+        fill: #fff;
+      }
+
+      .cls-2 {
+        fill: #eb622b;
+      }
+
+      .cls-3 {
+        fill: #ffc439;
+      }
+
+      .cls-4 {
+        fill: #62ad45;
+      }
+
+      .cls-5 {
+        fill: #1b1b1b;
+      }
+    </style>
+  </defs>
+  <g id="Design_001">
+    <g>
+      <g>
+        <polygon class="cls-5" points="240 30 240 90 210 90 210 210 120 210 120 120 150 90 150 0 210 0 240 30"/>
+        <polygon class="cls-4" points="240 90 240 180 210 210 210 90 240 90"/>
+      </g>
+      <g>
+        <polygon class="cls-4" points="150 240 120 210 150 210 150 240"/>
+        <g>
+          <rect class="cls-4" x="150" y="210" width="30" height="30"/>
+          <polygon class="cls-5" points="180 240 150 240 165 225 180 240"/>
+        </g>
+        <g>
+          <rect class="cls-3" x="180" y="210" width="30" height="30"/>
+          <polygon class="cls-5" points="210 240 180 240 195 225 210 240"/>
+        </g>
+        <g>
+          <rect class="cls-1" x="210" y="210" width="30" height="30"/>
+          <polygon class="cls-5" points="240 240 210 240 225 225 240 240"/>
+        </g>
+      </g>
+      <g>
+        <polygon class="cls-1" points="240 90 210 135 150 75 150 0 240 90"/>
+        <polygon class="cls-3" points="210 135 150 165 150 75 210 135"/>
+      </g>
+      <g>
+        <polygon class="cls-2" points="150 90 150 210 0 240 0 150 150 90"/>
+        <polygon class="cls-4" points="150 90 150 165 0 240 0 150 150 90"/>
+      </g>
+      <g>
+        <rect class="cls-3" x="45" width="105" height="75"/>
+        <polygon class="cls-2" points="45 0 45 75 0 45 45 0"/>
+        <polygon class="cls-2" points="150 75 150 105 126.67 98.33 45 75 150 75"/>
+        <polygon class="cls-1" points="150 0 150 75 45 0 150 0"/>
+        <polygon class="cls-5" points="150 0 150 75 120 0 150 0"/>
+        <polygon class="cls-5" points="45 75 0 150 0 45 45 75"/>
+        <polygon class="cls-5" points="150 75 150 105 126.67 98.33 150 75"/>
+      </g>
+      <g>
+        <path class="cls-2" d="M240,45c0,24.81-20.19,45-45,45s-45-20.19-45-45h90Z"/>
+        <path class="cls-3" d="M227.73,45c0,18.05-14.68,32.73-32.73,32.73s-32.73-14.68-32.73-32.73h65.45Z"/>
+        <path class="cls-5" d="M215.45,45c0,11.28-9.18,20.45-20.45,20.45s-20.45-9.18-20.45-20.45h40.91Z"/>
+      </g>
+    </g>
+  </g>
+</svg>
