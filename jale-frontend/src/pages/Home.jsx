@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 import '../styles/Grid.css';
 import '../styles/Home.css';
 import { Icon } from '@iconify/react';
@@ -8,14 +8,27 @@ import Sessions from '../services/Sessions';
 
 function Home()
 {
-    //* - - - </> [DATA] </> - - - *//
-    const service = new Sessions;
+    
+    const [loading, setLoading] = useState(true);
 
     //* - - - </> [LINK] </> - - - *//
     const navigate = useNavigate();
 
-    //* - - - </> [USER] </> - - - *//
-    const currentUser = JSON.parse(localStorage.getItem("user"));
+    //* - - - </> [DATA] </> - - - *//
+    const service = new Sessions;
+
+    useEffect(() => {
+
+        console.log("Loading. . .")
+        setTimeout(() => {
+
+            const currentUser = service.getCurrentUser();
+            console.log("currentUser", currentUser);
+            setLoading(Object.keys(currentUser).length === 0);
+    
+        }, 800);
+
+    }, []);
 
     //* - - - </> [DATA] </> - - - *//
     const destroySession = (e) => {
@@ -77,8 +90,9 @@ function Home()
                     </div>
 
                 </div>
-                
-                {currentUser ? <p onClick={destroySession}>Logout here</p> : null}
+
+                {/* Meter todo en el loading */}
+                {!loading ? <p onClick={destroySession}>Logout</p> : null}
 
             </div>
 

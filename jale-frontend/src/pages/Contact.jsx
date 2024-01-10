@@ -2,6 +2,8 @@ import React from 'react';
 import '../styles/Grid.css';
 import '../styles/Contact.css';
 import { Icon } from '@iconify/react';
+
+import Map from '../components/Map';
 import Navigation from '../components/Navigation';
 import ContactForm from '../components/ContactForm';
 
@@ -61,7 +63,7 @@ function Contact()
             <div className='rg-lg-col'>
 
                 {/* - - - </> [MAP] </> - - - */}
-                <img src="https://rb.gy/tq011w" alt="image_001" className='contact-image'/>
+                <Map lat={9.981653213500977} lon={-84.75706481933594}/>
 
             </div>
 

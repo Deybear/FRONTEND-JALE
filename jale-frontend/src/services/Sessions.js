@@ -14,7 +14,7 @@ export default class Sessions
             localStorage.setItem("user", JSON.stringify(response.data));
 
             //* - - - </> [TOKEN] </> - - - *//
-            console.log("token:", response.data.token);
+            console.log("token:", response.data.token_code);
 
             //* - - - </> [DATA] </> - - - *//
             return response.data;
@@ -34,7 +34,7 @@ export default class Sessions
         const currentUser = JSON.parse(localStorage.getItem("user"));
 
         //* - - - </> [TOKEN] </> - - - *//
-        const token = currentUser.token;
+        const token = currentUser.token_code;
 
         //* - - - </> [TOKEN] </> - - - *//
         const auth = {headers: {Authorization: `Bearer ${token}`}}
@@ -58,4 +58,13 @@ export default class Sessions
         }
     }
 
+    //* - - - </> [USER] </> - - - *//
+    getCurrentUser()
+    {
+        //* - - - </> [USER] </> - - - *//
+        const user = JSON.parse(localStorage.getItem("user"));
+        return user || {};
+    }
+   
 };
+
