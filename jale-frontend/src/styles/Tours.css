@@ -1,0 +1,40 @@
+
+
+/* - - - </> [DIV] </> - - - */
+.places-list
+{
+    width: 80%;
+    cursor: default;
+    overflow-y: scroll;
+    scrollbar-width: none;
+}
+
+/* - - - </> [DIV] </> - - - */
+.places-list::-webkit-scrollbar
+{
+    display: none;
+}
+
+/* - - - </> [DIV] </> - - - */
+.place-card
+{
+    padding: 20px;
+    border-radius: 8px;
+    margin-bottom: 20px;
+    background: var(--color_003);
+}
+
+/* - - - </> [TEXT] </> - - - */
+.place-name
+{
+    margin: 0;
+    font-size: 14px;
+    font-weight: 600;
+}
+
+/* - - - </> [TEXT] </> - - - */
+.place-address
+{
+    margin: 0;
+    font-size: 12px;
+}
