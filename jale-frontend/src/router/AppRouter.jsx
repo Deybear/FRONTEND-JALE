@@ -36,7 +36,7 @@ function AppRouter()
                 <Route path="/contact" element={ <Contact/> }></Route>
 
                 {/* - - - </> [LINK] </> - - - */}
-                <Route path="/tours/item" element={ <Item/> }></Route>
+                <Route path="/tours/:id" element={ <Item/> }></Route>
 
                 {/* - - - </> [LINK] </> - - - */}
                 <Route path="/signin" element={ <SignIn/> }></Route>

@@ -54,6 +54,7 @@
 /* - - - </> [ICON] </> - - - */
 .item-title-icon
 {
+    margin-left: 10px;
     color: var(--color_003);
 }
 
@@ -65,6 +66,21 @@
     margin-top: 20px;
     align-items: center;
     justify-content: space-between;
+}
+
+/* - - - </> [DIV] </> - - - */
+.item-rating-score
+{
+    width: 40%;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+/* - - - </> [ICON] </> - - - */
+.item-rating-star
+{
+    font-size: 30px;
 }
 
 /* - - - </> [TEXT] </> - - - */

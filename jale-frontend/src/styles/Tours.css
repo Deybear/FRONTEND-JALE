@@ -1,5 +1,3 @@
-
-
 /* - - - </> [DIV] </> - - - */
 .places-list
 {
@@ -19,9 +17,19 @@
 .place-card
 {
     padding: 20px;
+    cursor: pointer;
     border-radius: 8px;
     margin-bottom: 20px;
     background: var(--color_003);
+}
+
+/* - - - </> [DIV] </> - - - */
+.place-wrapper
+{
+    width: 100%;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
 }
 
 /* - - - </> [TEXT] </> - - - */
@@ -30,6 +38,29 @@
     margin: 0;
     font-size: 14px;
     font-weight: 600;
+}
+
+/* - - - </> [TEXT] </> - - - */
+.place-cost
+{
+    margin: 0;
+    font-size: 14px;
+    font-weight: 600;
+}
+
+/* - - - </> [DIV] </> - - - */
+.place-rating-score
+{
+    width: 30%;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+/* - - - </> [ICON] </> - - - */
+.place-rating-star
+{
+    font-size: 20px;
 }
 
 /* - - - </> [TEXT] </> - - - */

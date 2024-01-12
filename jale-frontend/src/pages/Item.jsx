@@ -1,14 +1,27 @@
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 import '../styles/Grid.css';
 import '../styles/Item.css';
 import { Icon } from '@iconify/react';
-import { Link } from 'react-router-dom';
+import { useParams } from 'react-router-dom';
 import Gallery from '../components/Gallery';
 import Navigation from '../components/Navigation';
-import StarRating from '../components/StarRating';
+import Places from '../services/Places';
 
 function Item()
 {
+    const [place, setPlace] = useState([]);
+    const service = new Places();
+    let { id } = useParams();
+
+    useEffect(() => {
+        getPlace();
+    }, [])
+
+    const getPlace = async () => {
+        const data = await service.getPlace(id);
+        setPlace(data);
+    }
+
     return (
 
         <section className='main-section'>
@@ -39,16 +52,21 @@ function Item()
                 <div className='item-info'>
 
                     {/* - - - </> [TEXT] </> - - - */}
-                    <p className='item-title'>Aquarium <Icon icon="ph:seal-check-fill" className='item-title-icon'/></p>
+                    <p className='item-title'>{place.place_name} <Icon icon="ph:seal-check-fill" className='item-title-icon'/></p>
 
                     {/* - - - </> [DIV] </> - - - */}
                     <div className='item-score'>
 
                         {/* - - - </> [DIV] </> - - - */}
-                        <StarRating/>
+                        <div className='item-rating-score'>
+
+                            {/* - - - </> [ICON] </> - - - */}
+                            {Array(5).fill(<Icon icon="ic:baseline-star" color={"#E4E5E9"} className='item-rating-star'/>).fill(<Icon icon="ic:baseline-star" color={"#FFC439"} className='item-rating-star'/>, 0, Math.floor(place.place_score))}
+                        
+                        </div>
 
                         {/* - - - </> [TEXT] </> - - - */}
-                        <p className='item-price'>$5.50</p>
+                        <p className='item-price'>${place.place_cost}</p>
 
                     </div>
 
@@ -62,17 +80,12 @@ function Item()
                             <Icon icon="ri:question-fill" className='item-desc-icon'/>
 
                             {/* - - - </> [TEXT] </> - - - */}
-                            <p className='item-desc-text'>About aquarium</p>
+                            <p className='item-desc-text'>Description</p>
 
                         </div>
 
                         {/* - - - </> [TEXT] </> - - - */}
-                        <p className='item-text'>
-
-                            Jale is a platform that allows you to find outstanding tourist spots within the Pacific region. You can 
-                            consult information item these places, as well as events and other related activities.
-
-                        </p>
+                        <p className='item-text'>{place.place_desc}</p>
 
                     </div>
 
@@ -86,7 +99,7 @@ function Item()
                             <Icon icon="ic:sharp-phone-in-talk" className='item-feature-icon'/>
 
                             {/* - - - </> [TEXT] </> - - - */}
-                            <p className='item-feature-text'>{"(+506)"} 2661-5272</p>
+                            <p className='item-feature-text'>{"(+506)"} {place.place_phone}</p>
 
                         </div>
 
@@ -97,7 +110,7 @@ function Item()
                             <Icon icon="ic:sharp-email" className='item-feature-icon'/>
 
                             {/* - - - </> [TEXT] </> - - - */}
-                            <p className='item-feature-text'>info@parquemarino.org</p>
+                            <p className='item-feature-text'>{place.place_email}</p>
 
                         </div>
 
@@ -108,7 +121,7 @@ function Item()
                             <Icon icon="ic:sharp-location-on" className='item-feature-icon'/>
 
                             {/* - - - </> [TEXT] </> - - - */}
-                            <p className='item-feature-text'>Provincia de Puntarenas, Puntarenas, Barrio Las Playitas</p>
+                            <p className='item-feature-text'>{place.place_address}</p>
 
                         </div>
 
