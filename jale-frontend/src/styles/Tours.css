@@ -20,7 +20,8 @@
     cursor: pointer;
     border-radius: 8px;
     margin-bottom: 20px;
-    background: var(--color_003);
+    box-sizing: border-box;
+    border: solid 2px var(--color_003);
 }
 
 /* - - - </> [DIV] </> - - - */
@@ -40,6 +41,12 @@
     font-weight: 600;
 }
 
+/* - - - </> [ICON] </> - - - */
+.place-name-icon
+{
+    color: var(--color_003);
+}
+
 /* - - - </> [TEXT] </> - - - */
 .place-cost
 {
@@ -53,7 +60,9 @@
 {
     width: 30%;
     display: flex;
+    margin-top: 10px;
     align-items: center;
+    margin-bottom: 10px;
     justify-content: space-between;
 }
 

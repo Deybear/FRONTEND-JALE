@@ -49,7 +49,7 @@ function Tours()
                             <div className='place-wrapper'>
 
                                 {/* - - - </> [TEXT] </> - - - */}
-                                <p className='place-name'>{item.place_name}</p>
+                                <p className='place-name'>{item.place_name} <Icon icon="ph:seal-check-fill" className='place-name-icon'/></p>
 
                                 {/* - - - </> [TEXT] </> - - - */}
                                 <p className='place-cost'>${item.place_cost}</p>
