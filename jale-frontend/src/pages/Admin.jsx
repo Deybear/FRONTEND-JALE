@@ -3,18 +3,22 @@ import '../styles/Grid.css';
 import '../styles/admin/Admin.css';
 import { Icon } from '@iconify/react';
 import { Link } from 'react-router-dom';
-// import Users from '../services/Users';
+import Users from '../services/Users';
 import Places from '../services/Places';
+import UserTable from '../components/admin/UserTable';
 import PlaceTable from '../components/admin/PlaceTable';
 
 function Admin()
 {
-    //* - - - </> [DATA] </> - - - *//
-    // const [users, setUsers] = useState([]);
+    //* - - - </> [CLICK] </> - - - *//
+    const [display, setDisplay] = useState('table-user');
+    
+    //* - - - </> [TABLE] </> - - - *//
+    const [users, setUsers] = useState([]);
     const [places, setPlaces] = useState([]);
 
     //* - - - </> [DATA] </> - - - *//
-    // const userService = new Users();
+    const userService = new Users();
     const placeService = new Places();
 
     useEffect(() => {
@@ -24,20 +28,14 @@ function Admin()
     const getData = async () => {
 
         //* - - - </> [DATA] </> - - - *//
-        // const userData = await userService.getUsers();
-        // setUsers(userData);
+        const userData = await userService.getUsers();
+        setUsers(userData);
 
         //* - - - </> [DATA] </> - - - *//
         const placeData = await placeService.getPlaces();
         setPlaces(placeData);
     }
-
-    //* - - - </> [DATA] </> - - - *//
-    const displayTable = (e) => {
-        e.preventDefault();
-        console.log(e.target.id);
-    }
-
+    
     return (
 
         <section className='main-section'>
@@ -73,19 +71,24 @@ function Admin()
                 </div>
 
                 {/* - - - </> [DIV] </> - - - */}
-                <div className='admin-records'>
+                <div className='admin-panel-item'>
 
                     {/* - - - </> [DIV] </> - - - */}
-                    <div id='admin-item-users' className='admin-item' onClick={displayTable}>
+                    <div className='admin-item' onClick={() => setDisplay('table-user')} style={{background: display === 'table-user' && 'var(--color_002)'}}>
 
                         {/* - - - </> [ICON] </> - - - */}
-                        <span className='admin-item-circle'><Icon icon="ic:sharp-person" className='admin-item-icon'/></span>
+                        <span className='admin-item-circle'>
+                            
+                            {/* - - - </> [ICON] </> - - - */}
+                            <Icon icon="ic:sharp-person" className='admin-item-icon' style={{color: display === 'table-user' && 'var(--color_002)'}}/>
+                            
+                        </span>
                         
                         {/* - - - </> [DIV] </> - - - */}
                         <div className='admin-item-data'>
 
                             {/* - - - </> [TEXT] </> - - - */}
-                            <p className='admin-item-total'>{places.length}</p>
+                            <p className='admin-item-total'>{users.length}</p>
 
                             {/* - - - </> [TEXT] </> - - - */}
                             <p className='admin-item-title'>Users</p>
@@ -95,10 +98,15 @@ function Admin()
                     </div>
 
                     {/* - - - </> [DIV] </> - - - */}
-                    <div id='admin-item-place' className='admin-item' onClick={displayTable}>
+                    <div className='admin-item' onClick={() => setDisplay('table-place')} style={{background: display === 'table-place' && 'var(--color_002)'}}>
 
                         {/* - - - </> [ICON] </> - - - */}
-                        <span className='admin-item-circle'><Icon icon="ic:sharp-map" className='admin-item-icon'/></span>
+                        <span className='admin-item-circle'>
+                            
+                            {/* - - - </> [ICON] </> - - - */}
+                            <Icon icon="ic:sharp-map" className='admin-item-icon' style={{color: display === 'table-place' && 'var(--color_002)'}}/>
+                            
+                        </span>
                         
                         {/* - - - </> [DIV] </> - - - */}
                         <div className='admin-item-data'>
@@ -114,10 +122,15 @@ function Admin()
                     </div>
 
                     {/* - - - </> [DIV] </> - - - */}
-                    <div id='admin-item-event' className='admin-item' onClick={displayTable}>
+                    <div className='admin-item' onClick={() => setDisplay('table-event')} style={{background: display === 'table-event' && 'var(--color_002)'}}>
 
                         {/* - - - </> [ICON] </> - - - */}
-                        <span className='admin-item-circle'><Icon icon="ic:sharp-event" className='admin-item-icon'/></span>
+                        <span className='admin-item-circle'>
+                            
+                            {/* - - - </> [ICON] </> - - - */}
+                            <Icon icon="ic:sharp-event" className='admin-item-icon' style={{color: display === 'table-event' && 'var(--color_002)'}}/>
+                            
+                        </span>
                         
                         {/* - - - </> [DIV] </> - - - */}
                         <div className='admin-item-data'>
@@ -133,10 +146,15 @@ function Admin()
                     </div>
 
                     {/* - - - </> [DIV] </> - - - */}
-                    <div id='admin-item-review' className='admin-item' onClick={displayTable}>
+                    <div className='admin-item' onClick={() => setDisplay('table-review')} style={{background: display === 'table-review' && 'var(--color_002)'}}>
 
                         {/* - - - </> [ICON] </> - - - */}
-                        <span className='admin-item-circle'><Icon icon="ic:sharp-text-snippet" className='admin-item-icon'/></span>
+                        <span className='admin-item-circle'>
+                            
+                            {/* - - - </> [ICON] </> - - - */}
+                            <Icon icon="ic:sharp-text-snippet" className='admin-item-icon' style={{color: display === 'table-review' && 'var(--color_002)'}}/>
+                            
+                        </span>
                         
                         {/* - - - </> [DIV] </> - - - */}
                         <div className='admin-item-data'>
@@ -154,9 +172,19 @@ function Admin()
                 </div>
 
                 {/* - - - </> [DIV] </> - - - */}
-                <div className='admin-table-wrapper'>
+                <div className='admin-panel-data'>
 
-                    <PlaceTable data={places}/>
+                    {/* - - - </> [TABLE] </> - - - */}
+                    {display === 'table-user' && <UserTable data={users}/>}
+
+                    {/* - - - </> [TABLE] </> - - - */}
+                    {display === 'table-place' && <PlaceTable data={places}/>}
+
+                    {/* - - - </> [TABLE] </> - - - */}
+                    {display === 'table-event' && <div>[DIV-03]</div>}
+
+                    {/* - - - </> [TABLE] </> - - - */}
+                    {display === 'table-review' && <div>[DIV-04]</div>}
 
                 </div>
                 

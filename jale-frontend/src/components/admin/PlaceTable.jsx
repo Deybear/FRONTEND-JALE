@@ -22,6 +22,15 @@ function PlaceTable(props)
                     <th className='table-index-item'>NAME</th>
 
                     {/* - - - </> [TH] </> - - - */}
+                    <th className='table-index-item'>SCORE</th>
+
+                    {/* - - - </> [TH] </> - - - */}
+                    <th className='table-index-item'>EMAIL</th>
+
+                    {/* - - - </> [TH] </> - - - */}
+                    <th className='table-index-item'>PHONE</th>
+
+                    {/* - - - </> [TH] </> - - - */}
                     <th className='table-index-item'>UPDATE</th>
 
                     {/* - - - </> [TH] </> - - - */}
@@ -39,6 +48,15 @@ function PlaceTable(props)
 
                     {/* - - - </> [TD] </> - - - */}
                     <td className='table-item'>{item.place_name}</td>
+
+                    {/* - - - </> [TD] </> - - - */}
+                    <td className='table-item'>{item.place_score}</td>
+
+                    {/* - - - </> [TD] </> - - - */}
+                    <td className='table-item'>{item.place_email}</td>
+
+                    {/* - - - </> [TD] </> - - - */}
+                    <td className='table-item'>{item.place_phone}</td>
 
                     {/* - - - </> [TD] </> - - - */}
                     <td className='table-item'><Icon icon="ic:sharp-change-circle" className='table-update-icon'/></td>

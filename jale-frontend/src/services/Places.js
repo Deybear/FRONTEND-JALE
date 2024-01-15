@@ -2,25 +2,25 @@ import axios from "axios";
 
 export default class Places
 {
-    // - - - </> [GET] </> - - - //
+    //* - - - </> [GET] </> - - - *//
     async getPlaces()
     {
         try
         {
-            // - - - </> [URL] </> - - - //
+            //* - - - </> [URL] </> - - - *//
             const { data } = (await axios.get('http://localhost:3000/api/places'));
             
             return data;
         }
         catch (error)
         {
-            // - - - </> [ERROR] </> - - - //
+            //* - - - </> [ERROR] </> - - - *//
             console.log(error);
             throw error;
         }
     }
 
-    // - - - </> [POST] </> - - - //
+    //* - - - </> [POST] </> - - - *//
     async createPlace(data)
     {
         try
@@ -32,58 +32,58 @@ export default class Places
         }
         catch(error)
         {
-            // - - - </> [ERROR] </> - - - //
+            //* - - - </> [ERROR] </> - - - *//
             console.log(error);
             throw error;
         }
     }
 
-    // - - - </> [GET] </> - - - //
+    //* - - - </> [GET] </> - - - *//
     async getPlace(id)
     {
         try
         {
-            // - - - </> [URL] </> - - - //
+            //* - - - </> [URL] </> - - - *//
             const { data } = await axios.get(`http://localhost:3000/api/places/${id}`);
             return data;
         }
         catch (error)
         {
-            // - - - </> [ERROR] </> - - - //
+            //* - - - </> [ERROR] </> - - - *//
             console.log(error);
             throw error;
         }
     }
 
-    // - - - </> [PUT] </> - - - //
+    //* - - - </> [PUT] </> - - - *//
     async updatePlace(id, data)
     {
         try
         {
-            // - - - </> [URL] </> - - - //
+            //* - - - </> [URL] </> - - - *//
             await axios.put(`http://localhost:3000/api/places/${id}`, data);
             return {status: 200, message: 'Content updated successfully!'};
         }
         catch(error)
         {
-            // - - - </> [ERROR] </> - - - //
+            //* - - - </> [ERROR] </> - - - *//
             console.log(error);
             throw error;
         }
     }
 
-    // - - - </> [DELETE] </> - - - //
+    //* - - - </> [DELETE] </> - - - *//
     async deletePlace(id)
     {
         try
         {
-            // - - - </> [URL] </> - - - //
+            //* - - - </> [URL] </> - - - *//
             await axios.delete(`http://localhost:3000/api/places/${id}`);
             return {status: 200, message: 'Content removed successfully!'};
         }
         catch(error)
         {
-            // - - - </> [ERROR] </> - - - //
+            //* - - - </> [ERROR] </> - - - *//
             console.log(error);
             throw error;
         }

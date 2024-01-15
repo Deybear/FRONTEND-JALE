@@ -1,14 +1,15 @@
 import axios from "axios";
 
-export default class Users
+export default class Events
 {
     //* - - - </> [GET] </> - - - *//
-    async getUsers()
+    async getEvents()
     {
         try
         {
-            //* - - - </> [URL] </> - - - *//
-            const { data } = await axios.get('http://localhost:3000/api/users');
+            // - - - </> [URL] </> - - - //
+            const { data } = (await axios.get('http://localhost:3000/api/events'));
+            
             return data;
         }
         catch (error)
@@ -20,12 +21,12 @@ export default class Users
     }
 
     //* - - - </> [POST] </> - - - *//
-    async createUser(data)
+    async createEvent(data)
     {
         try
         {
             //* - - - </> [URL] </> - - - *//
-            const response = await axios.post('http://localhost:3000/api/signup', data);
+            const response = await axios.post('http://localhost:3000/api/events', data);
             console.log(response);
             return response.data;
         }
@@ -38,12 +39,12 @@ export default class Users
     }
 
     //* - - - </> [GET] </> - - - *//
-    async getUser(id)
+    async getEvent(id)
     {
         try
         {
             //* - - - </> [URL] </> - - - *//
-            const { data } = await axios.get(`http://localhost:3000/api/users/${id}`);
+            const { data } = await axios.get(`http://localhost:3000/api/events/${id}`);
             return data;
         }
         catch (error)
@@ -55,12 +56,12 @@ export default class Users
     }
 
     //* - - - </> [PUT] </> - - - *//
-    async updateUser(id, data)
+    async updateEvent(id, data)
     {
         try
         {
             //* - - - </> [URL] </> - - - *//
-            await axios.put(`http://localhost:3000/api/users/${id}`, data);
+            await axios.put(`http://localhost:3000/api/events/${id}`, data);
             return {status: 200, message: 'Content updated successfully!'};
         }
         catch(error)
@@ -72,12 +73,12 @@ export default class Users
     }
 
     //* - - - </> [DELETE] </> - - - *//
-    async deleteUser(id)
+    async deleteEvent(id)
     {
         try
         {
             //* - - - </> [URL] </> - - - *//
-            await axios.delete(`http://localhost:3000/api/users/${id}`);
+            await axios.delete(`http://localhost:3000/api/events/${id}`);
             return {status: 200, message: 'Content removed successfully!'};
         }
         catch(error)
