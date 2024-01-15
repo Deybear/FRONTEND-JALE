@@ -3,6 +3,7 @@ import { Routes, Route } from 'react-router-dom';
 
 import Item from '../pages/Item';
 import Home from '../pages/Home';
+import Admin from '../pages/Admin';
 import About from '../pages/About';
 import Tours from '../pages/Tours';
 import SignIn from '../pages/SignIn';
@@ -43,6 +44,9 @@ function AppRouter()
 
                 {/* - - - </> [LINK] </> - - - */}
                 <Route path="/signup" element={ <SignUp/> }></Route>
+
+                {/* - - - </> [LINK] </> - - - */}
+                <Route path="/admin" element={ <Admin/> }></Route>
 
                 {/* - - - </> [LINK] </> - - - */}
                 <Route path='*' exact={true} element={ <NotFound/> } />

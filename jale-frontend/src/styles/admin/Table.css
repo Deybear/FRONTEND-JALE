@@ -1,0 +1,46 @@
+/* - - - </> [TABLE] </> - - - */
+.admin-table
+{
+    width: 100%;
+}
+
+/* - - - </> [DIV] </> - - - */
+.table-index-item
+{
+    font-size: 12px;
+    font-weight: 600;
+    padding-top: 10px;
+    text-align: center;
+    padding-bottom: 10px;
+    color: var(--color_001);
+    background: var(--color_003);
+}
+
+/* - - - </> [DIV] </> - - - */
+.table-item
+{
+    font-size: 12px;
+    padding-top: 10px;
+    text-align: center;
+    padding-bottom: 10px;
+}
+
+/* - - - </> [DIV] </> - - - */
+.table-row:nth-child(odd)
+{
+    background: rgb(98, 173, 69, .2);
+}
+
+/* - - - </> [ICON] </> - - - */
+.table-update-icon
+{
+    font-size: 20px;
+    cursor: pointer;
+}
+
+/* - - - </> [ICON] </> - - - */
+.table-delete-icon
+{
+    font-size: 20px;
+    cursor: pointer;
+}

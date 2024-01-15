@@ -8,7 +8,7 @@ export default class Users
         try
         {
             // - - - </> [URL] </> - - - //
-            const { data } = await axios.get('http://localhost:3000/users');
+            const { data } = await axios.get('http://localhost:3000/api/users');
             return data;
         }
         catch (error)
@@ -43,7 +43,7 @@ export default class Users
         try
         {
             // - - - </> [URL] </> - - - //
-            const { data } = await axios.get(`http://localhost:3000/users/${id}`);
+            const { data } = await axios.get(`http://localhost:3000/api/users/${id}`);
             return data;
         }
         catch (error)
@@ -60,7 +60,7 @@ export default class Users
         try
         {
             // - - - </> [URL] </> - - - //
-            await axios.put(`http://localhost:3000/users/${id}`, data);
+            await axios.put(`http://localhost:3000/api/users/${id}`, data);
             return {status: 200, message: 'Content updated successfully!'};
         }
         catch(error)
@@ -77,7 +77,7 @@ export default class Users
         try
         {
             // - - - </> [URL] </> - - - //
-            await axios.delete(`http://localhost:3000/users/${id}`);
+            await axios.delete(`http://localhost:3000/api/users/${id}`);
             return {status: 200, message: 'Content removed successfully!'};
         }
         catch(error)

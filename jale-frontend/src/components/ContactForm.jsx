@@ -33,7 +33,7 @@ function ContactForm()
             <div className='formulary-wrapper'>
 
                 {/* - - - </> [ICON] </> - - - */}
-                <Icon icon="ic:baseline-person" className='formulary-input-icon'/>
+                <Icon icon="ic:sharp-person" className='formulary-input-icon'/>
 
                 {/* - - - </> [INPUT] </> - - - */}
                 <input
