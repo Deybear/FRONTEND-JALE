@@ -15,6 +15,9 @@ import Places from '../services/Places';
 import Events from '../services/Events';
 import Categories from '../services/Categories';
 
+//* - - - </> [FORM] </> - - - *//
+import PopUp from '../components/admin/PopUp';
+
 //* - - - </> [TABLE] </> - - - *//
 import UserTable from '../components/admin/UserTable';
 import PlaceTable from '../components/admin/PlaceTable';
@@ -25,6 +28,7 @@ function Admin()
 {
     //* - - - </> [CLICK] </> - - - *//
     const [display, setDisplay] = useState('table-user');
+    const [popup, setPopup] = useState(false);
     
     //* - - - </> [TABLE] </> - - - *//
     const [users, setUsers] = useState([]);
@@ -68,6 +72,9 @@ function Admin()
     return (
 
         <section className='main-section'>
+            
+            {/* - - - </> [DIV] </> - - - */}
+            <PopUp trigger={popup} setTrigger={setPopup}/>
 
             {/* - - - </> [DIV] </> - - - */}
             <div className='admin-panel'>
@@ -244,25 +251,20 @@ function Admin()
 
                 </div>
 
-                {/* - - - </> [DIV] </> - - - */}
-                <div className='admin-panel-data'>
+                {/* - - - </> [TABLE] </> - - - */}
+                {display === 'table-user' && <UserTable data={users} trigger={popup} setTrigger={setPopup}/>}
 
-                    {/* - - - </> [TABLE] </> - - - */}
-                    {display === 'table-user' && <UserTable data={users}/>}
+                {/* - - - </> [TABLE] </> - - - */}
+                {display === 'table-place' && <PlaceTable data={places} trigger={popup} setTrigger={setPopup}/>}
 
-                    {/* - - - </> [TABLE] </> - - - */}
-                    {display === 'table-place' && <PlaceTable data={places}/>}
+                {/* - - - </> [TABLE] </> - - - */}
+                {display === 'table-event' && <EventTable data={events} trigger={popup} setTrigger={setPopup}/>}
 
-                    {/* - - - </> [TABLE] </> - - - */}
-                    {display === 'table-event' && <EventTable data={events}/>}
+                {/* - - - </> [TABLE] </> - - - */}
+                {display === 'table-category' && <CategoryTable data={categories} trigger={popup} setTrigger={setPopup}/>}
 
-                    {/* - - - </> [TABLE] </> - - - */}
-                    {display === 'table-category' && <CategoryTable data={categories}/>}
-
-                    {/* - - - </> [TABLE] </> - - - */}
-                    {display === 'table-review' && <div>[DIV-05]</div>}
-
-                </div>
+                {/* - - - </> [TABLE] </> - - - */}
+                {display === 'table-review' && <div>[DIV-05]</div>}
                 
             </div>
 

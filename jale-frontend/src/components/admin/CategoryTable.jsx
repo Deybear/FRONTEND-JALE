@@ -8,52 +8,87 @@ function CategoryTable(props)
 
     return (
 
-        <table className='admin-table'>
+        <div className='admin-table'>
 
-            <tbody>
+            {/* - - - </> [DIV] </> - - - */}
+            <div className='admin-action-wrapper'>
+                
+                {/* - - - </> [DIV] </> - - - */}
+                <button className='admin-action' onClick={() => props.setTrigger(true)}>
 
-                {/* - - - </> [TR] </> - - - */}
-                <tr className='table-index'>
+                    {/* - - - </> [ICON] </> - - - */}
+                    <Icon icon="ic:sharp-add-circle" className='admin-action-icon'/>
 
-                    {/* - - - </> [TH] </> - - - */}
-                    <th className='table-index-item'>ID</th>
+                </button>
+                
+            </div>
 
-                    {/* - - - </> [TH] </> - - - */}
-                    <th className='table-index-item'>NAME</th>
+            {/* - - - </> [DIV] </> - - - */}
+            <div className='admin-table-wrapper'>
 
-                    {/* - - - </> [TH] </> - - - */}
-                    <th className='table-index-item'>UPDATE</th>
+                {/* - - - </> [TABLE] </> - - - */}
+                <table className='table-data'>
 
-                    {/* - - - </> [TH] </> - - - */}
-                    <th className='table-index-item'>DELETE</th>
+                    {/* - - - </> [TB] </> - - - */}
+                    <tbody className='table-body'>
+                        
+                        {/* - - - </> [TR] </> - - - */}
+                        <tr className='table-index'>
 
-                </tr>
+                            {/* - - - </> [TH] </> - - - */}
+                            <th className='table-index-item'>ID</th>
 
-                {data.map((item, index) => (
+                            {/* - - - </> [TH] </> - - - */}
+                            <th className='table-index-item'>NAME</th>
 
-                //* - - - </> [TR] </> - - - *//
-                <tr className='table-row' key={index}>
+                            {/* - - - </> [TH] </> - - - */}
+                            <th className='table-index-item'>CREATED</th>
 
-                    {/* - - - </> [TD] </> - - - */}
-                    <td className='table-item'>{item.id}</td>
+                            {/* - - - </> [TH] </> - - - */}
+                            <th className='table-index-item'>UPDATED</th>
 
-                    {/* - - - </> [TD] </> - - - */}
-                    <td className='table-item'>{item.category_desc}</td>
-                    
-                    {/* - - - </> [TD] </> - - - */}
-                    <td className='table-item'><Icon icon="ic:sharp-change-circle" className='table-update-icon'/></td>
+                            {/* - - - </> [TH] </> - - - */}
+                            <th className='table-index-item'>UPDATE</th>
 
-                    {/* - - - </> [TD] </> - - - */}
-                    <td className='table-item'><Icon icon="ic:sharp-remove-circle" className='table-delete-icon'/></td>
+                            {/* - - - </> [TH] </> - - - */}
+                            <th className='table-index-item'>DELETE</th>
 
-                </tr>
+                        </tr>
 
-                ))}
+                        {data.map((item, index) => (
 
-            </tbody>
+                        //* - - - </> [TR] </> - - - *//
+                        <tr className='table-row' key={index}>
 
-        </table>
+                            {/* - - - </> [TD] </> - - - */}
+                            <td className='table-item'>{item.id}</td>
 
+                            {/* - - - </> [TD] </> - - - */}
+                            <td className='table-item'>{item.category_desc}</td>
+
+                            {/* - - - </> [TD] </> - - - */}
+                            <td className='table-item'>{item.created_at.substring(0, 10)}</td>
+
+                            {/* - - - </> [TD] </> - - - */}
+                            <td className='table-item'>{item.updated_at.substring(0, 10)}</td>
+
+                            {/* - - - </> [TD] </> - - - */}
+                            <td className='table-item'><Icon icon="ic:sharp-autorenew" className='table-update-icon'/></td>
+
+                            {/* - - - </> [TD] </> - - - */}
+                            <td className='table-item'><Icon icon="ic:sharp-remove-circle" className='table-delete-icon'/></td>
+
+                        </tr>
+
+                        ))}
+
+                    </tbody>
+
+                </table>
+
+            </div>
+
+        </div>
     );
 }
 

@@ -1,0 +1,59 @@
+/* - - - </> [DIV] </> - - - */
+.popup-wrapper
+{
+    top: 0;
+    left: 0;
+    z-index: 1;
+    width: 100%;
+    height: 100%;
+    display: flex;
+    position: absolute;
+    align-items: center;
+    justify-content: center;
+    background: rgb(27, 27, 27, .5);
+}
+
+/* - - - </> [DIV] </> - - - */
+.popup-card-v1,
+.popup-card-v2,
+.popup-card-v3
+{
+    padding: 30px;
+    position: relative;
+    border-radius: 8px;
+    background: var(--color_001);
+}
+
+/* - - - </> [DIV] </> - - - */
+.popup-card-v1
+{
+    width: 30%;
+}
+
+/* Extra small devices (phones, 600px and down) */
+@media only screen and (max-width: 600px)
+{
+
+}
+
+/* Medium devices (landscape tablets, 768px and down) */
+@media only screen and (max-width: 768px)
+{
+    /* - - - </> [DIV] </> - - - */
+    .popup-card-v1
+    {
+        width: 60%;
+    }
+}
+
+/* Large devices (laptops/desktops, 992px and down) */
+@media only screen and (max-width: 992px)
+{
+
+}
+
+/* Extra large devices (large laptops and desktops, 1200px and down) */
+@media only screen and (max-width: 1200px)
+{
+    
+}

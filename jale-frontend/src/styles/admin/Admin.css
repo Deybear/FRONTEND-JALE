@@ -154,23 +154,6 @@
     line-height: 100%;
 }
 
-/* - - - </> [DIV] </> - - - */
-.admin-panel-data
-{
-    width: 100%;
-    height: 300px;
-    cursor: default;
-    overflow-y: scroll;
-    margin-bottom: 20px;
-    scrollbar-width: none;
-}
-
-/* - - - </> [DIV] </> - - - */
-.admin-panel-data::-webkit-scrollbar
-{
-    display: none;
-}
-
 /* Extra small devices (phones, 600px and down) */
 @media only screen and (max-width: 600px)
 {

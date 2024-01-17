@@ -8,70 +8,87 @@ function PlaceTable(props)
 
     return (
 
-        <table className='admin-table'>
+        <div className='admin-table'>
 
-            <tbody>
+            {/* - - - </> [DIV] </> - - - */}
+            <div className='admin-action-wrapper'>
+                
+                {/* - - - </> [DIV] </> - - - */}
+                <button className='admin-action' onClick={() => props.setTrigger(true)}>
 
-                {/* - - - </> [TR] </> - - - */}
-                <tr className='table-index'>
+                    {/* - - - </> [ICON] </> - - - */}
+                    <Icon icon="ic:sharp-add-circle" className='admin-action-icon'/>
 
-                    {/* - - - </> [TH] </> - - - */}
-                    <th className='table-index-item'>ID</th>
+                </button>
+                
+            </div>
 
-                    {/* - - - </> [TH] </> - - - */}
-                    <th className='table-index-item'>NAME</th>
+            {/* - - - </> [DIV] </> - - - */}
+            <div className='admin-table-wrapper'>
 
-                    {/* - - - </> [TH] </> - - - */}
-                    <th className='table-index-item'>SCORE</th>
+                {/* - - - </> [TABLE] </> - - - */}
+                <table className='table-data'>
 
-                    {/* - - - </> [TH] </> - - - */}
-                    <th className='table-index-item'>EMAIL</th>
+                    {/* - - - </> [TB] </> - - - */}
+                    <tbody className='table-body'>
+                        
+                        {/* - - - </> [TR] </> - - - */}
+                        <tr className='table-index'>
 
-                    {/* - - - </> [TH] </> - - - */}
-                    <th className='table-index-item'>PHONE</th>
+                            {/* - - - </> [TH] </> - - - */}
+                            <th className='table-index-item'>ID</th>
 
-                    {/* - - - </> [TH] </> - - - */}
-                    <th className='table-index-item'>UPDATE</th>
+                            {/* - - - </> [TH] </> - - - */}
+                            <th className='table-index-item'>NAME</th>
 
-                    {/* - - - </> [TH] </> - - - */}
-                    <th className='table-index-item'>DELETE</th>
+                            {/* - - - </> [TH] </> - - - */}
+                            <th className='table-index-item'>CREATED</th>
 
-                </tr>
+                            {/* - - - </> [TH] </> - - - */}
+                            <th className='table-index-item'>UPDATED</th>
 
-                {data.map((item, index) => (
+                            {/* - - - </> [TH] </> - - - */}
+                            <th className='table-index-item'>UPDATE</th>
 
-                //* - - - </> [TR] </> - - - *//
-                <tr className='table-row' key={index}>
+                            {/* - - - </> [TH] </> - - - */}
+                            <th className='table-index-item'>DELETE</th>
 
-                    {/* - - - </> [TD] </> - - - */}
-                    <td className='table-item'>{item.id}</td>
+                        </tr>
 
-                    {/* - - - </> [TD] </> - - - */}
-                    <td className='table-item'>{item.place_name}</td>
+                        {data.map((item, index) => (
 
-                    {/* - - - </> [TD] </> - - - */}
-                    <td className='table-item'>{item.place_score}</td>
+                        //* - - - </> [TR] </> - - - *//
+                        <tr className='table-row' key={index}>
 
-                    {/* - - - </> [TD] </> - - - */}
-                    <td className='table-item'>{item.place_email}</td>
+                            {/* - - - </> [TD] </> - - - */}
+                            <td className='table-item'>{item.id}</td>
 
-                    {/* - - - </> [TD] </> - - - */}
-                    <td className='table-item'>{item.place_phone}</td>
+                            {/* - - - </> [TD] </> - - - */}
+                            <td className='table-item'>{item.place_name}</td>
 
-                    {/* - - - </> [TD] </> - - - */}
-                    <td className='table-item'><Icon icon="ic:sharp-change-circle" className='table-update-icon'/></td>
+                            {/* - - - </> [TD] </> - - - */}
+                            <td className='table-item'>{item.created_at.substring(0, 10)}</td>
 
-                    {/* - - - </> [TD] </> - - - */}
-                    <td className='table-item'><Icon icon="ic:sharp-remove-circle" className='table-delete-icon'/></td>
+                            {/* - - - </> [TD] </> - - - */}
+                            <td className='table-item'>{item.updated_at.substring(0, 10)}</td>
 
-                </tr>
+                            {/* - - - </> [TD] </> - - - */}
+                            <td className='table-item'><Icon icon="ic:sharp-autorenew" className='table-update-icon'/></td>
 
-                ))}
+                            {/* - - - </> [TD] </> - - - */}
+                            <td className='table-item'><Icon icon="ic:sharp-remove-circle" className='table-delete-icon'/></td>
 
-            </tbody>
+                        </tr>
 
-        </table>
+                        ))}
 
+                    </tbody>
+
+                </table>
+
+            </div>
+
+        </div>
     );
 }
 
