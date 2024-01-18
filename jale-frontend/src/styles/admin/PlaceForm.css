@@ -1,0 +1,30 @@
+/* - - - </> [FORM] </> - - - */
+.formulary-place
+{
+    width: 100%;
+    height: 420px;
+    display: flex;
+    justify-content: space-between;
+}
+
+/* - - - </> [DIV] </> - - - */
+.formulary-place-wrapper
+{
+    display: flex;
+    flex-direction: column;
+}
+
+/* - - - </> [TEXT] </> - - - */
+.formulary-title
+{
+    margin: 0;
+    font-size: 3vw;
+    font-weight: 800;
+    line-height: 100%;
+}
+
+/* - - - </> [TEXT] </> - - - */
+.formulary-title span
+{
+    color: var(--color_003);
+}

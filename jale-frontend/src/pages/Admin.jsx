@@ -15,9 +15,6 @@ import Places from '../services/Places';
 import Events from '../services/Events';
 import Categories from '../services/Categories';
 
-//* - - - </> [FORM] </> - - - *//
-import PopUp from '../components/admin/PopUp';
-
 //* - - - </> [TABLE] </> - - - *//
 import UserTable from '../components/admin/UserTable';
 import PlaceTable from '../components/admin/PlaceTable';
@@ -28,7 +25,6 @@ function Admin()
 {
     //* - - - </> [CLICK] </> - - - *//
     const [display, setDisplay] = useState('table-user');
-    const [popup, setPopup] = useState(false);
     
     //* - - - </> [TABLE] </> - - - *//
     const [users, setUsers] = useState([]);
@@ -73,9 +69,6 @@ function Admin()
 
         <section className='main-section'>
             
-            {/* - - - </> [DIV] </> - - - */}
-            <PopUp trigger={popup} setTrigger={setPopup}/>
-
             {/* - - - </> [DIV] </> - - - */}
             <div className='admin-panel'>
 
@@ -145,7 +138,7 @@ function Admin()
                             <p className='admin-item-total'>{users.length}</p>
 
                             {/* - - - </> [TEXT] </> - - - */}
-                            <p className='admin-item-title'>{users.length > 1 ? "Users" : "User"}</p>
+                            <p className='admin-item-title'>{users.length === 1 ? "User" : "Users"}</p>
 
                         </div>
                         
@@ -169,7 +162,7 @@ function Admin()
                             <p className='admin-item-total'>{places.length}</p>
 
                             {/* - - - </> [TEXT] </> - - - */}
-                            <p className='admin-item-title'>{places.length > 1 ? "Places" : "Place"}</p>
+                            <p className='admin-item-title'>{places.length === 1 ? "Place" : "Places"}</p>
 
                         </div>
                         
@@ -193,7 +186,7 @@ function Admin()
                             <p className='admin-item-total'>{events.length}</p>
 
                             {/* - - - </> [TEXT] </> - - - */}
-                            <p className='admin-item-title'>{events.length > 1 ? "Events" : "Event"}</p>
+                            <p className='admin-item-title'>{events.length === 1 ? "Event" : "Events"}</p>
 
                         </div>
                         
@@ -217,7 +210,7 @@ function Admin()
                             <p className='admin-item-total'>{categories.length}</p>
 
                             {/* - - - </> [TEXT] </> - - - */}
-                            <p className='admin-item-title'>{categories.length > 1 ? "Categories" : "Category"}</p>
+                            <p className='admin-item-title'>{categories.length === 1 ? "Category" : "Categories"}</p>
 
                         </div>
                         
@@ -252,16 +245,16 @@ function Admin()
                 </div>
 
                 {/* - - - </> [TABLE] </> - - - */}
-                {display === 'table-user' && <UserTable data={users} trigger={popup} setTrigger={setPopup}/>}
+                {display === 'table-user' && <UserTable data={users}/>}
 
                 {/* - - - </> [TABLE] </> - - - */}
-                {display === 'table-place' && <PlaceTable data={places} trigger={popup} setTrigger={setPopup}/>}
+                {display === 'table-place' && <PlaceTable data={places}/>}
 
                 {/* - - - </> [TABLE] </> - - - */}
-                {display === 'table-event' && <EventTable data={events} trigger={popup} setTrigger={setPopup}/>}
+                {display === 'table-event' && <EventTable data={events}/>}
 
                 {/* - - - </> [TABLE] </> - - - */}
-                {display === 'table-category' && <CategoryTable data={categories} trigger={popup} setTrigger={setPopup}/>}
+                {display === 'table-category' && <CategoryTable data={categories}/>}
 
                 {/* - - - </> [TABLE] </> - - - */}
                 {display === 'table-review' && <div>[DIV-05]</div>}

@@ -10,12 +10,16 @@ function UserForm(props)
     const service = new Users();
 
     //* - - - </> [DATA] </> - - - *//
+    const user = props.data;
+    const type = props.type;
+
+    //* - - - </> [DATA] </> - - - *//
     const [data, setData] = useState({
-        user_name: "",
-        user_lastname: "",
-        user_email: "",
-        password: "",
-        user_birthdate: ""
+        user_name: type === 'update' ? user.user_name : "",
+        user_lastname: type === 'update' ? user.user_lastname : "",
+        user_email: type === 'update' ? user.user_email : "",
+        password: type === 'update' ? user.password : "",
+        user_birthdate: type === 'update' ? user.user_birthdate : ""
     });
 
     //* - - - </> [DATA] </> - - - *//
@@ -27,8 +31,52 @@ function UserForm(props)
     const handleSubmit = (e) => {
 
         e.preventDefault();
-        service.createUser(data);
-        props.setTrigger(false);
+
+        //* - - - </> [TYPE] </> - - - *//
+        if(type === 'create')
+        {
+            try
+            {
+                //* - - - </> [DATA] </> - - - *//
+                service.createUser(data)
+                props.setTrigger(false);
+
+                //* - - - </> [LOAD] </> - - - *//
+                setTimeout(function()
+                {
+                    //* - - - </> [LOAD] </> - - - *//
+                    window.location.reload();
+
+                }, 500);
+            }
+            catch(error)
+            {
+                //* - - - </> [ERROR] </> - - - *//
+                console.error(error);
+            }
+        }
+        else
+        {
+            try
+            {
+                //* - - - </> [DATA] </> - - - *//
+                service.updateUser(user.id, data);
+                props.setTrigger(false);
+
+                //* - - - </> [LOAD] </> - - - *//
+                setTimeout(function()
+                {
+                    //* - - - </> [LOAD] </> - - - *//
+                    window.location.reload();
+
+                }, 500);
+            }
+            catch(error)
+            {
+                //* - - - </> [ERROR] </> - - - *//
+                console.error(error);
+            }
+        }
     }
     
     return (
@@ -37,7 +85,7 @@ function UserForm(props)
         <form onSubmit={handleSubmit} className='formulary-user'>
 
             {/* - - - </> [TEXT] </> - - - */}
-            <p className='formulary-title'>Add <span>user!</span></p>
+            <p className='formulary-title'>{type === 'update' ? "Update" : "Add"} <span>user!</span></p>
 
             {/* - - - </> [DIV] </> - - - */}
             <div className='formulary-wrapper'>
@@ -53,7 +101,7 @@ function UserForm(props)
 
                 //* - - - </> [NAME] </> - - - *//
                 name='user_name'
-
+                
                 //* - - - </> [TEXT] </> - - - *//
                 placeholder="User name here*"
 
@@ -63,6 +111,9 @@ function UserForm(props)
                 //* - - - </> [CLASS] </> - - - *//
                 className='formulary-input'
 
+                //* - - - </> [VALUE] </> - - - *//
+                defaultValue={type === 'update' ? user.user_name : ''}
+                
                 //* - - - </> [EVENT] </> - - - *//
                 onChange={handleChange}
                 
@@ -97,6 +148,9 @@ function UserForm(props)
                 //* - - - </> [CLASS] </> - - - *//
                 className='formulary-input'
 
+                //* - - - </> [VALUE] </> - - - *//
+                defaultValue={type === 'update' ? user.user_lastname : ''}
+
                 //* - - - </> [EVENT] </> - - - *//
                 onChange={handleChange}
                 
@@ -127,6 +181,9 @@ function UserForm(props)
                 
                 //* - - - </> [CLASS] </> - - - *//
                 className='formulary-input'
+
+                //* - - - </> [VALUE] </> - - - *//
+                defaultValue={type === 'update' ? user.user_email : ''}
                 
                 //* - - - </> [EVENT] </> - - - *//
                 onChange={handleChange}
@@ -189,6 +246,9 @@ function UserForm(props)
                 
                 //* - - - </> [CLASS] </> - - - *//
                 className='formulary-input'
+
+                //* - - - </> [VALUE] </> - - - *//
+                defaultValue={type === 'update' ? user.user_birthdate : ''}
                 
                 //* - - - </> [EVENT] </> - - - *//
                 onChange={handleChange}
@@ -218,7 +278,7 @@ function UserForm(props)
                 <div className='formulary-button-wrapper'>
 
                     {/* - - - </> [SUBMIT] </> - - - */}
-                    <input type="submit" value="Add user" className='formulary-button-v2'/>
+                    <input type="submit" value={type === 'update' ? "Update user" : "Add user"} className='formulary-button-v2'/>
 
                     {/* - - - </> [ICON] </> - - - */}
                     <Icon icon="ic:outline-arrow-forward-ios" className='formulary-button-icon-v2'/>
