@@ -42,12 +42,12 @@ function UserForm(props)
                 props.setTrigger(false);
 
                 //* - - - </> [LOAD] </> - - - *//
-                setTimeout(function()
-                {
-                    //* - - - </> [LOAD] </> - - - *//
-                    window.location.reload();
+                // setTimeout(function()
+                // {
+                //     //* - - - </> [LOAD] </> - - - *//
+                //     window.location.reload();
 
-                }, 500);
+                // }, 500);
             }
             catch(error)
             {

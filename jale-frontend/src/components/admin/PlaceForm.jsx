@@ -12,7 +12,7 @@ function PlaceForm(props)
     //* - - - </> [DATA] </> - - - *//
     const place = props.data;
     const type = props.type;
-
+    
     //* - - - </> [DATA] </> - - - *//
     const [data, setData] = useState({
         place_name: type === 'update' ? place.place_name : "",
@@ -23,10 +23,10 @@ function PlaceForm(props)
         place_phone: type === 'update' ? place.place_phone : "",
         place_website: type === 'update' ? place.place_website : "",
         place_address: type === 'update' ? place.place_address : "",
-        place_time_open: type === 'update' ? place.place_time_open : "",
-        place_time_close: type === 'update' ? place.place_time_close : "",
+        place_time_open: type === 'update' ? place.place_time_open.substring(11, 16) : "",
+        place_time_close: type === 'update' ? place.place_time_close.substring(11, 16) : "",
     });
-
+    
     //* - - - </> [DATA] </> - - - *//
     const handleChange = (e) => {
         setData({...data, [e.target.name]: e.target.value});
@@ -92,189 +92,378 @@ function PlaceForm(props)
             {/* - - - </> [TEXT] </> - - - */}
             <p className='formulary-title'>{type === 'update' ? "Update" : "Add"} <span>place!</span></p>
 
-            {/* - - - </> [DIV] </> - - - */}
-            <div className='formulary-place-wrapper'>
+            <div className='formulary-place-row'>
 
                 {/* - - - </> [DIV] </> - - - */}
-                <div className='formulary-wrapper'>
+                <div className='formulary-place-col'>
 
-                    {/* - - - </> [ICON] </> - - - */}
-                    <Icon icon="ic:baseline-person" className='formulary-input-icon'/>
+                    {/* - - - </> [DIV] </> - - - */}
+                    <div className='formulary-wrapper'>
 
-                    {/* - - - </> [INPUT] </> - - - */}
-                    <input
+                        {/* - - - </> [ICON] </> - - - */}
+                        <Icon icon="ic:baseline-person" className='formulary-input-icon'/>
 
-                    //* - - - </> [TYPE] </> - - - *//
-                    type="text"
+                        {/* - - - </> [INPUT] </> - - - */}
+                        <input
 
-                    //* - - - </> [NAME] </> - - - *//
-                    name='place_name'
+                        //* - - - </> [TYPE] </> - - - *//
+                        type="text"
 
-                    //* - - - </> [TEXT] </> - - - *//
-                    placeholder="Place name here*"
+                        //* - - - </> [NAME] </> - - - *//
+                        name='place_name'
 
-                    //* - - - </> [CODE] </> - - - *//
-                    pattern='^[A-Za-z0-9]{3,15}$'
+                        //* - - - </> [TEXT] </> - - - *//
+                        placeholder="Place name here*"
 
-                    //* - - - </> [CLASS] </> - - - *//
-                    className='formulary-input'
+                        //* - - - </> [CODE] </> - - - *//
+                        pattern='^[A-Za-z0-9 ]{3,15}$'
 
-                    //* - - - </> [VALUE] </> - - - *//
-                    defaultValue={type === 'update' ? place.place_name : ''}
+                        //* - - - </> [CLASS] </> - - - *//
+                        className='formulary-input'
 
-                    //* - - - </> [EVENT] </> - - - *//
-                    onChange={handleChange}
+                        //* - - - </> [VALUE] </> - - - *//
+                        defaultValue={type === 'update' ? place.place_name : ''}
 
-                    //* - - - </> [EMPTY] </> - - - *//
-                    required
+                        //* - - - </> [EVENT] </> - - - *//
+                        onChange={handleChange}
 
-                    />
+                        //* - - - </> [EMPTY] </> - - - *//
+                        required
+
+                        />
+
+                    </div>
+
+                    {/* - - - </> [DIV] </> - - - */}
+                    <div className='formulary-wrapper'>
+
+                        {/* - - - </> [ICON] </> - - - */}
+                        <Icon icon="ic:sharp-email" className='formulary-input-icon'/>
+
+                        {/* - - - </> [INPUT] </> - - - */}
+                        <input
+
+                        //* - - - </> [TYPE] </> - - - *//
+                        type="email"
+
+                        //* - - - </> [NAME] </> - - - *//
+                        name='place_email'
+
+                        //* - - - </> [TEXT] </> - - - *//
+                        placeholder="Place email here*"
+
+                        //* - - - </> [CLASS] </> - - - *//
+                        className='formulary-input'
+
+                        //* - - - </> [VALUE] </> - - - *//
+                        defaultValue={type === 'update' ? place.place_email : ''}
+
+                        //* - - - </> [EVENT] </> - - - *//
+                        onChange={handleChange}
+
+                        //* - - - </> [EMPTY] </> - - - *//
+                        required
+
+                        />
+
+                    </div>
+
+                    {/* - - - </> [DIV] </> - - - */}
+                    <div className='formulary-wrapper'>
+
+                        {/* - - - </> [ICON] </> - - - */}
+                        <Icon icon="ic:sharp-attach-money" className='formulary-input-icon'/>
+
+                        {/* - - - </> [INPUT] </> - - - */}
+                        <input
+
+                        //* - - - </> [TYPE] </> - - - *//
+                        type="text"
+
+                        //* - - - </> [NAME] </> - - - *//
+                        name='place_cost'
+
+                        //* - - - </> [TEXT] </> - - - *//
+                        placeholder="Place cost here*"
+                        
+                        //* - - - </> [CODE] </> - - - *//
+                        pattern='[0-9]*[.,]?[0-9]*'
+
+                        //* - - - </> [CLASS] </> - - - *//
+                        className='formulary-input'
+
+                        //* - - - </> [VALUE] </> - - - *//
+                        defaultValue={type === 'update' ? place.place_cost : ''}
+
+                        //* - - - </> [EVENT] </> - - - *//
+                        onChange={handleChange}
+
+                        //* - - - </> [EMPTY] </> - - - *//
+                        required
+
+                        />
+
+                    </div>
+
+                    {/* - - - </> [DIV] </> - - - */}
+                    <div className='formulary-wrapper'>
+
+                        {/* - - - </> [ICON] </> - - - */}
+                        <Icon icon="ic:sharp-map" className='formulary-input-icon'/>
+
+                        {/* - - - </> [INPUT] </> - - - */}
+                        <input
+
+                        //* - - - </> [TYPE] </> - - - *//
+                        type="text"
+
+                        //* - - - </> [NAME] </> - - - *//
+                        name='place_address'
+
+                        //* - - - </> [TEXT] </> - - - *//
+                        placeholder="Place address here*"
+
+                        //* - - - </> [CLASS] </> - - - *//
+                        className='formulary-input'
+
+                        //* - - - </> [VALUE] </> - - - *//
+                        defaultValue={type === 'update' ? place.place_address : ''}
+
+                        //* - - - </> [EVENT] </> - - - *//
+                        onChange={handleChange}
+
+                        //* - - - </> [EMPTY] </> - - - *//
+                        required
+
+                        />
+
+                    </div>
+
+                    {/* - - - </> [DIV] </> - - - */}
+                    <div className='formulary-wrapper'>
+
+                        {/* - - - </> [ICON] </> - - - */}
+                        <Icon icon="ic:sharp-access-time-filled" className='formulary-input-icon'/>
+
+                        {/* - - - </> [INPUT] </> - - - */}
+                        <input
+
+                        //* - - - </> [TYPE] </> - - - *//
+                        type="text"
+
+                        //* - - - </> [NAME] </> - - - *//
+                        name='place_time_open'
+                        
+                        //* - - - </> [TEXT] </> - - - *//
+                        placeholder="Place open time here*"
+                        
+                        //* - - - </> [CODE] </> - - - *//
+                        pattern='[0-9]{2}:[0-9]{2}'
+                        
+                        //* - - - </> [CLASS] </> - - - *//
+                        className='formulary-input'
+
+                        //* - - - </> [VALUE] </> - - - *//
+                        defaultValue={type === 'update' ? place.place_time_open.substring(11, 16)  : ''}
+
+                        //* - - - </> [EVENT] </> - - - *//
+                        onChange={handleChange}
+
+                        //* - - - </> [EMPTY] </> - - - *//
+                        required
+
+                        />
+
+                    </div>
 
                 </div>
 
                 {/* - - - </> [DIV] </> - - - */}
-                <div className='formulary-wrapper'>
+                <div className='formulary-place-col'>
 
-                    {/* - - - </> [ICON] </> - - - */}
-                    <Icon icon="ic:sharp-text-snippet" className='formulary-input-icon'/>
+                    {/* - - - </> [DIV] </> - - - */}
+                    <div className='formulary-wrapper'>
 
-                    {/* - - - </> [INPUT] </> - - - */}
-                    <input
+                        {/* - - - </> [ICON] </> - - - */}
+                        <Icon icon="ic:sharp-info" className='formulary-input-icon'/>
 
-                    //* - - - </> [TYPE] </> - - - *//
-                    type="text"
+                        {/* - - - </> [INPUT] </> - - - */}
+                        <input
 
-                    //* - - - </> [NAME] </> - - - *//
-                    name='place_desc'
+                        //* - - - </> [TYPE] </> - - - *//
+                        type="text"
 
-                    //* - - - </> [TEXT] </> - - - *//
-                    placeholder="Place description here*"
+                        //* - - - </> [NAME] </> - - - *//
+                        name='place_desc'
 
-                    //* - - - </> [CLASS] </> - - - *//
-                    className='formulary-input'
+                        //* - - - </> [TEXT] </> - - - *//
+                        placeholder="Place description here*"
 
-                    //* - - - </> [VALUE] </> - - - *//
-                    defaultValue={type === 'update' ? place.place_desc : ''}
+                        //* - - - </> [CLASS] </> - - - *//
+                        className='formulary-input'
 
-                    //* - - - </> [EVENT] </> - - - *//
-                    onChange={handleChange}
+                        //* - - - </> [VALUE] </> - - - *//
+                        defaultValue={type === 'update' ? place.place_desc : ''}
 
-                    //* - - - </> [EMPTY] </> - - - *//
-                    required
+                        //* - - - </> [EVENT] </> - - - *//
+                        onChange={handleChange}
 
-                    />
+                        //* - - - </> [EMPTY] </> - - - *//
+                        required
+
+                        />
+
+                    </div>
+
+                    {/* - - - </> [DIV] </> - - - */}
+                    <div className='formulary-wrapper'>
+
+                        {/* - - - </> [ICON] </> - - - */}
+                        <Icon icon="ic:sharp-phone-in-talk" className='formulary-input-icon'/>
+
+                        {/* - - - </> [INPUT] </> - - - */}
+                        <input
+
+                        //* - - - </> [TYPE] </> - - - *//
+                        type="tel"
+
+                        //* - - - </> [NAME] </> - - - *//
+                        name='place_phone'
+
+                        //* - - - </> [TEXT] </> - - - *//
+                        placeholder="Place phone here*"
+
+                        //* - - - </> [CODE] </> - - - *//
+                        pattern='[0-9]{4}-[0-9]{4}'
+
+                        //* - - - </> [CLASS] </> - - - *//
+                        className='formulary-input'
+
+                        //* - - - </> [VALUE] </> - - - *//
+                        defaultValue={type === 'update' ? place.place_phone : ''}
+
+                        //* - - - </> [EVENT] </> - - - *//
+                        onChange={handleChange}
+
+                        //* - - - </> [EMPTY] </> - - - *//
+                        required
+
+                        />
+
+                    </div>
+
+                    {/* - - - </> [DIV] </> - - - */}
+                    <div className='formulary-wrapper'>
+
+                        {/* - - - </> [ICON] </> - - - */}
+                        <Icon icon="ic:sharp-star" className='formulary-input-icon'/>
+
+                        {/* - - - </> [INPUT] </> - - - */}
+                        <input
+
+                        //* - - - </> [TYPE] </> - - - *//
+                        type="number"
+
+                        //* - - - </> [NAME] </> - - - *//
+                        name='place_score'
+
+                        //* - - - </> [TEXT] </> - - - *//
+                        placeholder="Place score here*"
+
+                        //* - - - </> [CLASS] </> - - - *//
+                        className='formulary-input'
+
+                        //* - - - </> [VALUE] </> - - - *//
+                        defaultValue={type === 'update' ? place.place_score : ''}
+
+                        //* - - - </> [VALUE] </> - - - *//
+                        min="1" max="5"
+
+                        //* - - - </> [EVENT] </> - - - *//
+                        onChange={handleChange}
+
+                        //* - - - </> [EMPTY] </> - - - *//
+                        required
+
+                        />
+
+                    </div>
+
+                    {/* - - - </> [DIV] </> - - - */}
+                    <div className='formulary-wrapper'>
+
+                        {/* - - - </> [ICON] </> - - - */}
+                        <Icon icon="ic:sharp-phonelink" className='formulary-input-icon'/>
+
+                        {/* - - - </> [INPUT] </> - - - */}
+                        <input
+
+                        //* - - - </> [TYPE] </> - - - *//
+                        type="url"
+
+                        //* - - - </> [NAME] </> - - - *//
+                        name='place_website'
+
+                        //* - - - </> [TEXT] </> - - - *//
+                        placeholder="Place website here*"
+
+                        //* - - - </> [TEXT] </> - - - *//
+                        pattern="https://.*"
+                        
+                        //* - - - </> [CLASS] </> - - - *//
+                        className='formulary-input'
+
+                        //* - - - </> [VALUE] </> - - - *//
+                        defaultValue={type === 'update' ? place.place_website : ''}
+
+                        //* - - - </> [EVENT] </> - - - *//
+                        onChange={handleChange}
+
+                        //* - - - </> [EMPTY] </> - - - *//
+                        required
+
+                        />
+
+                    </div>
+
+                    {/* - - - </> [DIV] </> - - - */}
+                    <div className='formulary-wrapper'>
+
+                        {/* - - - </> [ICON] </> - - - */}
+                        <Icon icon="ic:sharp-access-time-filled" className='formulary-input-icon'/>
+
+                        {/* - - - </> [INPUT] </> - - - */}
+                        <input
+
+                        //* - - - </> [TYPE] </> - - - *//
+                        type="text"
+
+                        //* - - - </> [NAME] </> - - - *//
+                        name='place_time_close'
+
+                        //* - - - </> [TEXT] </> - - - *//
+                        placeholder="Place close time here*"
+                        
+                        //* - - - </> [CODE] </> - - - *//
+                        pattern='[0-9]{2}:[0-9]{2}'
+
+                        //* - - - </> [CLASS] </> - - - *//
+                        className='formulary-input'
+
+                        //* - - - </> [VALUE] </> - - - *//
+                        defaultValue={type === 'update' ? place.place_time_close.substring(11, 16)  : ''}
+
+                        //* - - - </> [EVENT] </> - - - *//
+                        onChange={handleChange}
+
+                        //* - - - </> [EMPTY] </> - - - *//
+                        required
+
+                        />
+
+                    </div>
 
                 </div>
-
-                {/* - - - </> [DIV] </> - - - */}
-                <div className='formulary-wrapper'>
-
-                    {/* - - - </> [ICON] </> - - - */}
-                    <Icon icon="ic:sharp-discount" className='formulary-input-icon'/>
-
-                    {/* - - - </> [INPUT] </> - - - */}
-                    <input
-
-                    //* - - - </> [TYPE] </> - - - *//
-                    type="number"
-
-                    //* - - - </> [NAME] </> - - - *//
-                    name='place_cost'
-
-                    //* - - - </> [TEXT] </> - - - *//
-                    placeholder="Place cost here*"
-
-                    //* - - - </> [CLASS] </> - - - *//
-                    className='formulary-input'
-
-                    //* - - - </> [VALUE] </> - - - *//
-                    defaultValue={type === 'update' ? place.place_cost : ''}
-
-                    //* - - - </> [EVENT] </> - - - *//
-                    onChange={handleChange}
-
-                    //* - - - </> [EMPTY] </> - - - *//
-                    required
-
-                    />
-
-                </div>
-
-                {/* - - - </> [DIV] </> - - - */}
-                <div className='formulary-wrapper'>
-
-                    {/* - - - </> [ICON] </> - - - */}
-                    <Icon icon="ic:sharp-email" className='formulary-input-icon'/>
-
-                    {/* - - - </> [INPUT] </> - - - */}
-                    <input
-
-                    //* - - - </> [TYPE] </> - - - *//
-                    type="email"
-
-                    //* - - - </> [NAME] </> - - - *//
-                    name='place_email'
-
-                    //* - - - </> [TEXT] </> - - - *//
-                    placeholder="Place email here*"
-
-                    //* - - - </> [CLASS] </> - - - *//
-                    className='formulary-input'
-
-                    //* - - - </> [VALUE] </> - - - *//
-                    defaultValue={type === 'update' ? place.place_email : ''}
-
-                    //* - - - </> [EVENT] </> - - - *//
-                    onChange={handleChange}
-
-                    //* - - - </> [EMPTY] </> - - - *//
-                    required
-
-                    />
-
-                </div>
-
-                {/* - - - </> [DIV] </> - - - */}
-                <div className='formulary-wrapper'>
-
-                    {/* - - - </> [ICON] </> - - - */}
-                    <Icon icon="ic:sharp-phone-in-talk" className='formulary-input-icon'/>
-
-                    {/* - - - </> [INPUT] </> - - - */}
-                    <input
-
-                    //* - - - </> [TYPE] </> - - - *//
-                    type="tel"
-
-                    //* - - - </> [NAME] </> - - - *//
-                    name='place_phone'
-
-                    //* - - - </> [TEXT] </> - - - *//
-                    placeholder="Place phone here*"
-
-                    //* - - - </> [CODE] </> - - - *//
-                    pattern='[0-9]{4}-[0-9]{4}'
-
-                    //* - - - </> [CLASS] </> - - - *//
-                    className='formulary-input'
-
-                    //* - - - </> [VALUE] </> - - - *//
-                    defaultValue={type === 'update' ? place.place_phone : ''}
-
-                    //* - - - </> [EVENT] </> - - - *//
-                    onChange={handleChange}
-
-                    //* - - - </> [EMPTY] </> - - - *//
-                    required
-
-                    />
-
-                </div>
-
-            </div>
-
-            {/* - - - </> [DIV] </> - - - */}
-            <div className='formulary-place-wrapper'>
 
             </div>
 

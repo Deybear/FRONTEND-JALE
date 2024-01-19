@@ -2,16 +2,34 @@
 .formulary-place
 {
     width: 100%;
-    height: 420px;
     display: flex;
+    flex-direction: column;
     justify-content: space-between;
 }
 
 /* - - - </> [DIV] </> - - - */
-.formulary-place-wrapper
+.formulary-place-row
 {
+    width: 100%;
+    display: flex;
+    margin-top: 20px;
+    margin-bottom: 20px;
+}
+
+/* - - - </> [DIV] </> - - - */
+.formulary-place-row > div:nth-child(1)
+{
+    margin-right: 20px;
+}
+
+/* - - - </> [DIV] </> - - - */
+.formulary-place-col
+{
+    width: 50%;
+    height: 280px;
     display: flex;
     flex-direction: column;
+    justify-content: space-between;
 }
 
 /* - - - </> [TEXT] </> - - - */
@@ -27,4 +45,45 @@
 .formulary-title span
 {
     color: var(--color_003);
+}
+
+/* Extra small devices (phones, 600px and down) */
+@media only screen and (max-width: 600px)
+{
+
+}
+
+/* Medium devices (landscape tablets, 768px and down) */
+@media only screen and (max-width: 768px)
+{
+    /* - - - </> [DIV] </> - - - */
+    .formulary-place-row
+    {
+        flex-direction: column;
+    }
+
+    /* - - - </> [DIV] </> - - - */
+    .formulary-place-row > div:nth-child(1)
+    {
+        margin-right: 0;
+        margin-bottom: 25px;
+    }
+
+    /* - - - </> [DIV] </> - - - */
+    .formulary-place-col
+    {
+        width: 100%;
+    }
+}
+
+/* Large devices (laptops/desktops, 992px and down) */
+@media only screen and (max-width: 992px)
+{
+
+}
+
+/* Extra large devices (large laptops and desktops, 1200px and down) */
+@media only screen and (max-width: 1200px)
+{
+    
 }

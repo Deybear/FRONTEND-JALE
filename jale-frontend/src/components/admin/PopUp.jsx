@@ -18,7 +18,7 @@ function PopUp(props)
             </div>}
             
             {/* - - - </> [FORM] </> - - - */}
-            {props.id === 'place-table' && <div className='popup-card-v1'>
+            {props.id === 'place-table' && <div className='popup-card-v2'>
 
                 {/* - - - </> [FORM] </> - - - */}
                 <PlaceForm setTrigger={props.setTrigger} type={props.action} data={props.place}/>

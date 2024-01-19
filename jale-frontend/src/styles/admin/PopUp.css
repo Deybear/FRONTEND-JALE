@@ -15,10 +15,9 @@
 
 /* - - - </> [DIV] </> - - - */
 .popup-card-v1,
-.popup-card-v2,
-.popup-card-v3
+.popup-card-v2
 {
-    padding: 30px;
+    padding: 40px;
     position: relative;
     border-radius: 8px;
     background: var(--color_001);
@@ -28,6 +27,12 @@
 .popup-card-v1
 {
     width: 30%;
+}
+
+/* - - - </> [DIV] </> - - - */
+.popup-card-v2
+{
+    width: 60%;
 }
 
 /* Extra small devices (phones, 600px and down) */
