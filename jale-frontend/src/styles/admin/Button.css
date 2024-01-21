@@ -1,0 +1,38 @@
+/* - - - </> [BUTTON] </> - - - */
+.float-button
+{
+    right: 0;
+    bottom: 0;
+    z-index: 1;
+    padding: 0;
+    width: 80px;
+    height: 80px;
+    border: none;
+    margin: 30px;
+    position: fixed;
+    border-radius: 50px;
+    animation: fadeIn .5s;
+    color: var(--color_001);
+    background: var(--color_003);
+}
+
+/* - - - </> [BUTTON] </> - - - */
+.float-button:hover
+{
+    cursor: pointer;
+    transition: .5s;
+    background: var(--color_002);
+}
+
+/* - - - </> [ICON] </> - - - */
+.float-button-icon
+{
+    font-size: 50px;
+}
+
+/* - - - </> [EFFECT] </> - - - */
+@keyframes fadeIn
+{
+    0% { opacity: 0; }
+    100% { opacity: 1; }
+}

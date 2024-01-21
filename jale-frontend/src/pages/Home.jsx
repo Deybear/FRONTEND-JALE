@@ -2,41 +2,36 @@ import React, { useEffect, useState } from 'react';
 import '../styles/Grid.css';
 import '../styles/Home.css';
 import { Icon } from '@iconify/react';
-import { Link, useNavigate } from 'react-router-dom';
+import { Link } from 'react-router-dom';
 import Navigation from '../components/Navigation';
+import Button from '../components/admin/Button';
 import Sessions from '../services/Sessions';
 
 function Home()
 {
-    
+    //* - - - </> [LOAD] </> - - - *//
     const [loading, setLoading] = useState(true);
 
-    //* - - - </> [LINK] </> - - - *//
-    const navigate = useNavigate();
+    //* - - - </> [DATA] </> - - - *//
+    const [account, setAccount] = useState([]);
 
     //* - - - </> [DATA] </> - - - *//
     const service = new Sessions;
 
     useEffect(() => {
-
-        console.log("Loading. . .")
+        
         setTimeout(() => {
 
+            //* - - - </> [DATA] </> - - - *//
             const currentUser = service.getCurrentUser();
-            console.log("currentUser", currentUser);
+            setAccount(currentUser);
+
+            //* - - - </> [LOAD] </> - - - *//
             setLoading(Object.keys(currentUser).length === 0);
     
         }, 800);
 
     }, []);
-
-    //* - - - </> [DATA] </> - - - *//
-    const destroySession = (e) => {
-        
-        e.preventDefault();
-        service.signOut();
-        navigate("/signin");
-    }
 
     return (
 
@@ -91,8 +86,8 @@ function Home()
 
                 </div>
 
-                {/* Meter todo en el loading */}
-                {!loading ? <p onClick={destroySession}>Logout</p> : null}
+                {/* - - - </> [BUTTON] </> - - - */}
+                {!loading ? <Button currentUser={account}/> : null}
 
             </div>
 

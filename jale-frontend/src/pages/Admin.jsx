@@ -7,12 +7,13 @@ import '../styles/admin/Admin.css';
 
 //* - - - </> [ITEM] </> - - - *//
 import { Icon } from '@iconify/react';
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 
 //* - - - </> [DATA] </> - - - *//
 import Users from '../services/Users';
 import Places from '../services/Places';
 import Events from '../services/Events';
+import Sessions from '../services/Sessions';
 import Categories from '../services/Categories';
 
 //* - - - </> [TABLE] </> - - - *//
@@ -26,17 +27,22 @@ function Admin()
     //* - - - </> [CLICK] </> - - - *//
     const [display, setDisplay] = useState('table-user');
     
-    //* - - - </> [TABLE] </> - - - *//
+    //* - - - </> [DATA] </> - - - *//
     const [users, setUsers] = useState([]);
     const [places, setPlaces] = useState([]);
     const [events, setEvents] = useState([]);
+    const [sessions, setSessions] = useState([]);
     const [categories, setCategories] = useState([]);
 
     //* - - - </> [DATA] </> - - - *//
     const userService = new Users();
     const placeService = new Places();
     const eventService = new Events();
+    const sessionService = new Sessions();
     const categoryService = new Categories();
+
+    //* - - - </> [LINK] </> - - - *//
+    const navigate = useNavigate();
 
     //* - - - </> [DATA] </> - - - *//
     useEffect(() => {
@@ -61,8 +67,19 @@ function Admin()
         setEvents(eventData);
 
         //* - - - </> [DATA] </> - - - *//
+        const sessionData = await sessionService.getCurrentUser();
+        setSessions(sessionData);
+
+        //* - - - </> [DATA] </> - - - *//
         const categoryData = await categoryService.getCategories();
         setCategories(categoryData);
+    }
+
+    //* - - - </> [DATA] </> - - - *//
+    const destroySession = () => {
+        
+        sessionService.signOut();
+        navigate("/signin");
     }
     
     return (
@@ -77,10 +94,10 @@ function Admin()
 
                     {/* - - - </> [DIV] </> - - - */}
                     <div className='admin-menu-user'>
-
+                        
                         {/* - - - </> [TEXT] </> - - - */}
-                        <p className='admin-menu-name'>Deynor <span>Rodriguez</span></p>
-
+                        <p className='admin-menu-name'>{sessions.user_name} <span>{sessions.user_lastname}</span></p>
+                        
                         {/* - - - </> [TEXT] </> - - - */}
                         <p className='admin-menu-desc'>Let's back to work . . .</p>
 
@@ -101,7 +118,7 @@ function Admin()
                         </div>
 
                         {/* - - - </> [DIV] </> - - - */}
-                        <div className='formulary-button-wrapper'>
+                        <div className='formulary-button-wrapper' onClick={destroySession}>
 
                             {/* - - - </> [SUBMIT] </> - - - */}
                             <input type="submit" value="Sign out" className='formulary-button-v2'/>

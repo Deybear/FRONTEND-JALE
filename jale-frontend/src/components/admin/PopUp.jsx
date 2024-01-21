@@ -2,6 +2,7 @@ import React from 'react';
 import '../../styles/admin/PopUp.css';
 import UserForm from './UserForm';
 import PlaceForm from './PlaceForm';
+import EventForm from './EventForm';
 
 function PopUp(props)
 {
@@ -22,6 +23,14 @@ function PopUp(props)
 
                 {/* - - - </> [FORM] </> - - - */}
                 <PlaceForm setTrigger={props.setTrigger} type={props.action} data={props.place}/>
+            
+            </div>}
+
+            {/* - - - </> [FORM] </> - - - */}
+            {props.id === 'event-table' && <div className='popup-card-v2'>
+
+                {/* - - - </> [FORM] </> - - - */}
+                <EventForm setTrigger={props.setTrigger} type={props.action} data={props.place}/>
             
             </div>}
 
