@@ -7,21 +7,21 @@ function Map(props)
     const code = "AIzaSyB2c5znxDZdlf0vvVyOJ9J2oPXdukyGDbo";
 
     //* - - - </> [DATA] </> - - - *//
-    const lat = props.lat;
-    const lon = props.lon;
+    const lat = parseFloat(props.lat);
+    const lon = parseFloat(props.lon);
 
     useEffect(() => {
 
         window.initMapCallback = () => {
             
             //* - - - </> [DATA] </> - - - *//
-            const mapOptions = { center: { lat: lat, lng: lon }, zoom: 14, mapId: "DEMO_MAP_ID" };
+            const mapOptions = { center: { lat: (props.lat ? lat : 9.9813787), lng: (props.lon ? lon : -84.7570431) }, zoom: 18, mapId: "DEMO_MAP_ID" };
 
             //* - - - </> [ITEM] </> - - - *//
             const map = new window.google.maps.Map(document.getElementById("map"), mapOptions);
 
             //* - - - </> [DATA] </> - - - *//
-            new window.google.maps.Marker({ position: { lat: lat, lng: lon }, title: "My location", map });
+            new window.google.maps.Marker({ position: { lat: (props.lat ? lat : 9.9813787), lng: (props.lon ? lon : -84.7570431) }, title: "My location", map });
         };
             const script = document.createElement("script");
             script.async = true;

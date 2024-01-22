@@ -63,7 +63,7 @@ function Contact()
             <div className='rg-lg-col'>
 
                 {/* - - - </> [MAP] </> - - - */}
-                <Map lat={9.981653213500977} lon={-84.75706481933594}/>
+                <Map/>
 
             </div>
 

@@ -17,12 +17,20 @@ function Item()
     const [gallery, setGallery] = useState([]);
 
     //* - - - </> [DATA] </> - - - *//
+    const [address, setAddress] = useState([]);
+
+    //* - - - </> [DATA] </> - - - *//
     const [place, setPlace] = useState([]);
 
     //* - - - </> [DATA] </> - - - *//
     const service = new Places();
     let { id } = useParams();
 
+    //* - - - </> [DATE] </> - - - *//
+    const currentDate = new Date();
+    const openTime = new Date(`${String(currentDate).substring(0, 15)} ${String(place.place_time_open).substring(11, 16)}:00 GMT-0600`);
+    const closeTime = new Date(`${String(currentDate).substring(0, 15)} ${String(place.place_time_close).substring(11, 16)}:00 GMT-0600`);
+    
     useEffect(() => {
         
         getPlace();
@@ -34,10 +42,11 @@ function Item()
 
         //* - - - </> [DATA] </> - - - *//
         const data = await service.getPlace(id);
+        setAddress(data.place_location);
         setGallery(data.photos);
         setPlace(data);
     }
-
+    
     return (
 
         <section className='main-section'>
@@ -58,7 +67,7 @@ function Item()
                         <Icon icon="ic:baseline-access-time-filled" className='item-schedule-icon'/>
 
                         {/* - - - </> [TEXT] </> - - - */}
-                        <p className='item-schedule-text'>OPEN NOW</p>
+                        <p className='item-schedule-text'>{currentDate >= openTime && currentDate <= closeTime ? "OPEN NOW" : "CLOSE NOW"}</p>
 
                     </div>
 
@@ -178,7 +187,7 @@ function Item()
             <div className='rg-lg-col lite'>
 
                 {/* - - - </> [IMG] </> - - - */}
-                {display ? <Gallery src={gallery}/> : <Map lat={9.981653213500977} lon={-84.75706481933594}/>}
+                {display ? (<Gallery src={gallery}/>) : (address ? <Map lat={address.place_lat} lon={address.place_lon}/> : <div>NOT FOUND</div>)}
                 
             </div>
 
