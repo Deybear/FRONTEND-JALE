@@ -13,14 +13,19 @@ import { Link, useNavigate } from 'react-router-dom';
 import Users from '../services/Users';
 import Places from '../services/Places';
 import Events from '../services/Events';
+import Photos from '../services/Photos';
 import Sessions from '../services/Sessions';
+import Locations from '../services/Locations';
 import Categories from '../services/Categories';
 
 //* - - - </> [TABLE] </> - - - *//
 import UserTable from '../components/admin/UserTable';
 import PlaceTable from '../components/admin/PlaceTable';
 import EventTable from '../components/admin/EventTable';
+import PhotoTable from '../components/admin/PhotoTable';
 import CategoryTable from '../components/admin/CategoryTable';
+import PlaceLocationTable from '../components/admin/PlaceLocationTable';
+import EventLocationTable from '../components/admin/EventLocationTable';
 
 function Admin()
 {
@@ -31,14 +36,19 @@ function Admin()
     const [users, setUsers] = useState([]);
     const [places, setPlaces] = useState([]);
     const [events, setEvents] = useState([]);
+    const [photos, setPhotos] = useState([]);
     const [sessions, setSessions] = useState([]);
     const [categories, setCategories] = useState([]);
+    const [placeLocations, setPlaceLocations] = useState([]);
+    const [eventLocations, setEventLocations] = useState([]);
 
     //* - - - </> [DATA] </> - - - *//
     const userService = new Users();
     const placeService = new Places();
     const eventService = new Events();
+    const photoService = new Photos();
     const sessionService = new Sessions();
+    const locationService = new Locations();
     const categoryService = new Categories();
 
     //* - - - </> [LINK] </> - - - *//
@@ -67,12 +77,24 @@ function Admin()
         setEvents(eventData);
 
         //* - - - </> [DATA] </> - - - *//
+        const photoData = await photoService.getPhotos();
+        setPhotos(photoData);
+
+        //* - - - </> [DATA] </> - - - *//
         const sessionData = await sessionService.getCurrentUser();
         setSessions(sessionData);
 
         //* - - - </> [DATA] </> - - - *//
         const categoryData = await categoryService.getCategories();
         setCategories(categoryData);
+
+        //* - - - </> [DATA] </> - - - *//
+        const placeLocationData = await locationService.getPlaceLocations();
+        setPlaceLocations(placeLocationData);
+
+        //* - - - </> [DATA] </> - - - *//
+        const eventLocationData = await locationService.getEventLocations();
+        setEventLocations(eventLocationData);
     }
 
     //* - - - </> [DATA] </> - - - *//
@@ -84,7 +106,7 @@ function Admin()
     
     return (
 
-        <section className='main-section'>
+        <section className='main-section admin'>
             
             {/* - - - </> [DIV] </> - - - */}
             <div className='admin-panel'>
@@ -135,128 +157,153 @@ function Admin()
                 {/* - - - </> [DIV] </> - - - */}
                 <div className='admin-panel-item'>
 
+                    {/* - - - </> [DIV] </> - - - */}
                     <div className='admin-item-wrapper'>
 
-                    {/* - - - </> [DIV] </> - - - */}
-                    <div className='admin-item' onClick={() => setDisplay('table-user')} style={{background: display === 'table-user' && 'var(--color_002)'}}>
-
-                        {/* - - - </> [ICON] </> - - - */}
-                        <span className='admin-item-circle'>
-                            
-                            {/* - - - </> [ICON] </> - - - */}
-                            <Icon icon="ic:sharp-person" className='admin-item-icon' style={{color: display === 'table-user' && 'var(--color_002)'}}/>
-                            
-                        </span>
-                        
                         {/* - - - </> [DIV] </> - - - */}
-                        <div className='admin-item-data'>
+                        <div className='admin-item' onClick={() => setDisplay('table-user')} style={{background: display === 'table-user' && 'var(--color_002)'}}>
 
-                            {/* - - - </> [TEXT] </> - - - */}
-                            <p className='admin-item-total'>{users.length}</p>
+                            {/* - - - </> [ICON] </> - - - */}
+                            <span className='admin-item-circle'>
+                                
+                                {/* - - - </> [ICON] </> - - - */}
+                                <Icon icon="ic:sharp-person" className='admin-item-icon' style={{color: display === 'table-user' && 'var(--color_002)'}}/>
+                                
+                            </span>
+                            
+                            {/* - - - </> [DIV] </> - - - */}
+                            <div className='admin-item-data'>
 
-                            {/* - - - </> [TEXT] </> - - - */}
-                            <p className='admin-item-title'>{users.length === 1 ? "User" : "Users"}</p>
+                                {/* - - - </> [TEXT] </> - - - */}
+                                <p className='admin-item-total'>{users.length}</p>
 
+                                {/* - - - </> [TEXT] </> - - - */}
+                                <p className='admin-item-title'>{users.length === 1 ? "User" : "Users"}</p>
+
+                            </div>
+                            
+                        </div>
+
+                        {/* - - - </> [DIV] </> - - - */}
+                        <div className='admin-item' onClick={() => setDisplay('table-place')} style={{background: display === 'table-place' && 'var(--color_002)'}}>
+
+                            {/* - - - </> [ICON] </> - - - */}
+                            <span className='admin-item-circle'>
+                                
+                                {/* - - - </> [ICON] </> - - - */}
+                                <Icon icon="ic:sharp-map" className='admin-item-icon' style={{color: display === 'table-place' && 'var(--color_002)'}}/>
+                                
+                            </span>
+                            
+                            {/* - - - </> [DIV] </> - - - */}
+                            <div className='admin-item-data'>
+
+                                {/* - - - </> [TEXT] </> - - - */}
+                                <p className='admin-item-total'>{places.length}</p>
+
+                                {/* - - - </> [TEXT] </> - - - */}
+                                <p className='admin-item-title'>{places.length === 1 ? "Place" : "Places"}</p>
+
+                            </div>
+                            
+                        </div>
+
+                        {/* - - - </> [DIV] </> - - - */}
+                        <div className='admin-item' onClick={() => setDisplay('table-event')} style={{background: display === 'table-event' && 'var(--color_002)'}}>
+
+                            {/* - - - </> [ICON] </> - - - */}
+                            <span className='admin-item-circle'>
+                                
+                                {/* - - - </> [ICON] </> - - - */}
+                                <Icon icon="ic:sharp-event" className='admin-item-icon' style={{color: display === 'table-event' && 'var(--color_002)'}}/>
+                                
+                            </span>
+                            
+                            {/* - - - </> [DIV] </> - - - */}
+                            <div className='admin-item-data'>
+
+                                {/* - - - </> [TEXT] </> - - - */}
+                                <p className='admin-item-total'>{events.length}</p>
+
+                                {/* - - - </> [TEXT] </> - - - */}
+                                <p className='admin-item-title'>{events.length === 1 ? "Event" : "Events"}</p>
+
+                            </div>
+                            
                         </div>
                         
-                    </div>
-
-                    {/* - - - </> [DIV] </> - - - */}
-                    <div className='admin-item' onClick={() => setDisplay('table-place')} style={{background: display === 'table-place' && 'var(--color_002)'}}>
-
-                        {/* - - - </> [ICON] </> - - - */}
-                        <span className='admin-item-circle'>
-                            
-                            {/* - - - </> [ICON] </> - - - */}
-                            <Icon icon="ic:sharp-map" className='admin-item-icon' style={{color: display === 'table-place' && 'var(--color_002)'}}/>
-                            
-                        </span>
-                        
                         {/* - - - </> [DIV] </> - - - */}
-                        <div className='admin-item-data'>
+                        <div className='admin-item' onClick={() => setDisplay('table-photo')} style={{background: display === 'table-photo' && 'var(--color_002)'}}>
 
-                            {/* - - - </> [TEXT] </> - - - */}
-                            <p className='admin-item-total'>{places.length}</p>
-
-                            {/* - - - </> [TEXT] </> - - - */}
-                            <p className='admin-item-title'>{places.length === 1 ? "Place" : "Places"}</p>
-
-                        </div>
-                        
-                    </div>
-
-                    {/* - - - </> [DIV] </> - - - */}
-                    <div className='admin-item' onClick={() => setDisplay('table-event')} style={{background: display === 'table-event' && 'var(--color_002)'}}>
-
-                        {/* - - - </> [ICON] </> - - - */}
-                        <span className='admin-item-circle'>
-                            
                             {/* - - - </> [ICON] </> - - - */}
-                            <Icon icon="ic:sharp-event" className='admin-item-icon' style={{color: display === 'table-event' && 'var(--color_002)'}}/>
+                            <span className='admin-item-circle'>
+                                
+                                {/* - - - </> [ICON] </> - - - */}
+                                <Icon icon="ic:sharp-image" className='admin-item-icon' style={{color: display === 'table-photo' && 'var(--color_002)'}}/>
+                                
+                            </span>
                             
-                        </span>
-                        
-                        {/* - - - </> [DIV] </> - - - */}
-                        <div className='admin-item-data'>
+                            {/* - - - </> [DIV] </> - - - */}
+                            <div className='admin-item-data'>
 
-                            {/* - - - </> [TEXT] </> - - - */}
-                            <p className='admin-item-total'>{events.length}</p>
+                                {/* - - - </> [TEXT] </> - - - */}
+                                <p className='admin-item-total'>{photos.length}</p>
 
-                            {/* - - - </> [TEXT] </> - - - */}
-                            <p className='admin-item-title'>{events.length === 1 ? "Event" : "Events"}</p>
+                                {/* - - - </> [TEXT] </> - - - */}
+                                <p className='admin-item-title'>{photos.length === 1 ? "Photo" : "Photos"}</p>
 
+                            </div>
+                            
                         </div>
-                        
-                    </div>
 
-                    {/* - - - </> [DIV] </> - - - */}
-                    <div className='admin-item' onClick={() => setDisplay('table-category')} style={{background: display === 'table-category' && 'var(--color_002)'}}>
+                        {/* - - - </> [DIV] </> - - - */}
+                        <div className='admin-item' onClick={() => setDisplay('table-location')} style={{background: display === 'table-location' && 'var(--color_002)'}}>
 
-                        {/* - - - </> [ICON] </> - - - */}
-                        <span className='admin-item-circle'>
-                            
                             {/* - - - </> [ICON] </> - - - */}
-                            <Icon icon="ic:sharp-category" className='admin-item-icon' style={{color: display === 'table-category' && 'var(--color_002)'}}/>
+                            <span className='admin-item-circle'>
+                                
+                                {/* - - - </> [ICON] </> - - - */}
+                                <Icon icon="ic:sharp-my-location" className='admin-item-icon' style={{color: display === 'table-location' && 'var(--color_002)'}}/>
+                                
+                            </span>
                             
-                        </span>
-                        
-                        {/* - - - </> [DIV] </> - - - */}
-                        <div className='admin-item-data'>
+                            {/* - - - </> [DIV] </> - - - */}
+                            <div className='admin-item-data'>
 
-                            {/* - - - </> [TEXT] </> - - - */}
-                            <p className='admin-item-total'>{categories.length}</p>
+                                {/* - - - </> [TEXT] </> - - - */}
+                                <p className='admin-item-total'>{photos.length}</p>
 
-                            {/* - - - </> [TEXT] </> - - - */}
-                            <p className='admin-item-title'>{categories.length === 1 ? "Category" : "Categories"}</p>
+                                {/* - - - </> [TEXT] </> - - - */}
+                                <p className='admin-item-title'>{photos.length === 1 ? "Location" : "Locations"}</p>
 
+                            </div>
+                            
                         </div>
-                        
-                    </div>
 
-                    {/* - - - </> [DIV] </> - - - */}
-                    <div className='admin-item' onClick={() => setDisplay('table-review')} style={{background: display === 'table-review' && 'var(--color_002)'}}>
+                        {/* - - - </> [DIV] </> - - - */}
+                        <div className='admin-item' onClick={() => setDisplay('table-category')} style={{background: display === 'table-category' && 'var(--color_002)'}}>
 
-                        {/* - - - </> [ICON] </> - - - */}
-                        <span className='admin-item-circle'>
-                            
                             {/* - - - </> [ICON] </> - - - */}
-                            <Icon icon="ic:sharp-text-snippet" className='admin-item-icon' style={{color: display === 'table-review' && 'var(--color_002)'}}/>
+                            <span className='admin-item-circle'>
+                                
+                                {/* - - - </> [ICON] </> - - - */}
+                                <Icon icon="ic:sharp-category" className='admin-item-icon' style={{color: display === 'table-category' && 'var(--color_002)'}}/>
+                                
+                            </span>
                             
-                        </span>
-                        
-                        {/* - - - </> [DIV] </> - - - */}
-                        <div className='admin-item-data'>
+                            {/* - - - </> [DIV] </> - - - */}
+                            <div className='admin-item-data'>
 
-                            {/* - - - </> [TEXT] </> - - - */}
-                            <p className='admin-item-total'>{places.length}</p>
+                                {/* - - - </> [TEXT] </> - - - */}
+                                <p className='admin-item-total'>{categories.length}</p>
 
-                            {/* - - - </> [TEXT] </> - - - */}
-                            <p className='admin-item-title'>Reviews</p>
+                                {/* - - - </> [TEXT] </> - - - */}
+                                <p className='admin-item-title'>{categories.length === 1 ? "Category" : "Categories"}</p>
 
+                            </div>
+                            
                         </div>
-                        
-                    </div>
-
+                    
                     </div>
 
                 </div>
@@ -271,10 +318,21 @@ function Admin()
                 {display === 'table-event' && <EventTable data={events}/>}
 
                 {/* - - - </> [TABLE] </> - - - */}
+                {display === 'table-photo' && <PhotoTable data={photos}/>}
+
+                {/* - - - </> [TABLE] </> - - - */}
                 {display === 'table-category' && <CategoryTable data={categories}/>}
 
                 {/* - - - </> [TABLE] </> - - - */}
-                {display === 'table-review' && <div>[DIV-05]</div>}
+                {display === 'table-location' && <div className='admin-table-location'>
+
+                    {/* - - - </> [TABLE] </> - - - */}
+                    <PlaceLocationTable data={placeLocations}/>
+
+                    {/* - - - </> [TABLE] </> - - - */}
+                    <EventLocationTable data={eventLocations}/>
+                    
+                </div>}
                 
             </div>
 

@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import '../../styles/Form.css';
-import '../../styles/admin/PlaceForm.css';
+import '../../styles/admin/AdminForm.css';
 import { Icon } from '@iconify/react';
 import Places from '../../services/Places';
 
@@ -87,15 +87,15 @@ function PlaceForm(props)
     return (
 
         //* - - - </> [FORM] </> - - - *//
-        <form onSubmit={handleSubmit} className='formulary-place'>
+        <form onSubmit={handleSubmit} className='formulary-large'>
 
             {/* - - - </> [TEXT] </> - - - */}
             <p className='formulary-title'>{type === 'update' ? "Update" : "Add"} <span>place!</span></p>
 
-            <div className='formulary-place-row'>
+            <div className='formulary-large-row'>
 
                 {/* - - - </> [DIV] </> - - - */}
-                <div className='formulary-place-col'>
+                <div className='formulary-large-col'>
 
                     {/* - - - </> [DIV] </> - - - */}
                     <div className='formulary-wrapper'>
@@ -279,7 +279,7 @@ function PlaceForm(props)
                 </div>
 
                 {/* - - - </> [DIV] </> - - - */}
-                <div className='formulary-place-col'>
+                <div className='formulary-large-col'>
 
                     {/* - - - </> [DIV] </> - - - */}
                     <div className='formulary-wrapper'>

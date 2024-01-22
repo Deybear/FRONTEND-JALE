@@ -3,22 +3,38 @@ import '../styles/Grid.css';
 import '../styles/Item.css';
 import { Icon } from '@iconify/react';
 import { useParams } from 'react-router-dom';
+import Map from '../components/Map';
+import Places from '../services/Places';
 import Gallery from '../components/Gallery';
 import Navigation from '../components/Navigation';
-import Places from '../services/Places';
 
 function Item()
 {
+    //* - - - </> [CLICK] </> - - - *//
+    const [display, setDisplay] = useState(true);
+
+    //* - - - </> [DATA] </> - - - *//
+    const [gallery, setGallery] = useState([]);
+
+    //* - - - </> [DATA] </> - - - *//
     const [place, setPlace] = useState([]);
+
+    //* - - - </> [DATA] </> - - - *//
     const service = new Places();
     let { id } = useParams();
 
     useEffect(() => {
+        
         getPlace();
+
     }, [])
 
+    //* - - - </> [DATA] </> - - - *//
     const getPlace = async () => {
+
+        //* - - - </> [DATA] </> - - - *//
         const data = await service.getPlace(id);
+        setGallery(data.photos);
         setPlace(data);
     }
 
@@ -131,13 +147,13 @@ function Item()
                     <div className='item-actions'>
 
                         {/* - - - </> [DIV] </> - - - */}
-                        <div className='item-button-wrapper'>
+                        <div className='item-button-wrapper' onClick={() => setDisplay(!display)}>
 
                             {/* - - - </> [ICON] </> - - - */}
                             <Icon icon="ic:sharp-map" className='item-button-icon-v2'/>
                             
                             {/* - - - </> [BUTTON] </> - - - */}
-                            <input type="button" value="See on map" className='item-button-v2'/>
+                            <input type="button" value={display ? "See on map" : "See photos"} className='item-button-v2'/>
 
                         </div>
 
@@ -162,8 +178,8 @@ function Item()
             <div className='rg-lg-col lite'>
 
                 {/* - - - </> [IMG] </> - - - */}
-                <Gallery/>
-
+                {display ? <Gallery src={gallery}/> : <Map lat={9.981653213500977} lon={-84.75706481933594}/>}
+                
             </div>
 
         </section>

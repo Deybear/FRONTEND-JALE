@@ -3,6 +3,9 @@ import '../../styles/admin/PopUp.css';
 import UserForm from './UserForm';
 import PlaceForm from './PlaceForm';
 import EventForm from './EventForm';
+import PhotoForm from './PhotoForm';
+import PlaceLocationForm from './PlaceLocationForm';
+import EventLocationForm from './EventLocationForm';
 
 function PopUp(props)
 {
@@ -30,7 +33,31 @@ function PopUp(props)
             {props.id === 'event-table' && <div className='popup-card-v2'>
 
                 {/* - - - </> [FORM] </> - - - */}
-                <EventForm setTrigger={props.setTrigger} type={props.action} data={props.place}/>
+                <EventForm setTrigger={props.setTrigger} type={props.action} data={props.event}/>
+            
+            </div>}
+
+            {/* - - - </> [FORM] </> - - - */}
+            {props.id === 'photo-table' && <div className='popup-card-v1'>
+
+                {/* - - - </> [FORM] </> - - - */}
+                <PhotoForm setTrigger={props.setTrigger} type={props.action} data={props.photo}/>
+                
+            </div>}
+
+            {/* - - - </> [FORM] </> - - - */}
+            {props.id === 'place-location-table' && <div className='popup-card-v1'>
+
+                {/* - - - </> [FORM] </> - - - */}
+                <PlaceLocationForm setTrigger={props.setTrigger} type={props.action} data={props.location}/>
+            
+            </div>}
+
+            {/* - - - </> [FORM] </> - - - */}
+            {props.id === 'event-location-table' && <div className='popup-card-v1'>
+
+                {/* - - - </> [FORM] </> - - - */}
+                <EventLocationForm setTrigger={props.setTrigger} type={props.action} data={props.location}/>
             
             </div>}
 

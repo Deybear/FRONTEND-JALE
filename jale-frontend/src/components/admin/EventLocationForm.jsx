@@ -2,24 +2,22 @@ import React, { useState } from 'react';
 import '../../styles/Form.css';
 import '../../styles/admin/AdminForm.css';
 import { Icon } from '@iconify/react';
-import Users from '../../services/Users';
+import Locations from '../../services/Locations';
 
-function UserForm(props)
+function EventLocationForm(props)
 {
     //* - - - </> [DATA] </> - - - *//
-    const service = new Users();
+    const service = new Locations();
 
     //* - - - </> [DATA] </> - - - *//
-    const user = props.data;
+    const location = props.data;
     const type = props.type;
 
     //* - - - </> [DATA] </> - - - *//
     const [data, setData] = useState({
-        user_name: type === 'update' ? user.user_name : "",
-        user_lastname: type === 'update' ? user.user_lastname : "",
-        user_email: type === 'update' ? user.user_email : "",
-        password: type === 'update' ? user.password : "",
-        user_birthdate: type === 'update' ? user.user_birthdate : ""
+        event_lat: type === 'update' ? location.event_lat : "",
+        event_lon: type === 'update' ? location.event_lon : "",
+        event_id: type === 'update' ? location.event_id : 0
     });
 
     //* - - - </> [DATA] </> - - - *//
@@ -38,7 +36,7 @@ function UserForm(props)
             try
             {
                 //* - - - </> [DATA] </> - - - *//
-                service.createUser(data)
+                service.createEventLocation(data)
                 props.setTrigger(false);
 
                 //* - - - </> [LOAD] </> - - - *//
@@ -60,7 +58,7 @@ function UserForm(props)
             try
             {
                 //* - - - </> [DATA] </> - - - *//
-                service.updateUser(user.id, data);
+                service.updateEventLocation(location.id, data);
                 props.setTrigger(false);
 
                 //* - - - </> [LOAD] </> - - - *//
@@ -82,16 +80,16 @@ function UserForm(props)
     return (
 
         //* - - - </> [FORM] </> - - - *//
-        <form onSubmit={handleSubmit} className='formulary-medium'>
+        <form onSubmit={handleSubmit} className='formulary-small'>
 
             {/* - - - </> [TEXT] </> - - - */}
-            <p className='formulary-title'>{type === 'update' ? "Update" : "Add"} <span>user!</span></p>
+            <p className='formulary-title'>{type === 'update' ? "Update" : "Add"} <span>location!</span></p>
 
             {/* - - - </> [DIV] </> - - - */}
             <div className='formulary-wrapper'>
 
                 {/* - - - </> [ICON] </> - - - */}
-                <Icon icon="ic:baseline-person" className='formulary-input-icon'/>
+                <Icon icon="ic:sharp-my-location" className='formulary-input-icon'/>
 
                 {/* - - - </> [INPUT] </> - - - */}
                 <input
@@ -100,19 +98,16 @@ function UserForm(props)
                 type="text"
 
                 //* - - - </> [NAME] </> - - - *//
-                name='user_name'
+                name='event_lat'
                 
                 //* - - - </> [TEXT] </> - - - *//
-                placeholder="User name here*"
-
-                //* - - - </> [CODE] </> - - - *//
-                pattern='^[A-Za-z0-9]{3,15}$'
+                placeholder="Event latitude here*"
 
                 //* - - - </> [CLASS] </> - - - *//
                 className='formulary-input'
 
                 //* - - - </> [VALUE] </> - - - *//
-                defaultValue={type === 'update' ? user.user_name : ''}
+                defaultValue={type === 'update' ? location.event_lat : ''}
                 
                 //* - - - </> [EVENT] </> - - - *//
                 onChange={handleChange}
@@ -128,7 +123,7 @@ function UserForm(props)
             <div className='formulary-wrapper'>
 
                 {/* - - - </> [ICON] </> - - - */}
-                <Icon icon="ic:baseline-person" className='formulary-input-icon'/>
+                <Icon icon="ic:sharp-my-location" className='formulary-input-icon'/>
 
                 {/* - - - </> [INPUT] </> - - - */}
                 <input
@@ -137,26 +132,23 @@ function UserForm(props)
                 type="text"
 
                 //* - - - </> [NAME] </> - - - *//
-                name='user_lastname'
-
-                //* - - - </> [TEXT] </> - - - *//
-                placeholder="User lastname here*"
-
-                //* - - - </> [CODE] </> - - - *//
-                pattern='^[A-Za-z0-9]{3,15}$'
+                name='event_lon'
                 
+                //* - - - </> [TEXT] </> - - - *//
+                placeholder="Event longitude here*"
+
                 //* - - - </> [CLASS] </> - - - *//
                 className='formulary-input'
 
                 //* - - - </> [VALUE] </> - - - *//
-                defaultValue={type === 'update' ? user.user_lastname : ''}
-
+                defaultValue={type === 'update' ? location.event_lon : ''}
+                
                 //* - - - </> [EVENT] </> - - - *//
                 onChange={handleChange}
                 
                 //* - - - </> [EMPTY] </> - - - *//
                 required
-                
+
                 />
 
             </div>
@@ -165,91 +157,26 @@ function UserForm(props)
             <div className='formulary-wrapper'>
 
                 {/* - - - </> [ICON] </> - - - */}
-                <Icon icon="ic:sharp-email" className='formulary-input-icon'/>
+                <Icon icon="ic:sharp-map" className='formulary-input-icon'/>
 
                 {/* - - - </> [INPUT] </> - - - */}
                 <input
 
                 //* - - - </> [TYPE] </> - - - *//
-                type="email"
+                type="number"
 
                 //* - - - </> [NAME] </> - - - *//
-                name='user_email'
-                
-                //* - - - </> [TEXT] </> - - - *//
-                placeholder="User email here*"
+                name='event_id'
                 
                 //* - - - </> [CLASS] </> - - - *//
                 className='formulary-input'
 
                 //* - - - </> [VALUE] </> - - - *//
-                defaultValue={type === 'update' ? user.user_email : ''}
-                
-                //* - - - </> [EVENT] </> - - - *//
-                onChange={handleChange}
-                
-                //* - - - </> [EMPTY] </> - - - *//
-                required
-                
-                />
-
-            </div>
-
-            {/* - - - </> [DIV] </> - - - */}
-            <div className='formulary-wrapper'>
-
-                {/* - - - </> [ICON] </> - - - */}
-                <Icon icon="ic:sharp-lock" className='formulary-input-icon'/>
-
-                {/* - - - </> [INPUT] </> - - - */}
-                <input
-
-                //* - - - </> [TYPE] </> - - - *//
-                type="password"
-
-                //* - - - </> [NAME] </> - - - *//
-                name='password'
-
-                //* - - - </> [TEXT] </> - - - *//
-                placeholder="User password here*"
-                
-                //* - - - </> [CODE] </> - - - *//
-                pattern='^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)[a-zA-Z\d]{6,15}$'
-
-                //* - - - </> [CLASS] </> - - - *//
-                className='formulary-input'
-
-                //* - - - </> [EVENT] </> - - - *//
-                onChange={handleChange}
-                
-                //* - - - </> [EMPTY] </> - - - *//
-                required
-                
-                />
-
-            </div>
-
-            {/* - - - </> [DIV] </> - - - */}
-            <div className='formulary-wrapper'>
-
-                {/* - - - </> [ICON] </> - - - */}
-                <Icon icon="ic:baseline-person" className='formulary-input-icon'/>
-
-                {/* - - - </> [INPUT] </> - - - */}
-                <input
-                
-                //* - - - </> [TYPE] </> - - - *//
-                type="date"
-                
-                //* - - - </> [NAME] </> - - - *//
-                name='user_birthdate'
-                
-                //* - - - </> [CLASS] </> - - - *//
-                className='formulary-input'
+                defaultValue={type === 'update' ? location.event_id : 0}
 
                 //* - - - </> [VALUE] </> - - - *//
-                defaultValue={type === 'update' ? user.user_birthdate : ''}
-                
+                min="1"
+
                 //* - - - </> [EVENT] </> - - - *//
                 onChange={handleChange}
 
@@ -278,7 +205,7 @@ function UserForm(props)
                 <div className='formulary-button-wrapper'>
 
                     {/* - - - </> [SUBMIT] </> - - - */}
-                    <input type="submit" value={type === 'update' ? "Update user" : "Add user"} className='formulary-button-v2'/>
+                    <input type="submit" value={type === 'update' ? "Update location" : "Add location"} className='formulary-button-v2'/>
 
                     {/* - - - </> [ICON] </> - - - */}
                     <Icon icon="ic:outline-arrow-forward-ios" className='formulary-button-icon-v2'/>
@@ -292,4 +219,4 @@ function UserForm(props)
     );
 }
 
-export default UserForm;
+export default EventLocationForm;

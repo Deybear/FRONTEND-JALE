@@ -1,5 +1,6 @@
 /* - - - </> [FORM] </> - - - */
-.formulary-place
+.formulary-smaller, .formulary-small,
+.formulary-medium, .formulary-large
 {
     width: 100%;
     display: flex;
@@ -7,8 +8,26 @@
     justify-content: space-between;
 }
 
+/* - - - </> [FORM] </> - - - */
+.formulary-smaller
+{
+    height: 240px;
+}
+
+/* - - - </> [FORM] </> - - - */
+.formulary-small
+{
+    height: 300px;
+}
+
+/* - - - </> [FORM] </> - - - */
+.formulary-medium
+{
+    height: 420px;
+}
+
 /* - - - </> [DIV] </> - - - */
-.formulary-place-row
+.formulary-large-row
 {
     width: 100%;
     display: flex;
@@ -17,13 +36,13 @@
 }
 
 /* - - - </> [DIV] </> - - - */
-.formulary-place-row > div:nth-child(1)
+.formulary-large-row > div:nth-child(1)
 {
     margin-right: 20px;
 }
 
 /* - - - </> [DIV] </> - - - */
-.formulary-place-col
+.formulary-large-col
 {
     width: 50%;
     height: 280px;
@@ -57,20 +76,20 @@
 @media only screen and (max-width: 768px)
 {
     /* - - - </> [DIV] </> - - - */
-    .formulary-place-row
+    .formulary-large-row
     {
         flex-direction: column;
     }
 
     /* - - - </> [DIV] </> - - - */
-    .formulary-place-row > div:nth-child(1)
+    .formulary-large-row > div:nth-child(1)
     {
         margin-right: 0;
         margin-bottom: 25px;
     }
 
     /* - - - </> [DIV] </> - - - */
-    .formulary-place-col
+    .formulary-large-col
     {
         width: 100%;
     }

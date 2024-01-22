@@ -7,6 +7,8 @@
     height: 100%;
     display: flex;
     flex-wrap: wrap;
+    box-sizing: border-box;
+    border: solid 3px var(--color_001);
 }
 
 /* - - - </> [DIV] </> - - - */
@@ -18,8 +20,11 @@
     height: 75%;
     overflow: hidden;
     position: relative;
+    box-sizing: border-box;
+    border: solid 3px var(--color_001);
 }
 
+/* - - - </> [DIV] </> - - - */
 .gallery-photo-small
 {
     margin: 0;
@@ -28,6 +33,8 @@
     width: 33.33%;
     overflow: hidden;
     position: relative;
+    box-sizing: border-box;
+    border: solid 3px var(--color_001);
 }
 
 /* - - - </> [IMG] </> - - - */
@@ -47,6 +54,16 @@
 {
     filter: none;
     transform: scale(1.5);
+}
+
+/* - - - </> [SECTION] </> - - - */
+.message-section
+{
+    width: 100%;
+    height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
 }
 
 /* Extra small devices (phones, 600px and down) */

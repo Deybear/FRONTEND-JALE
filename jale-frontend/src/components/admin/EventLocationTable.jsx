@@ -1,10 +1,10 @@
 import React, { useState } from 'react';
 import '../../styles/admin/Table.css';
 import { Icon } from '@iconify/react';
-import Events from '../../services/Events';
+import Locations from '../../services/Locations';
 import PopUp from '../../components/admin/PopUp';
 
-function EventTable(props)
+function EventLocationTable(props)
 {
     //* - - - </> [CLICK] </> - - - *//
     const [popup, setPopup] = useState(false);
@@ -12,7 +12,7 @@ function EventTable(props)
     const [data, setData] = useState([]);
 
     //* - - - </> [DATA] </> - - - *//
-    const service = new Events();
+    const service = new Locations();
 
     //* - - - </> [CLICK] </> - - - *//
     const handleCreate = () => {
@@ -35,7 +35,7 @@ function EventTable(props)
         try
         {
             //* - - - </> [DATA] </> - - - *//
-            service.deleteEvent(id);
+            service.deleteEventLocation(id);
 
             //* - - - </> [LOAD] </> - - - *//
             setTimeout(function()
@@ -57,7 +57,7 @@ function EventTable(props)
         <div className='admin-table'>
             
             {/* - - - </> [DIV] </> - - - */}
-            <PopUp id={'event-table'} trigger={popup} setTrigger={setPopup} action={type} event={data}/>
+            <PopUp id={'event-location-table'} trigger={popup} setTrigger={setPopup} action={type} location={data}/>
 
             {/* - - - </> [DIV] </> - - - */}
             <div className='admin-action-wrapper'>
@@ -88,7 +88,13 @@ function EventTable(props)
                             <th className='table-index-item'>ID</th>
 
                             {/* - - - </> [TH] </> - - - */}
-                            <th className='table-index-item'>NAME</th>
+                            <th className='table-index-item'>LAT</th>
+
+                            {/* - - - </> [TH] </> - - - */}
+                            <th className='table-index-item'>LON</th>
+
+                            {/* - - - </> [TH] </> - - - */}
+                            <th className='table-index-item'>EVENT</th>
 
                             {/* - - - </> [TH] </> - - - */}
                             <th className='table-index-item'>CREATED</th>
@@ -113,7 +119,13 @@ function EventTable(props)
                             <td className='table-item'>{item.id}</td>
 
                             {/* - - - </> [TD] </> - - - */}
-                            <td className='table-item'>{item.event_name}</td>
+                            <td className='table-item'>{item.event_lat}</td>
+
+                            {/* - - - </> [TD] </> - - - */}
+                            <td className='table-item'>{item.event_lon}</td>
+
+                            {/* - - - </> [TD] </> - - - */}
+                            <td className='table-item'>{item.event_id}</td>
 
                             {/* - - - </> [TD] </> - - - */}
                             <td className='table-item'>{item.created_at.substring(0, 10)}</td>
@@ -151,4 +163,4 @@ function EventTable(props)
     );
 }
 
-export default EventTable;
+export default EventLocationTable;
