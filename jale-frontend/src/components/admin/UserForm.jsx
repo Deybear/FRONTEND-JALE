@@ -106,7 +106,7 @@ function UserForm(props)
                 placeholder="User name here*"
 
                 //* - - - </> [CODE] </> - - - *//
-                pattern='^[A-Za-z0-9]{3,15}$'
+                pattern='^[A-Za-z0-9 ]{3,15}$'
 
                 //* - - - </> [CLASS] </> - - - *//
                 className='formulary-input'

@@ -1,33 +1,55 @@
-import React, { useState } from 'react';
+import React, { useRef, useState } from 'react';
 import '../styles/Form.css';
 import { Icon } from '@iconify/react';
 import { Link } from 'react-router-dom';
+import emailjs from '@emailjs/browser';
 
 function ContactForm()
 {
-    //* - - - </> [DATA] </> - - - *//
-    const [data, setData] = useState({
-        user_name: "",
-        user_email: "",
-        user_message: ""
-    });
-
-    //* - - - </> [METHOD] </> - - - *//
-    const handleChange = (e) => {
-        setData({...data, [e.target.name]: e.target.value});
-    }
-
-    //* - - - </> [METHOD] </> - - - *//
-    const handleSubmit = (e) => {
+    //* - - - </> [FORM] </> - - - *//
+    const form = useRef();
+    
+    //* - - - </> [FORM] </> - - - *//
+    const sendEmail = (e) => {
 
         e.preventDefault();
-        console.log(data);
-    }
+
+        emailjs.sendForm('service_7o0lq54', 'template_i3khstl', form.current, 'yV3xGZKxEWeX95Z-9')
+        .then((result) => {
+
+            console.log(result.text);
+            console.log(form.current);
+            form.current.reset();
+
+        }, (error) => {
+
+            console.log(error.text);
+        });
+    };
+
+    //* - - - </> [DATA] </> - - - *//
+    // const [data, setData] = useState({
+    //     user_name: "",
+    //     user_email: "",
+    //     user_message: ""
+    // });
+
+    //* - - - </> [METHOD] </> - - - *//
+    // const handleChange = (e) => {
+    //     setData({...data, [e.target.name]: e.target.value});
+    // }
+
+    //* - - - </> [METHOD] </> - - - *//
+    // const handleSubmit = (e) => {
+
+    //     e.preventDefault();
+    //     console.log(data);
+    // }
 
     return (
 
         //* - - - </> [FORM] </> - - - *//
-        <form onSubmit={handleSubmit} className='formulary-v3'>
+        <form onSubmit={sendEmail} className='formulary-v3' ref={form}>
 
             {/* - - - </> [DIV] </> - - - */}
             <div className='formulary-wrapper'>
@@ -48,13 +70,13 @@ function ContactForm()
                 placeholder="Your name here*"
                 
                 //* - - - </> [CODE] </> - - - *//
-                pattern='^[A-Za-z0-9]{3,15}$'
+                pattern='^[A-Za-z0-9 ]{3,15}$'
                 
                 //* - - - </> [CLASS] </> - - - *//
                 className='formulary-input'
                 
                 //* - - - </> [EVENT] </> - - - *//
-                onChange={handleChange}
+                // onChange={handleChange}
                 
                 //* - - - </> [EMPTY] </> - - - *//
                 required
@@ -85,7 +107,7 @@ function ContactForm()
                 className='formulary-input'
                 
                 //* - - - </> [EVENT] </> - - - *//
-                onChange={handleChange}
+                // onChange={handleChange}
                 
                 //* - - - </> [EMPTY] </> - - - *//
                 required
@@ -104,7 +126,7 @@ function ContactForm()
                 <textarea
                 
                 //* - - - </> [NAME] </> - - - *//
-                name="user_message"
+                name="message"
                 
                 //* - - - </> [SIZE] </> - - - *//
                 cols="20"
@@ -119,7 +141,7 @@ function ContactForm()
                 className='formulary-input'
                 
                 //* - - - </> [EVENT] </> - - - *//
-                onChange={handleChange}
+                // onChange={handleChange}
                 
                 //* - - - </> [EMPTY] </> - - - *//
                 required

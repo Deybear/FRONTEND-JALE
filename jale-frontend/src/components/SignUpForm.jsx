@@ -7,7 +7,7 @@ import Users from '../services/Users';
 function SignUpForm()
 {
     //* - - - </> [DATA] </> - - - *//
-    const service = new Users;
+    const service = new Users();
 
     //* - - - </> [LINK] </> - - - *//
     const navigate = useNavigate();
@@ -58,7 +58,7 @@ function SignUpForm()
                 placeholder="Your name here*"
 
                 //* - - - </> [CODE] </> - - - *//
-                pattern='^[A-Za-z0-9]{3,15}$'
+                pattern='^[A-Za-z0-9 ]{3,15}$'
 
                 //* - - - </> [CLASS] </> - - - *//
                 className='formulary-input'
@@ -92,7 +92,7 @@ function SignUpForm()
                 placeholder="Your lastname here*"
 
                 //* - - - </> [CODE] </> - - - *//
-                pattern='^[A-Za-z0-9]{3,15}$'
+                pattern='^[A-Za-z0-9 ]{3,15}$'
                 
                 //* - - - </> [CLASS] </> - - - *//
                 className='formulary-input'
