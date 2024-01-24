@@ -1,0 +1,80 @@
+/* - - - </> [SECTION] </> - - - */
+.review-section
+{
+    margin: 0;
+    padding: 0;
+    width: 100%;
+    height: 100%;
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+    background: var(--color_003);
+}
+
+/* - - - </> [DIV] </> - - - */
+.review-wrapper
+{
+    width: 80%;
+    height: auto;
+    padding: 20px 30px;
+    border-radius: 8px;
+    background: var(--color_001);
+    border: 2px solid var(--color_002);
+    box-shadow: 5px 5px var(--color_002);
+}
+
+/* - - - </> [DIV] </> - - - */
+.review-about
+{
+    display: flex;
+    align-items: center;
+    margin-bottom: 10px;
+    justify-content: space-between;
+}
+
+/* - - - </> [TEXT] </> - - - */
+.review-user
+{
+    margin: 0;
+    font-weight: 700;
+    line-height: 100%;
+}
+
+/* - - - </> [DIV] </> - - - */
+.review-rating-score
+{
+    width: 30%;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+/* - - - </> [ICON] </> - - - */
+.review-rating-star
+{
+    font-size: 20px;
+}
+
+/* - - - </> [TEXT] </> - - - */
+.review-date
+{
+    margin: 0;
+    font-size: 12px;
+    line-height: 100%;
+}
+
+/* - - - </> [TEXT] </> - - - */
+.review-desc span
+{
+    margin: 0;
+    font-weight: 600;
+    line-height: 100%;
+}
+
+/* - - - </> [TEXT] </> - - - */
+.review-desc
+{
+    font-size: 12px;
+}
+
+
