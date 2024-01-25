@@ -6,6 +6,9 @@ import EventForm from './EventForm';
 import PhotoForm from './PhotoForm';
 import PlaceLocationForm from './PlaceLocationForm';
 import EventLocationForm from './EventLocationForm';
+import CategoryForm from './CategoryForm';
+import PlaceCategoryForm from './PlaceCategoryForm';
+import EventCategoryForm from './EventCategoryForm';
 
 function PopUp(props)
 {
@@ -46,6 +49,14 @@ function PopUp(props)
             </div>}
 
             {/* - - - </> [FORM] </> - - - */}
+            {props.id === 'category-table' && <div className='popup-card-v1'>
+
+                {/* - - - </> [FORM] </> - - - */}
+                <CategoryForm setTrigger={props.setTrigger} type={props.action} data={props.category}/>
+                
+            </div>}
+
+            {/* - - - </> [FORM] </> - - - */}
             {props.id === 'place-location-table' && <div className='popup-card-v1'>
 
                 {/* - - - </> [FORM] </> - - - */}
@@ -58,6 +69,22 @@ function PopUp(props)
 
                 {/* - - - </> [FORM] </> - - - */}
                 <EventLocationForm setTrigger={props.setTrigger} type={props.action} data={props.location}/>
+            
+            </div>}
+
+            {/* - - - </> [FORM] </> - - - */}
+            {props.id === 'place-category-table' && <div className='popup-card-v1'>
+
+                {/* - - - </> [FORM] </> - - - */}
+                <PlaceCategoryForm setTrigger={props.setTrigger} type={props.action} data={props.category}/>
+            
+            </div>}
+
+            {/* - - - </> [FORM] </> - - - */}
+            {props.id === 'event-category-table' && <div className='popup-card-v1'>
+
+                {/* - - - </> [FORM] </> - - - */}
+                <EventCategoryForm setTrigger={props.setTrigger} type={props.action} data={props.category}/>
             
             </div>}
 

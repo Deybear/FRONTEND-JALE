@@ -4,7 +4,7 @@ import { Icon } from '@iconify/react';
 import Categories from '../../services/Categories';
 import PopUp from '../../components/admin/PopUp';
 
-function CategoryTable(props)
+function EventCategoryTable(props)
 {
     //* - - - </> [CLICK] </> - - - *//
     const [popup, setPopup] = useState(false);
@@ -35,7 +35,7 @@ function CategoryTable(props)
         try
         {
             //* - - - </> [DATA] </> - - - *//
-            service.deleteCategory(id);
+            service.deleteEventCategory(id);
 
             //* - - - </> [LOAD] </> - - - *//
             setTimeout(function()
@@ -57,7 +57,7 @@ function CategoryTable(props)
         <div className='admin-table'>
             
             {/* - - - </> [DIV] </> - - - */}
-            <PopUp id={'category-table'} trigger={popup} setTrigger={setPopup} action={type} category={data}/>
+            <PopUp id={'event-category-table'} trigger={popup} setTrigger={setPopup} action={type} category={data}/>
 
             {/* - - - </> [DIV] </> - - - */}
             <div className='admin-action-wrapper'>
@@ -88,7 +88,10 @@ function CategoryTable(props)
                             <th className='table-index-item'>ID</th>
 
                             {/* - - - </> [TH] </> - - - */}
-                            <th className='table-index-item'>NAME</th>
+                            <th className='table-index-item'>CATEGORY</th>
+
+                            {/* - - - </> [TH] </> - - - */}
+                            <th className='table-index-item'>EVENT</th>
 
                             {/* - - - </> [TH] </> - - - */}
                             <th className='table-index-item'>CREATED</th>
@@ -113,7 +116,10 @@ function CategoryTable(props)
                             <td className='table-item'>{item.id}</td>
 
                             {/* - - - </> [TD] </> - - - */}
-                            <td className='table-item'>{item.category_desc}</td>
+                            <td className='table-item'>{item.category_id}</td>
+
+                            {/* - - - </> [TD] </> - - - */}
+                            <td className='table-item'>{item.event_id}</td>
 
                             {/* - - - </> [TD] </> - - - */}
                             <td className='table-item'>{item.created_at.substring(0, 10)}</td>
@@ -151,4 +157,4 @@ function CategoryTable(props)
     );
 }
 
-export default CategoryTable;
+export default EventCategoryTable;

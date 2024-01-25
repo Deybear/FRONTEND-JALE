@@ -174,12 +174,14 @@
     line-height: 100%;
 }
 
-.admin-table-location
+/* - - - </> [DIV] </> - - - */
+.admin-table-mask
 {
     width: 100%;
 }
 
-.admin-table-location > *
+/* - - - </> [DIV] </> - - - */
+.admin-table-mask > *
 {
     margin-bottom: 30px;
 }

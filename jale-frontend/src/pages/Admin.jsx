@@ -26,6 +26,8 @@ import PhotoTable from '../components/admin/PhotoTable';
 import CategoryTable from '../components/admin/CategoryTable';
 import PlaceLocationTable from '../components/admin/PlaceLocationTable';
 import EventLocationTable from '../components/admin/EventLocationTable';
+import PlaceCategoryTable from '../components/admin/PlaceCategoryTable';
+import EventCategoryTable from '../components/admin/EventCategoryTable';
 
 function Admin()
 {
@@ -41,6 +43,8 @@ function Admin()
     const [categories, setCategories] = useState([]);
     const [placeLocations, setPlaceLocations] = useState([]);
     const [eventLocations, setEventLocations] = useState([]);
+    const [placeCategories, setPlaceCategories] = useState([]);
+    const [eventCategories, setEventCategories] = useState([]);
 
     //* - - - </> [DATA] </> - - - *//
     const userService = new Users();
@@ -95,6 +99,14 @@ function Admin()
         //* - - - </> [DATA] </> - - - *//
         const eventLocationData = await locationService.getEventLocations();
         setEventLocations(eventLocationData);
+
+        //* - - - </> [DATA] </> - - - *//
+        const placeCategoryData = await categoryService.getPlaceCategories();
+        setPlaceCategories(placeCategoryData);
+
+        //* - - - </> [DATA] </> - - - *//
+        const eventCategoryData = await categoryService.getEventCategories();
+        setEventCategories(eventCategoryData);
     }
 
     //* - - - </> [DATA] </> - - - *//
@@ -271,10 +283,10 @@ function Admin()
                             <div className='admin-item-data'>
 
                                 {/* - - - </> [TEXT] </> - - - */}
-                                <p className='admin-item-total'>{photos.length}</p>
+                                <p className='admin-item-total'>{placeLocations.length + eventLocations.length}</p>
 
                                 {/* - - - </> [TEXT] </> - - - */}
-                                <p className='admin-item-title'>{photos.length === 1 ? "Location" : "Locations"}</p>
+                                <p className='admin-item-title'>Locations</p>
 
                             </div>
                             
@@ -319,12 +331,23 @@ function Admin()
 
                 {/* - - - </> [TABLE] </> - - - */}
                 {display === 'table-photo' && <PhotoTable data={photos}/>}
+                
+                {/* - - - </> [TABLE] </> - - - */}
+                {display === 'table-category' && <div className='admin-table-mask'>
+
+                    {/* - - - </> [TABLE] </> - - - */}
+                    <CategoryTable data={categories}/>
+
+                    {/* - - - </> [TABLE] </> - - - */}
+                    <PlaceCategoryTable data={placeCategories}/>
+
+                    {/* - - - </> [TABLE] </> - - - */}
+                    <EventCategoryTable data={eventCategories}/>
+                    
+                </div>}
 
                 {/* - - - </> [TABLE] </> - - - */}
-                {display === 'table-category' && <CategoryTable data={categories}/>}
-
-                {/* - - - </> [TABLE] </> - - - */}
-                {display === 'table-location' && <div className='admin-table-location'>
+                {display === 'table-location' && <div className='admin-table-mask'>
 
                     {/* - - - </> [TABLE] </> - - - */}
                     <PlaceLocationTable data={placeLocations}/>
