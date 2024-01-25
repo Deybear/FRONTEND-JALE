@@ -6,9 +6,13 @@ import { Link } from 'react-router-dom';
 import Navigation from '../components/Navigation';
 import Button from '../components/admin/Button';
 import Sessions from '../services/Sessions';
+import UsersTours from '../components/UserTour';
 
 function Home()
 {
+    //* - - - </> [CLICK] </> - - - *//
+    const [display, setDisplay] = useState(false);
+
     //* - - - </> [LOAD] </> - - - *//
     const [loading, setLoading] = useState(true);
 
@@ -87,7 +91,7 @@ function Home()
                 </div>
 
                 {/* - - - </> [BUTTON] </> - - - */}
-                {!loading ? <Button currentUser={account}/> : null}
+                {!loading ? <Button currentUser={account} trigger={display} setTrigger={setDisplay}/> : null}
 
             </div>
 
@@ -95,7 +99,7 @@ function Home()
             <div className='rg-lg-col hide'>
 
                 {/* - - - </> [IMAGE] </> - - - */}
-                <img src="https://shorturl.at/gOSUW" alt="image_001" className='about-image'/>
+                {display ? <UsersTours setTrigger={setDisplay}/> : <img src="https://shorturl.at/gOSUW" alt="image_001" className='about-image'/>}
 
             </div>
 

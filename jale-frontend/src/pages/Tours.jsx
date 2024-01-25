@@ -8,20 +8,26 @@ import Places from '../services/Places';
 
 function Tours()
 {
-    const [place, setPlace] = useState([]);
+    //* - - - </> [DATA] </> - - - *//
+    const [places, setPlaces] = useState([]);
 
+    //* - - - </> [LINK] </> - - - *//
     const navigate = useNavigate();
+
+    //* - - - </> [DATA] </> - - - *//
     const service = new Places();
 
     useEffect(() => {
-        getPlace();
+        getData();
     }, [])
 
-    const getPlace = async () => {
+    //* - - - </> [DATA] </> - - - *//
+    const getData = async () => {
         const data = await service.getPlaces();
-        setPlace(data);
+        setPlaces(data);
     }
-
+    
+    //* - - - </> [LINK] </> - - - *//
     const seeMore = (id) => {
         navigate(`/tours/${id}`);
     }
@@ -40,7 +46,7 @@ function Tours()
                 <div className='places-list'>
                     
                     {/* - - - </> [PLACE] </> - - - */}
-                    {place.map((item, index) => (
+                    {places.map((item, index) => (
 
                         //* - - - </> [DIV] </> - - - *//
                         <div className='place-card' onClick={() => seeMore(item.id)} key={index}>

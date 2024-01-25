@@ -12,7 +12,7 @@ function Button(props)
     const handleAdmin = () => { navigate("/admin"); }
 
     //* - - - </> [LINK] </> - - - *//
-    const handleUser = () => { navigate("/"); }
+    const handleUser = () => { props.setTrigger(!props.trigger); }
 
     return (props.currentUser.user_type === 1) ? (
         
@@ -27,7 +27,7 @@ function Button(props)
     : 
     (
         //* - - - </> [BUTTON] </> - - - *//
-        <button className='float-button' onClick={handleUser}>
+        <button className='float-button' onClick={handleUser} style={{display: props.trigger ? "none" : "inline-block"}}>
 
             {/* - - - </> [ICON] </> - - - */}
             <Icon icon="ic:sharp-person" className='float-button-icon'/>
