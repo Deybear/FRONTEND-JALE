@@ -4,9 +4,10 @@ import UserForm from './UserForm';
 import PlaceForm from './PlaceForm';
 import EventForm from './EventForm';
 import PhotoForm from './PhotoForm';
+import CategoryForm from './CategoryForm';
+import UserTourForm from './UserTourForm';
 import PlaceLocationForm from './PlaceLocationForm';
 import EventLocationForm from './EventLocationForm';
-import CategoryForm from './CategoryForm';
 import PlaceCategoryForm from './PlaceCategoryForm';
 import EventCategoryForm from './EventCategoryForm';
 
@@ -46,6 +47,14 @@ function PopUp(props)
                 {/* - - - </> [FORM] </> - - - */}
                 <PhotoForm setTrigger={props.setTrigger} type={props.action} data={props.photo}/>
                 
+            </div>}
+
+            {/* - - - </> [FORM] </> - - - */}
+            {props.id === 'user-tour-table' && <div className='popup-card-v1'>
+
+                {/* - - - </> [FORM] </> - - - */}
+                <UserTourForm setTrigger={props.setTrigger} type={props.action} data={props.tour}/>
+            
             </div>}
 
             {/* - - - </> [FORM] </> - - - */}

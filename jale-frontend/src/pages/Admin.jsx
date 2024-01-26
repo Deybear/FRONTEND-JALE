@@ -16,6 +16,7 @@ import Events from '../services/Events';
 import Photos from '../services/Photos';
 import Sessions from '../services/Sessions';
 import Locations from '../services/Locations';
+import UserTours from '../services/UserTours';
 import Categories from '../services/Categories';
 
 //* - - - </> [TABLE] </> - - - *//
@@ -23,6 +24,7 @@ import UserTable from '../components/admin/UserTable';
 import PlaceTable from '../components/admin/PlaceTable';
 import EventTable from '../components/admin/EventTable';
 import PhotoTable from '../components/admin/PhotoTable';
+import UserTourTable from '../components/admin/UserTourTable';
 import CategoryTable from '../components/admin/CategoryTable';
 import PlaceLocationTable from '../components/admin/PlaceLocationTable';
 import EventLocationTable from '../components/admin/EventLocationTable';
@@ -40,6 +42,7 @@ function Admin()
     const [events, setEvents] = useState([]);
     const [photos, setPhotos] = useState([]);
     const [sessions, setSessions] = useState([]);
+    const [userTours, setUserTours] = useState([]);
     const [categories, setCategories] = useState([]);
     const [placeLocations, setPlaceLocations] = useState([]);
     const [eventLocations, setEventLocations] = useState([]);
@@ -53,6 +56,7 @@ function Admin()
     const photoService = new Photos();
     const sessionService = new Sessions();
     const locationService = new Locations();
+    const userTourService = new UserTours();
     const categoryService = new Categories();
 
     //* - - - </> [LINK] </> - - - *//
@@ -89,6 +93,10 @@ function Admin()
         setSessions(sessionData);
 
         //* - - - </> [DATA] </> - - - *//
+        const userTourData = await userTourService.getUserTours();
+        setUserTours(userTourData);
+
+        //* - - - </> [DATA] </> - - - *//
         const categoryData = await categoryService.getCategories();
         setCategories(categoryData);
 
@@ -118,6 +126,7 @@ function Admin()
     
     return (
 
+        //* - - - </> [DIV] </> - - - *//
         <section className='main-section admin'>
             
             {/* - - - </> [DIV] </> - - - */}
@@ -315,6 +324,30 @@ function Admin()
                             </div>
                             
                         </div>
+
+                        {/* - - - </> [DIV] </> - - - */}
+                        <div className='admin-item' onClick={() => setDisplay('table-user-tour')} style={{background: display === 'table-user-tour' && 'var(--color_002)'}}>
+
+                            {/* - - - </> [ICON] </> - - - */}
+                            <span className='admin-item-circle'>
+                                
+                                {/* - - - </> [ICON] </> - - - */}
+                                <Icon icon="ic:sharp-backpack" className='admin-item-icon' style={{color: display === 'table-user-tour' && 'var(--color_002)'}}/>
+                                
+                            </span>
+                            
+                            {/* - - - </> [DIV] </> - - - */}
+                            <div className='admin-item-data'>
+
+                                {/* - - - </> [TEXT] </> - - - */}
+                                <p className='admin-item-total'>{userTours.length}</p>
+
+                                {/* - - - </> [TEXT] </> - - - */}
+                                <p className='admin-item-title'>{userTours.length === 1 ? "Tour" : "Tours"}</p>
+
+                            </div>
+                            
+                        </div>
                     
                     </div>
 
@@ -331,6 +364,17 @@ function Admin()
 
                 {/* - - - </> [TABLE] </> - - - */}
                 {display === 'table-photo' && <PhotoTable data={photos}/>}
+
+                {/* - - - </> [TABLE] </> - - - */}
+                {display === 'table-location' && <div className='admin-table-mask'>
+
+                    {/* - - - </> [TABLE] </> - - - */}
+                    <PlaceLocationTable data={placeLocations}/>
+
+                    {/* - - - </> [TABLE] </> - - - */}
+                    <EventLocationTable data={eventLocations}/>
+                    
+                </div>}
                 
                 {/* - - - </> [TABLE] </> - - - */}
                 {display === 'table-category' && <div className='admin-table-mask'>
@@ -347,15 +391,7 @@ function Admin()
                 </div>}
 
                 {/* - - - </> [TABLE] </> - - - */}
-                {display === 'table-location' && <div className='admin-table-mask'>
-
-                    {/* - - - </> [TABLE] </> - - - */}
-                    <PlaceLocationTable data={placeLocations}/>
-
-                    {/* - - - </> [TABLE] </> - - - */}
-                    <EventLocationTable data={eventLocations}/>
-                    
-                </div>}
+                {display === 'table-user-tour' && <UserTourTable data={userTours}/>}
                 
             </div>
 
