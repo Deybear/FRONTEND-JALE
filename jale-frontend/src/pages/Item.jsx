@@ -1,18 +1,36 @@
 import React, { useEffect, useState } from 'react';
+
+//* - - - </> [CSS] </> - - - *//
 import '../styles/Grid.css';
 import '../styles/Item.css';
+
+//* - - - </> [ITEM] </> - - - *//
 import { Icon } from '@iconify/react';
-import { useParams } from 'react-router-dom';
-import Map from '../components/Map';
+import { useNavigate, useParams } from 'react-router-dom';
+
+//* - - - </> [DATA] </> - - - *//
 import Places from '../services/Places';
+import Sessions from '../services/Sessions';
+import UserTours from '../services/UserTours';
+
+//* - - - </> [ITEM] </> - - - *//
+import Map from '../components/Map';
 import Gallery from '../components/Gallery';
 import Navigation from '../components/Navigation';
 
 function Item()
 {
+    let { id } = useParams();
+
+    //* - - - </> [DATA] </> - - - *//
+    const [data, setData] = useState({user_id: 0, place_id: 0});
+
+    //* - - - </> [DATA] </> - - - *//
+    const [userTours, setUserTours] = useState([]);
+
     //* - - - </> [CLICK] </> - - - *//
     const [display, setDisplay] = useState(true);
-
+    
     //* - - - </> [DATA] </> - - - *//
     const [gallery, setGallery] = useState([]);
 
@@ -20,11 +38,18 @@ function Item()
     const [address, setAddress] = useState([]);
 
     //* - - - </> [DATA] </> - - - *//
-    const [place, setPlace] = useState([]);
+    const [session, setSession] = useState([]);
 
     //* - - - </> [DATA] </> - - - *//
-    const service = new Places();
-    let { id } = useParams();
+    const [place, setPlace] = useState([]);
+    
+    //* - - - </> [DATA] </> - - - *//
+    const placeService = new Places();
+    const sessionService = new Sessions();
+    const userTourService = new UserTours();
+
+    //* - - - </> [LINK] </> - - - *//
+    const navigate = useNavigate();
 
     //* - - - </> [DATE] </> - - - *//
     const currentDate = new Date();
@@ -33,18 +58,61 @@ function Item()
     
     useEffect(() => {
         
-        getPlace();
+        getData();
+        setData({user_id: session.user_id, place_id: parseInt(id)});
 
-    }, [])
+    }, [session])
 
     //* - - - </> [DATA] </> - - - *//
-    const getPlace = async () => {
+    const getData = async () => {
 
         //* - - - </> [DATA] </> - - - *//
-        const data = await service.getPlace(id);
-        setAddress(data.place_location);
-        setGallery(data.photos);
-        setPlace(data);
+        const placeData = await placeService.getPlace(id);
+        setAddress(placeData.place_location);
+        setGallery(placeData.photos);
+        setPlace(placeData);
+
+        //* - - - </> [DATA] </> - - - *//
+        const sessionData = await sessionService.getCurrentUser();
+        setSession(sessionData);
+
+        //* - - - </> [DATA] </> - - - *//
+        const userTourData = await userTourService.getUserTours();
+        setUserTours(userTourData);
+    }
+    
+    //* - - - </> [DATA] </> - - - *//
+    const handleCreate = () => {
+        
+        //* - - - </> [TYPE] </> - - - *//
+        if(Object.keys(session).length > 0)
+        {
+            try
+            {
+                userTours.forEach(item => {
+
+                    if(item.place_id == data.place_id && item.user_id == data.user_id)
+                    {
+                        return alert("It's already on your list!");
+                    }
+                    else
+                    {
+                        return alert("It's not on your list!");
+                        // userTourService.createUserTour(data);
+                    }
+                });
+            }
+            catch(error)
+            {
+                //* - - - </> [ERROR] </> - - - *//
+                console.error(error);
+            }
+        }
+        else
+        {
+            //* - - - </> [ERROR] </> - - - *//
+            navigate("/signin");
+        }
     }
     
     return (
@@ -86,7 +154,20 @@ function Item()
                         <div className='item-rating-score'>
 
                             {/* - - - </> [ICON] </> - - - */}
-                            {Array(5).fill(<Icon icon="ic:baseline-star" color={"#E4E5E9"} className='item-rating-star'/>).fill(<Icon icon="ic:baseline-star" color={"#FFC439"} className='item-rating-star'/>, 0, Math.floor(place.place_score))}
+                            {Array(5).fill(null).map((_, index) => {
+                                
+                                //* - - - </> [ICON] </> - - - *//
+                                if (index < Math.floor(place.place_score))
+                                {
+                                    //* - - - </> [ICON] </> - - - *//
+                                    return ( <Icon key={`star-${index}`} icon="ic:baseline-star" color={"#FFC439"} className='item-rating-star'/>)
+                                }
+                                else
+                                {
+                                    //* - - - </> [ICON] </> - - - *//
+                                    return (<Icon key={`star-${index}`} icon="ic:baseline-star" color={"#E4E5E9"} className='item-rating-star'/>)
+                                }
+                            })}
                         
                         </div>
 
@@ -167,7 +248,7 @@ function Item()
                         </div>
 
                         {/* - - - </> [DIV] </> - - - */}
-                        <div className='item-button-wrapper'>
+                        <div className='item-button-wrapper' onClick={handleCreate}>
 
                             {/* - - - </> [ICON] </> - - - */}
                             <Icon icon="ic:baseline-add-circle" className='item-button-icon-v1'/>

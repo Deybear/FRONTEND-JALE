@@ -64,9 +64,22 @@ function Tours()
 
                             {/* - - - </> [DIV] </> - - - */}
                             <div className='place-rating-score'>
-
+                                
                                 {/* - - - </> [ICON] </> - - - */}
-                                {Array(5).fill(<Icon icon="ic:baseline-star" color={"#E4E5E9"} className='place-rating-star'/>).fill(<Icon icon="ic:baseline-star" color={"#FFC439"} className='place-rating-star'/>, 0, Math.floor(item.place_score))}
+                                {Array(5).fill(null).map((_, index) => {
+                                    
+                                    //* - - - </> [ICON] </> - - - *//
+                                    if (index < Math.floor(item.place_score))
+                                    {
+                                        //* - - - </> [ICON] </> - - - *//
+                                        return ( <Icon key={`star-${index}`} icon="ic:baseline-star" color={"#FFC439"} className='place-rating-star'/>)
+                                    }
+                                    else
+                                    {
+                                        //* - - - </> [ICON] </> - - - *//
+                                        return (<Icon key={`star-${index}`} icon="ic:baseline-star" color={"#E4E5E9"} className='place-rating-star'/>)
+                                    }
+                                })}
                             
                             </div>
 
