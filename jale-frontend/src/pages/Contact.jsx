@@ -4,7 +4,6 @@ import '../styles/Contact.css';
 import { Icon } from '@iconify/react';
 
 import Map from '../components/Map';
-import Navigation from '../components/Navigation';
 import ContactForm from '../components/ContactForm';
 
 function Contact()
@@ -15,10 +14,7 @@ function Contact()
 
             {/* - - - </> [DIV] </> - - - */}
             <div className='lf-lg-col'>
-
-                {/* - - - </> [NAV] </> - - - */}
-                <Navigation/>
-
+                
                 {/* - - - </> [DIV] </> - - - */}
                 <div className='contact-formulary'>
 

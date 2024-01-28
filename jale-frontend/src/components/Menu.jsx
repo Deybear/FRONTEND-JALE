@@ -1,68 +1,85 @@
 import React from 'react';
 import { Icon } from '@iconify/react';
-import { Link } from 'react-router-dom';
-
 import logo from '../images/main-logo.svg';
 import '../styles/Menu.css';
+import { useLocation, useNavigate } from 'react-router-dom';
 
 function Menu()
 {
+    //* - - - </> [LINK] </> - - - *//
+    const navigate = useNavigate();
+
+    //* - - - </> [LINK] </> - - - *//
+    const location = useLocation();
+
+    //* - - - </> [LINK] </> - - - *//
+    const handleRoute = (link) => {
+
+        navigate(link);
+    }
+    
     return (
 
         //* - - - </> [NAV] </> - - - *//
         <nav className='menu'>
 
-            {/* - - - </> [DIV] </> - - - */}
-            <div className='menu-image'>
-
-                {/* - - - </> [IMG] </> - - - */}
-                <img src={logo} alt="menu-logo" className='menu-logo'/>
-
-            </div>
-
             {/* - - - </> [UL] </> - - - */}
             <ul className='menu-list'>
 
                 {/* - - - </> [LINK] </> - - - */}
-                <li className='menu-item'>
-
-                    {/* - - - </> [LINK] </> - - - */}
-                    <Link to="https://www.youtube.com" target="_blank" className='menu-link'>YOUTUBE</Link>
+                <li className='menu-item' onClick={() => handleRoute("/")}>
 
                     {/* - - - </> [ICON] </> - - - */}
-                    <Icon icon="fa6-brands:youtube" className='menu-icon'/>
+                    <Icon icon="ic:sharp-home" className='menu-icon' style={{color: location.pathname === "/" ? "var(--color_001)" : "var(--color_003)"}}/>
+
+                    {/* - - - </> [ICON] </> - - - */}
+                    {location.pathname === "/" ? <span className='menu-active'/> : null}
                     
                 </li>
 
                 {/* - - - </> [LINK] </> - - - */}
-                <li className='menu-item'>
-
-                    {/* - - - </> [LINK] </> - - - */}
-                    <Link to="https://www.twitter.com" target="_blank" className='menu-link'>TWITTER</Link>
+                <li className='menu-item' onClick={() => handleRoute("/tours")}>
 
                     {/* - - - </> [ICON] </> - - - */}
-                    <Icon icon="fa6-brands:twitter" className='menu-icon'/>
+                    <Icon icon="ic:sharp-backpack" className='menu-icon' style={{color: location.pathname === "/tours" ? "var(--color_001)" : "var(--color_003)"}}/>
+
+                    {/* - - - </> [ICON] </> - - - */}
+                    {location.pathname === "/tours" ? <span className='menu-active'/> : null}
                     
                 </li>
 
-                {/* - - - </> [LI] </> - - - */}
-                <li className='menu-item'>
-                    
-                    {/* - - - </> [LINK] </> - - - */}
-                    <Link to="https://www.facebook.com" target="_blank" className='menu-link'>FACEBOOK</Link>
+                {/* - - - </> [LINK] </> - - - */}
+                <li className='menu-item' onClick={() => handleRoute("/about")}>
 
                     {/* - - - </> [ICON] </> - - - */}
-                    <Icon icon="fa6-brands:facebook" className='menu-icon'/>
+                    <Icon icon="ic:sharp-info" className='menu-icon' style={{color: location.pathname === "/about" ? "var(--color_001)" : "var(--color_003)"}}/>
+
+                    {/* - - - </> [ICON] </> - - - */}
+                    {location.pathname === "/about" ? <span className='menu-active'/> : null}
                     
                 </li>
 
-            </ul>
+                {/* - - - </> [LINK] </> - - - */}
+                <li className='menu-item' onClick={() => handleRoute("/contact")}>
 
-            {/* - - - </> [UL] </> - - - */}
-            <ul className='menu-action'>
+                    {/* - - - </> [ICON] </> - - - */}
+                    <Icon icon="ic:sharp-phone" className='menu-icon' style={{color: location.pathname === "/contact" ? "var(--color_001)" : "var(--color_003)"}}/>
 
-                {/* - - - </> [IMG] </> - - - */}
-                {/* <img src={logo} alt="menu-logo" className='menu-logo'/> */}
+                    {/* - - - </> [ICON] </> - - - */}
+                    {location.pathname === "/contact" ? <span className='menu-active'/> : null}
+                    
+                </li>
+
+                {/* - - - </> [LINK] </> - - - */}
+                <li className='menu-item' onClick={() => handleRoute("/signin")}>
+
+                    {/* - - - </> [ICON] </> - - - */}
+                    <Icon icon="ic:sharp-info" className='menu-icon' style={{color: location.pathname === "/signin" ? "var(--color_001)" : "var(--color_003)"}}/>
+
+                    {/* - - - </> [ICON] </> - - - */}
+                    {location.pathname === "/signin" ? <span className='menu-active'/> : null}
+                    
+                </li>
 
             </ul>
 

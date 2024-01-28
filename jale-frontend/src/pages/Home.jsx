@@ -3,10 +3,9 @@ import '../styles/Grid.css';
 import '../styles/Home.css';
 import { Icon } from '@iconify/react';
 import { Link } from 'react-router-dom';
-import Navigation from '../components/Navigation';
 import Button from '../components/admin/Button';
-import Sessions from '../services/Sessions';
 import UsersTours from '../components/UserTour';
+import Sessions from '../services/Sessions';
 
 function Home()
 {
@@ -43,10 +42,7 @@ function Home()
 
             {/* - - - </> [DIV] </> - - - */}
             <div className='lf-lg-col'>
-
-                {/* - - - </> [NAV] </> - - - */}
-                <Navigation/>
-
+                
                 {/* - - - </> [DIV] </> - - - */}
                 <div className='home-info'>
 

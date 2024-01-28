@@ -3,7 +3,6 @@ import '../styles/Grid.css';
 import '../styles/About.css';
 import { Icon } from '@iconify/react';
 import { Link } from 'react-router-dom';
-import Navigation from '../components/Navigation';
 
 function About()
 {
@@ -13,9 +12,6 @@ function About()
 
             {/* - - - </> [DIV] </> - - - */}
             <div className='lf-lg-col'>
-
-                {/* - - - </> [NAV] </> - - - */}
-                <Navigation/>
 
                 {/* - - - </> [DIV] </> - - - */}
                 <div className='about-info'>

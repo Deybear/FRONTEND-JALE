@@ -1,5 +1,7 @@
 import React from 'react';
 import { Routes, Route } from 'react-router-dom';
+import Navigation from '../components/Navigation';
+import Menu from '../components/Menu';
 
 import Item from '../pages/Item';
 import Home from '../pages/Home';
@@ -8,7 +10,6 @@ import About from '../pages/About';
 import Tours from '../pages/Tours';
 import SignIn from '../pages/SignIn';
 import SignUp from '../pages/SignUp';
-import Menu from '../components/Menu';
 import Contact from '../pages/Contact';
 import NotFound from '../pages/NotFound';
 
@@ -19,7 +20,7 @@ function AppRouter()
         <>
 
             {/* - - - </> [NAV] </> - - - */}
-            <Menu/>
+            <Navigation/>
 
             {/* - - - </> [LINK] </> - - - */}
             <Routes>
@@ -52,6 +53,8 @@ function AppRouter()
                 <Route path='*' exact={true} element={ <NotFound/> } />
 
             </Routes>
+
+            <Menu/>
 
         </>
 

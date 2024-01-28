@@ -16,7 +16,6 @@ import UserTours from '../services/UserTours';
 //* - - - </> [ITEM] </> - - - *//
 import Map from '../components/Map';
 import Gallery from '../components/Gallery';
-import Navigation from '../components/Navigation';
 
 function Item()
 {
@@ -121,10 +120,7 @@ function Item()
 
             {/* - - - </> [DIV] </> - - - */}
             <div className='lf-lg-col'>
-
-                {/* - - - </> [NAV] </> - - - */}
-                <Navigation/>
-
+                
                 {/* - - - </> [DIV] </> - - - */}
                 <div className='item-status'>
 

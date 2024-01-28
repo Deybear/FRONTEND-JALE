@@ -1,12 +1,44 @@
-
 /* - - - </> [NAV] </> - - - */
 .navigation
 {
     margin: 0;
-    width: 100%;
+    padding: 0;
+    z-index: 1;
+    width: 10%;
+    height: 100%;
     display: flex;
-    padding-top: 40px;
-    padding-bottom: 40px;
+    align-items: center;
+    box-sizing: border-box;
+    flex-direction: column;
+    background: var(--color_001);
+    box-shadow: -10px 0px 30px 1px rgb(27, 27, 27, .5);
+}
+
+/* - - - </> [DIV] </> - - - */
+.navigation-image
+{
+    margin: 0;
+    padding: 0;
+    width: 100%;
+    height: 25%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+/* - - - </> [IMG] </> - - - */
+.navigation-logo
+{
+    width: 40%;
+    filter: grayscale();
+}
+
+/* - - - </> [IMG] </> - - - */
+.navigation-logo:hover
+{
+    filter: none;
+    cursor: pointer;
+    transition: .5s;
 }
 
 /* - - - </> [UL] </> - - - */
@@ -15,35 +47,93 @@
     margin: 0;
     padding: 0;
     width: 100%;
+    height: 50%;
     display: flex;
     align-items: center;
+    flex-direction: column;
     justify-content: space-evenly;
 }
 
 /* - - - </> [LI] </> - - - */
 .navigation-item
 {
-    list-style-type: none;
+    width: 100%;
+    height: 50%;
+    display: flex;
+    cursor: pointer;
+    position: relative;
+    align-items: center;
+    justify-content: center;
 }
 
-/* - - - </> [LINK] </> - - - */
-.navigation-link
+/* - - - </> [ICON] </> - - - */
+.navigation-icon
 {
-    font-size: 14px;
-    text-decoration: none;
-    color: var(--color_002);
-}
-
-/* - - - </> [LINK] </> - - - */
-.navigation-link:hover
-{
+    z-index: 1;
+    font-size: 24px;
+    line-height: 100%;
+    position: absolute;
     color: var(--color_003);
 }
 
 /* - - - </> [LINK] </> - - - */
-.active
+.active .navigation-icon
 {
-    padding-bottom: 6px;
-    color: var(--color_003);
-    border-bottom: 2px solid var(--color_003);
+    color: var(--color_001);
+}
+
+/* - - - </> [ICON] </> - - - */
+.navigation-active
+{
+    width: 100%;
+    height: 80%;
+    display: flex;
+    line-height: 100%;
+    margin-right: 30px;
+    align-items: center;
+    justify-content: center;
+    border-top-right-radius: 50px;
+    border-bottom-right-radius: 50px;
+    background-color: var(--color_003);
+}
+
+/* - - - </> [DIV] </> - - - */
+.navigation-action
+{
+    margin: 0;
+    padding: 0;
+    width: 100%;
+    height: 25%;
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+    justify-content: space-evenly;
+}
+
+/* Extra small devices (phones, 600px and down) */
+@media only screen and (max-width: 600px)
+{
+
+}
+
+/* Medium devices (landscape tablets, 768px and down) */
+@media only screen and (max-width: 768px)
+{
+    /* - - - </> [NAV] </> - - - */
+    .navigation
+    {
+        display: none;
+    }
+}
+
+/* Large devices (laptops/desktops, 992px and down) */
+@media only screen and (max-width: 992px)
+{
+
+}
+
+/* Extra large devices (large laptops and desktops, 1200px and down) */
+@media only screen and (max-width: 1200px)
+{
+    
 }
