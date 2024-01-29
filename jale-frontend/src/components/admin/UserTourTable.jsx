@@ -10,7 +10,7 @@ function UserTourTable(props)
     const [popup, setPopup] = useState(false);
     const [type, setType] = useState('');
     const [data, setData] = useState([]);
-
+    
     //* - - - </> [DATA] </> - - - *//
     const service = new UserTours();
 

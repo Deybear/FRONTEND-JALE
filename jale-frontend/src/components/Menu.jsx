@@ -74,10 +74,10 @@ function Menu()
                 <li className='menu-item' onClick={() => handleRoute("/signin")}>
 
                     {/* - - - </> [ICON] </> - - - */}
-                    <Icon icon="ic:sharp-info" className='menu-icon' style={{color: location.pathname === "/signin" ? "var(--color_001)" : "var(--color_003)"}}/>
+                    <Icon icon="ic:sharp-play-circle" className='menu-icon' style={{color: location.pathname === "/signin" || location.pathname === "/signup" ? "var(--color_001)" : "var(--color_003)"}}/>
 
                     {/* - - - </> [ICON] </> - - - */}
-                    {location.pathname === "/signin" ? <span className='menu-active'/> : null}
+                    {location.pathname === "/signin" || location.pathname === "/signup" ? <span className='menu-active'/> : null}
                     
                 </li>
 

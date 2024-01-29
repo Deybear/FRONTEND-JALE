@@ -88,4 +88,27 @@ export default class UserTours
         }
     }
 
+    // //* - - - </> [DELETE] </> - - - *//
+    async deleteTour (data)
+    {
+        //* - - - </> [DATA] </> - - - *//
+        const userId = data.user_id;
+
+        //* - - - </> [DATA] </> - - - *//
+        const placeId = data.place_id;
+
+        try
+        {
+            //* - - - </> [URL] </> - - - *//
+            const response = await axios.delete('http://localhost:3000/api/delete_tour', { data: { user_id: userId, place_id: placeId } });
+            console.log(response.data);
+        }
+        catch (error)
+        {
+            //* - - - </> [ERROR] </> - - - *//
+            console.log(error);
+            throw error;
+        }
+    }
+
 };

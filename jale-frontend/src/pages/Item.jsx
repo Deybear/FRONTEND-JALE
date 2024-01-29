@@ -22,9 +22,6 @@ function Item()
     let { id } = useParams();
 
     //* - - - </> [DATA] </> - - - *//
-    const [data, setData] = useState({user_id: 0, place_id: 0});
-
-    //* - - - </> [DATA] </> - - - *//
     const [userTours, setUserTours] = useState([]);
 
     //* - - - </> [CLICK] </> - - - *//
@@ -38,7 +35,7 @@ function Item()
 
     //* - - - </> [DATA] </> - - - *//
     const [session, setSession] = useState([]);
-
+    
     //* - - - </> [DATA] </> - - - *//
     const [place, setPlace] = useState([]);
     
@@ -58,9 +55,8 @@ function Item()
     useEffect(() => {
         
         getData();
-        setData({user_id: session.user_id, place_id: parseInt(id)});
 
-    }, [session])
+    }, [])
 
     //* - - - </> [DATA] </> - - - *//
     const getData = async () => {
@@ -83,28 +79,39 @@ function Item()
     //* - - - </> [DATA] </> - - - *//
     const handleCreate = () => {
         
+        //* - - - </> [DATA] </> - - - *//
+        const data = {user_id: session.user_id, place_id: parseInt(id)}
+
         //* - - - </> [TYPE] </> - - - *//
         if(Object.keys(session).length > 0)
         {
-            try
+            if(userTours.some((item) => item.user_id === data.user_id && item.place_id === data.place_id))
             {
-                userTours.forEach(item => {
-
-                    if(item.place_id == data.place_id && item.user_id == data.user_id)
-                    {
-                        return alert("It's already on your list!");
-                    }
-                    else
-                    {
-                        return alert("It's not on your list!");
-                        // userTourService.createUserTour(data);
-                    }
-                });
+                try
+                {
+                    //* - - - </> [DATA] </> - - - *//
+                    userTourService.deleteTour(data);
+                    navigate("/");
+                }
+                catch(error)
+                {
+                    //* - - - </> [ERROR] </> - - - *//
+                    console.error(error);
+                }
             }
-            catch(error)
+            else
             {
-                //* - - - </> [ERROR] </> - - - *//
-                console.error(error);
+                try
+                {
+                    //* - - - </> [DATA] </> - - - *//
+                    userTourService.createUserTour(data);
+                    navigate("/");
+                }
+                catch(error)
+                {
+                    //* - - - </> [ERROR] </> - - - *//
+                    console.error(error);
+                }
             }
         }
         else
@@ -247,10 +254,10 @@ function Item()
                         <div className='item-button-wrapper' onClick={handleCreate}>
 
                             {/* - - - </> [ICON] </> - - - */}
-                            <Icon icon="ic:baseline-add-circle" className='item-button-icon-v1'/>
+                            <Icon icon={userTours.some((item) => item.user_id === session.user_id && item.place_id === parseInt(id)) ? "ic:sharp-remove-circle" : "ic:sharp-add-circle"} className='item-button-icon-v1'/>
 
                             {/* - - - </> [BUTTON] </> - - - */}
-                            <input type="button" value="Add to list" className='item-button-v1'/>
+                            <input type="button" value={userTours.some((item) => item.user_id === session.user_id && item.place_id === parseInt(id)) ? "Remove place" : "Add to list"} className='item-button-v1'/>
 
                         </div>
 

@@ -87,7 +87,7 @@ function Navigation()
                 <li className='navigation-item' onClick={() => handleRoute("/signin")}>
 
                     {/* - - - </> [ICON] </> - - - */}
-                    <Icon icon="ic:sharp-info" className='navigation-icon' style={{color: location.pathname === "/signin" || location.pathname === "/signup" ? "var(--color_001)" : "var(--color_003)"}}/>
+                    <Icon icon="ic:sharp-play-circle" className='navigation-icon' style={{color: location.pathname === "/signin" || location.pathname === "/signup" ? "var(--color_001)" : "var(--color_003)"}}/>
 
                     {/* - - - </> [ICON] </> - - - */}
                     {location.pathname === "/signin" || location.pathname === "/signup" ? <span className='navigation-active'/> : null}

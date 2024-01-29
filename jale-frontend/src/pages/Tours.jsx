@@ -16,9 +16,11 @@ import Events from '../services/Events';
 function Tours()
 {
     //* - - - </> [DATA] </> - - - *//
-    const [categories, setCategories] = useState([]);
     const [places, setPlaces] = useState([]);
     const [events, setEvents] = useState([]);
+    const [search, setSearch] = useState("");
+    const [option, setOption] = useState(null);
+    const [categories, setCategories] = useState([]);
 
     //* - - - </> [LINK] </> - - - *//
     const navigate = useNavigate();
@@ -27,7 +29,7 @@ function Tours()
     const categoryService = new Categories();
     const placeService = new Places();
     const eventService = new Events();
-
+    
     useEffect(() => {
         
         getData();
@@ -42,13 +44,59 @@ function Tours()
         setCategories(categoryData);
         
         //* - - - </> [DATA] </> - - - *//
-        const placeData = await placeService.getPlaces();
-        setPlaces(placeData);
+        // const placeData = await placeService.getPlaces();
+        // setPlaces(placeData);
 
         //* - - - </> [DATA] </> - - - *//
         const eventData = await eventService.getEvents();
         setEvents(eventData);
     }
+
+    useEffect(() => {
+
+        getPlace();
+        
+    }, [search]);
+
+    const getPlace = async () => {
+
+        let data = [];
+
+        if (option !== null)
+        {
+            //* - - - </> [DATA] </> - - - *//
+            data = await placeService.getPlaceCategories(option);
+        }
+        else
+        {
+            //* - - - </> [DATA] </> - - - *//
+            data = await placeService.getPlaces();
+        }
+
+        //* - - - </> [DATA] </> - - - *//
+        const filteredPlaces = data.filter((item) => item.place_name.toLowerCase().includes(search.toLowerCase()));
+        setPlaces(filteredPlaces);
+    };
+
+    //* - - - </> [DATA] </> - - - *//
+    const handleFilter = async (id) => {
+
+        //* - - - </> [DATA] </> - - - *//
+        const data = await placeService.getPlaceCategories(id);
+        setPlaces(data);
+    };
+
+    //* - - - </> [DATA] </> - - - *//
+    const handleSearch = (event) => {
+        setSearch(event.target.value);
+    };
+
+    //* - - - </> [DATA] </> - - - *//
+    const handleOption = (event) => {
+        const chosenOption = event.target.value;
+        setOption(chosenOption);
+        handleFilter(chosenOption);
+    };
     
     //* - - - </> [LINK] </> - - - *//
     const seeMore = (id) => {
@@ -69,6 +117,28 @@ function Tours()
                     {/* - - - </> [TEXT] </> - - - */}
                     <p className='tours-title'>Let's Travel!</p>
 
+                </div>
+
+                {/* - - - </> [INPUT] </> - - - */}
+                <input type="text" placeholder="Search a place here*" value={search} onChange={handleSearch}/>
+
+                <div>
+
+                    <label htmlFor="dropdown">Select a category:</label>
+
+                    <select id="dropdown" value={option} onChange={handleOption} placeholder="Select a category">
+
+                        <option value="">Select an option</option>
+
+                        {categories.map((category) => (
+
+                            <option key={category.id} value={category.id}>{category.category_desc}</option>
+
+                        ))}
+
+                    </select>
+                    
+                    <button className="reload-button">Clean</button>
                 </div>
 
                 {/* - - - </> [DIV] </> - - - */}

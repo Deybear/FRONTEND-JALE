@@ -9,7 +9,6 @@ export default class Places
         {
             //* - - - </> [URL] </> - - - *//
             const { data } = (await axios.get('http://localhost:3000/api/places'));
-            
             return data;
         }
         catch (error)
@@ -84,6 +83,24 @@ export default class Places
         catch(error)
         {
             //* - - - </> [ERROR] </> - - - *//
+            console.log(error);
+            throw error;
+        }
+    }
+    
+    //* - - - </> [DELETE] </> - - - *//
+    async getPlaceCategories(category_id)
+    {
+        try
+        {
+            //* - - - </> [URL] </> - - - *//
+            const response = await axios.get(`http://localhost:3000/api/places?category_id=${category_id}`);
+            console.log(response);
+            return response.data;
+        }
+        catch (error)
+        {
+            // - - - </> [ERROR] </> - - - //
             console.log(error);
             throw error;
         }
