@@ -1,0 +1,37 @@
+/* - - - </> [DIV] </> - - - */
+.user-tours-container
+{
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+    justify-content: center;
+}
+
+/* - - - </> [DIV] </> - - - */
+.user-tours-card
+{
+    width: 100%;
+    display: flex;
+    align-items: center;
+    border-radius: 50px;
+    margin-bottom: 20px;
+    color: var(--color_001);
+    padding: 0px 10px 0px 20px;
+    background: var(--color_003);
+    justify-content: space-between;
+}
+
+/* - - - </> [DIV] </> - - - */
+.user-tours-title
+{
+    font-size: 14px;
+    font-weight: 500;
+    line-height: 100%;
+}
+
+/* - - - </> [DIV] </> - - - */
+.user-tours-icon
+{
+    cursor: pointer;
+    font-size: 20px;
+}

@@ -8,6 +8,7 @@ import '../styles/Item.css';
 import { Icon } from '@iconify/react';
 import { useNavigate, useParams } from 'react-router-dom';
 
+
 //* - - - </> [DATA] </> - - - *//
 import Places from '../services/Places';
 import Sessions from '../services/Sessions';
@@ -16,6 +17,7 @@ import UserTours from '../services/UserTours';
 //* - - - </> [ITEM] </> - - - *//
 import Map from '../components/Map';
 import Gallery from '../components/Gallery';
+import image from '../images/MAP_DEFAULT.png';
 
 function Item()
 {
@@ -271,7 +273,7 @@ function Item()
             <div className='rg-lg-col lite'>
 
                 {/* - - - </> [IMG] </> - - - */}
-                {display ? (<Gallery src={gallery}/>) : (address ? <Map lat={address.place_lat} lon={address.place_lon}/> : <div>NOT FOUND</div>)}
+                {display ? (<Gallery src={gallery}/>) : (address ? <Map lat={address.place_lat} lon={address.place_lon}/> : <img src={image} alt="default-image" className='message-image'/>)}
                 
             </div>
 

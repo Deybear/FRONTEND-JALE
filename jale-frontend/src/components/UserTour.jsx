@@ -3,6 +3,7 @@ import { Icon } from '@iconify/react';
 import { useNavigate } from 'react-router-dom';
 import Sessions from '../services/Sessions';
 import Users from '../services/Users';
+import '../styles/UserTour.css';
 import '../styles/Form.css';
 
 function UsersTours(props)
@@ -46,11 +47,26 @@ function UsersTours(props)
         <section>
 
             <h2>Welcome {user.user_name} <span style={{color: "var(--color_003)"}}>{user.user_lastname}</span></h2>
-            <ul>
-                <li>{user.user_email}</li>
-                <li>{user.user_birthdate}</li>
-                {place.map((item, index) => (<li key={index}>{item.place_name}</li>))}
-            </ul>
+
+            {/* - - - </> [DIV] </> - - - */}
+            <div className='user-tours-container'>
+
+                {/* - - - </> [DIV] </> - - - */}
+                {place.map((item, index) => (
+
+                    <div className='user-tours-card' key={index}>
+
+                        {/* - - - </> [TEXT] </> - - - */}
+                        <p className='user-tours-title'>{item.place_name}</p>
+
+                        {/* - - - </> [ICON] </> - - - */}
+                        <Icon icon="ic:sharp-remove-circle" className='user-tours-icon'/>
+
+                    </div>
+
+                ))}
+
+            </div>
 
             {/* - - - </> [DIV] </> - - - */}
             <div className='formulary-actions'>

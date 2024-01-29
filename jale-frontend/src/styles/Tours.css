@@ -24,6 +24,44 @@
 }
 
 /* - - - </> [DIV] </> - - - */
+.tours-input-wrapper
+{
+    position: relative;
+}
+
+/* - - - </> [ICON] </> - - - */
+.tours-input-icon
+{
+    top: 50%;
+    left: 20px;
+    font-size: 18px;
+    position: absolute;
+    box-sizing: border-box;
+    color: var(--color_002);
+    transform: translateY(-50%);
+}
+
+/* - - - </> [INPUT] </> - - - */
+.tours-input
+{
+    margin: 0;
+    padding: 0;
+    width: 100%;
+    border: none;
+    resize: none;
+    outline: none;
+    font-size: 12px;
+    padding: 8px 8px;
+    border-radius: 8px;
+    padding-left: 3.5rem;
+    box-sizing: border-box;
+    color: var(--color_002);
+    -moz-box-sizing: border-box;
+    -webkit-box-sizing: border-box;
+    font-family: 'Poppins', sans-serif;
+}
+
+/* - - - </> [DIV] </> - - - */
 .tours-container
 {
     width: 100%;

@@ -119,6 +119,37 @@ function Tours()
 
                 </div>
 
+                {/* - - - </> [DIV] </> - - - */}
+                <div className='tours-input-wrapper'>
+
+                    {/* - - - </> [ICON] </> - - - */}
+                    <Icon icon="ic:sharp-search" className='tours-input-icon'/>
+
+                    {/* - - - </> [INPUT] </> - - - */}
+                    <input
+
+                    //* - - - </> [TYPE] </> - - - *//
+                    type="text"
+
+                    //* - - - </> [TEXT] </> - - - *//
+                    placeholder="Search a place here*"
+
+                    //* - - - </> [CODE] </> - - - *//
+                    pattern='^[A-Za-z0-9 ]{3,15}$'
+                    
+                    //* - - - </> [CLASS] </> - - - *//
+                    className='tours-input'
+                    
+                    //* - - - </> [VALUE] </> - - - *//
+                    value={search}
+                    
+                    //* - - - </> [EVENT] </> - - - *//
+                    onChange={handleSearch}
+                    
+                    />
+
+                </div>
+
                 {/* - - - </> [INPUT] </> - - - */}
                 <input type="text" placeholder="Search a place here*" value={search} onChange={handleSearch}/>
 

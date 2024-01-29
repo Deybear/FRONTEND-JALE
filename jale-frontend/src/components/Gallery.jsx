@@ -1,5 +1,6 @@
 import React from 'react';
 import '../styles/Gallery.css';
+import image from '../images/IMAGE_DEFAULT.png';
 
 function Gallery(props)
 {
@@ -27,8 +28,9 @@ function Gallery(props)
         //* - - - </> [DIV] </> - - - *//
         <section className='message-section'>
 
-            <div>This place doesn't have photos!</div>
-
+            {/* - - - </> [IMG] </> - - - */}
+            <img src={image} alt="default-image" className='message-image'/>
+            
         </section>
     );
 }

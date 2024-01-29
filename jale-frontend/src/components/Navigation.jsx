@@ -1,6 +1,6 @@
 import React from 'react';
 import { Icon } from '@iconify/react';
-import logo from '../images/main-logo.svg';
+import logo from '../images/JALE_LOGO.svg';
 import '../styles/Navigation.css';
 import { useLocation, useNavigate } from 'react-router-dom';
 

@@ -30,7 +30,7 @@
 .navigation-logo
 {
     width: 40%;
-    filter: grayscale();
+    transition: all .2s ease-in-out;
 }
 
 /* - - - </> [IMG] </> - - - */
@@ -38,7 +38,7 @@
 {
     filter: none;
     cursor: pointer;
-    transition: .5s;
+    transform: scale(1.1);
 }
 
 /* - - - </> [UL] </> - - - */

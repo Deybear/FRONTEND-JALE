@@ -66,6 +66,14 @@
     justify-content: center;
 }
 
+/* - - - </> [IMG] </> - - - */
+.message-image
+{
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
 /* Extra small devices (phones, 600px and down) */
 @media only screen and (max-width: 600px)
 {
