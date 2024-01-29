@@ -117,59 +117,58 @@ function Tours()
                     {/* - - - </> [TEXT] </> - - - */}
                     <p className='tours-title'>Let's Travel!</p>
 
-                </div>
+                    {/* - - - </> [DIV] </> - - - */}
+                    <div className='tours-search'>
 
-                {/* - - - </> [DIV] </> - - - */}
-                <div className='tours-input-wrapper'>
+                        {/* - - - </> [DIV] </> - - - */}
+                        <div className='tours-input-wrapper'>
 
-                    {/* - - - </> [ICON] </> - - - */}
-                    <Icon icon="ic:sharp-search" className='tours-input-icon'/>
+                            {/* - - - </> [ICON] </> - - - */}
+                            <Icon icon="ic:sharp-search" className='tours-input-icon'/>
 
-                    {/* - - - </> [INPUT] </> - - - */}
-                    <input
+                            {/* - - - </> [INPUT] </> - - - */}
+                            <input
 
-                    //* - - - </> [TYPE] </> - - - *//
-                    type="text"
+                            //* - - - </> [TYPE] </> - - - *//
+                            type="text"
 
-                    //* - - - </> [TEXT] </> - - - *//
-                    placeholder="Search a place here*"
+                            //* - - - </> [TEXT] </> - - - *//
+                            placeholder="Search a place here*"
 
-                    //* - - - </> [CODE] </> - - - *//
-                    pattern='^[A-Za-z0-9 ]{3,15}$'
+                            //* - - - </> [CODE] </> - - - *//
+                            pattern='^[A-Za-z0-9 ]{3,15}$'
+
+                            //* - - - </> [CLASS] </> - - - *//
+                            className='tours-input'
+
+                            //* - - - </> [VALUE] </> - - - *//
+                            value={search}
+
+                            //* - - - </> [EVENT] </> - - - *//
+                            onChange={handleSearch}
+
+                            />
+
+                        </div>
+
+                        {/* - - - </> [COMBO] </> - - - */}
+                        <select id="dropdown" value={option} onChange={handleOption} placeholder="Select a category" className='tours-dropdown'>
+
+                            {/* - - - </> [COMBO] </> - - - */}
+                            <option value="">Category</option>
+
+                            {categories.map((category) => (
+                                
+                                <option key={category.id} value={category.id}>{category.category_desc}</option>
+
+                            ))}
+
+                        </select>
+
+                    </div>
                     
-                    //* - - - </> [CLASS] </> - - - *//
-                    className='tours-input'
-                    
-                    //* - - - </> [VALUE] </> - - - *//
-                    value={search}
-                    
-                    //* - - - </> [EVENT] </> - - - *//
-                    onChange={handleSearch}
-                    
-                    />
+                    {/* <button className="reload-button">Clean</button> */}
 
-                </div>
-
-                {/* - - - </> [INPUT] </> - - - */}
-                <input type="text" placeholder="Search a place here*" value={search} onChange={handleSearch}/>
-
-                <div>
-
-                    <label htmlFor="dropdown">Select a category:</label>
-
-                    <select id="dropdown" value={option} onChange={handleOption} placeholder="Select a category">
-
-                        <option value="">Select an option</option>
-
-                        {categories.map((category) => (
-
-                            <option key={category.id} value={category.id}>{category.category_desc}</option>
-
-                        ))}
-
-                    </select>
-                    
-                    <button className="reload-button">Clean</button>
                 </div>
 
                 {/* - - - </> [DIV] </> - - - */}
@@ -185,7 +184,7 @@ function Tours()
                         <div className='tours-card' onClick={() => seeMore(item.id)} key={index}>
 
                             {/* - - - </> [IMG] </> - - - */}
-                            {/* <div className='place-image-wrapper'><img src={item.photos.length > 0 ? item.photos[0].photo_url : ""} alt="" className='place-image'/></div> */}
+                            {/* <div className='tours-image-wrapper'><img src={item.photos.length > 0 ? item.photos[0].photo_url : ""} alt="" className='tours-image'/></div> */}
 
                             {/* - - - </> [DIV] </> - - - */}
                             <div className='tours-text-wrapper'>
@@ -225,14 +224,6 @@ function Tours()
 
                     </div>
                     
-                </div>
-
-                {/* - - - </> [DIV] </> - - - */}
-                <div className='tours-actions'>
-
-                    {/* - - - </> [TEXT] </> - - - */}
-                    <p className='tours-title'>Let's Travel!</p>
-
                 </div>
 
                 {/* - - - </> [DIV] </> - - - */}
